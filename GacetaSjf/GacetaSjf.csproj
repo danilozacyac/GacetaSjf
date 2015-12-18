@@ -71,7 +71,12 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Controllers\UnaTesisController.cs" />
+    <Compile Include="Converters\EpocaConverter.cs" />
+    <Compile Include="Converters\VolumenConverter.cs" />
+    <Compile Include="Dao\DatosCompartidos.cs" />
     <Compile Include="Dao\Materias.cs" />
+    <Compile Include="Model\DatosCompartidosModel.cs" />
+    <Compile Include="Singletons\CompartidosSingleton.cs" />
     <Compile Include="Singletons\MateriasSingleton.cs" />
     <Compile Include="UnaTesis.xaml.cs">
       <DependentUpon>UnaTesis.xaml</DependentUpon>

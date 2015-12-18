@@ -1,4 +1,5 @@
-﻿using GacetaSjf.Singletons;
+﻿using GacetaSjf.Model;
+using GacetaSjf.Singletons;
 using MantesisVerIusCommonObjects.Dto;
 using System;
 using System.Collections.Generic;
@@ -13,28 +14,25 @@ namespace GacetaSjf.Controllers
     {
         private readonly UnaTesis unaTesis;
 
-        private UnaTesisModel unaTesisModel;
 
         private TesisDto tesisMostrada = null;
 
 
 
-        public UnaTesisController(UnaTesis unaTesis)
-        {
-            this.unaTesis = unaTesis;
-        }
+       
 
-        public UnaTesisController(UnaTesis unaTesis, TesisDto tesisMostrada)
+        public UnaTesisController(UnaTesis unaTesis,TesisDto tesisMostrada)
         {
             this.unaTesis = unaTesis;
             this.tesisMostrada = tesisMostrada;
+            LoadTesisWindow(tesisMostrada);
         }
 
-        public void LoadTesisWindow(long ius)
+        public void LoadTesisWindow(TesisDto tesisMostrada)
         {
 
             LoadComboBoxes();
-            LoadTesis(ius);
+            LoadTesis(tesisMostrada);
             LoadNoBindingValues();
 
 
@@ -43,21 +41,13 @@ namespace GacetaSjf.Controllers
         /// <summary>
         /// Carga la información de la tesis en cada uno de los campos del formulario
         /// </summary>
-        public void LoadTesis(long ius)
+        public void LoadTesis(TesisDto tesisAMostrar)
         {
-            unaTesisModel = new UnaTesisModel();
 
-            if (tesisMostrada == null)
-            {
-                tesisMostrada = unaTesisModel.CargaDatosTesisMantesisSql(ius);
-            }
-            else
-            {
-                ius = tesisMostrada.Ius;
-            }
+            tesisMostrada = new TesisSjfModel().GetTesis(tesisAMostrar.Ius);
+           
 
-            tesisMostrada.IsEnable = unaTesis.IsTesisUpdatable;
-            tesisMostrada.IsReadOnly = !unaTesis.IsTesisUpdatable;
+            tesisMostrada.IsReadOnly = true;
 
             unaTesis.DataContext = tesisMostrada;
 
@@ -75,8 +65,8 @@ namespace GacetaSjf.Controllers
 
         public void LoadComboBoxes()
         {
-            unaTesis.CbxInstancia.ItemsSource = DatosCompartidosSingleton.Instancias;
-            unaTesis.CbxFuente.ItemsSource = DatosCompartidosSingleton.Fuentes;
+            unaTesis.CbxInstancia.ItemsSource = CompartidosSingleton.Instancias;
+            //unaTesis.CbxFuente.ItemsSource = DatosCompartidosSingleton.Fuentes;
 
             unaTesis.CbxMat1.ItemsSource = MateriasSingleton.MateriasSin;
             unaTesis.CbxMat2.ItemsSource = MateriasSingleton.MateriasSin;
@@ -130,7 +120,7 @@ namespace GacetaSjf.Controllers
             tesisMostrada = null;
             unaTesis.PosActual = 0;
             TesisDto tesis = unaTesis.ListaTesis[unaTesis.PosActual];
-            this.LoadTesisWindow(tesis.Ius);
+            this.LoadTesisWindow(tesis);
 
             unaTesis.LblContador.Content = "     " + (unaTesis.PosActual + 1) + " / " + unaTesis.ListaTesis.Count;
         }
@@ -142,7 +132,7 @@ namespace GacetaSjf.Controllers
             {
                 unaTesis.PosActual--;
                 TesisDto tesis = unaTesis.ListaTesis[unaTesis.PosActual];
-                this.LoadTesisWindow(tesis.Ius);
+                this.LoadTesisWindow(tesis);
 
                 unaTesis.LblContador.Content = "     " + (unaTesis.PosActual + 1) + " / " + unaTesis.ListaTesis.Count;
             }
@@ -157,7 +147,7 @@ namespace GacetaSjf.Controllers
                 TesisDto tesis = unaTesis.ListaTesis[unaTesis.PosActual];
 
                 //unaTesisModel.DbConnectionOpen();
-                this.LoadTesisWindow(tesis.Ius);
+                this.LoadTesisWindow(tesis);
                 //unaTesisModel.DbConnectionClose();
 
                 unaTesis.LblContador.Content = "     " + (unaTesis.PosActual + 1) + " / " + unaTesis.ListaTesis.Count;
@@ -172,7 +162,7 @@ namespace GacetaSjf.Controllers
             TesisDto tesis = unaTesis.ListaTesis[unaTesis.PosActual];
 
             //unaTesisModel.DbConnectionOpen();
-            this.LoadTesisWindow(tesis.Ius);
+            this.LoadTesisWindow(tesis);
             //unaTesisModel.DbConnectionClose();
             unaTesis.LblContador.Content = "     " + (unaTesis.PosActual + 1) + " / " + unaTesis.ListaTesis.Count;
         }

@@ -41,3 +41,5 @@ C:\Users\Luis\documents\visual studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debu
 C:\Users\Luis\documents\visual studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\Tradicional.g.cs
 C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\UnaTesis.baml
 C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\UnaTesis.g.cs
+C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\bin\Debug\Telerik.Windows.Controls.RibbonView.dll
+C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\bin\Debug\Telerik.Windows.Controls.RibbonView.xml

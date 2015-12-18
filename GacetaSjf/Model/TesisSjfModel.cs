@@ -96,10 +96,19 @@ namespace GacetaSjf.Model
                         tesis.Ius = Convert.ToInt32(reader["Ius"]);
                         tesis.Tesis = reader["Tesis"].ToString();
                         tesis.Rubro = reader["Rubro"].ToString();
+                        tesis.Texto = reader["Texto"].ToString();
+                        tesis.Precedentes = reader["Precedentes"].ToString();
+                        tesis.EpocaInt = Convert.ToInt32(reader["Epoca"]);
                         tesis.TaTj = Convert.ToInt32(reader["ta/tj"]);
                         tesis.Sala = Convert.ToInt32(reader["Sala"]);
                         tesis.LocAbr = reader["LocAbr"].ToString();
                         tesis.VolumenInt = Convert.ToInt32(reader["Volumen"]);
+                        tesis.Fuente = Convert.ToInt32(reader["Fuente"]);
+                        tesis.Pagina = reader["Pagina"].ToString();
+                        tesis.Materia1 = Convert.ToInt32(reader["Materia1"]);
+                        tesis.Materia2 = Convert.ToInt32(reader["Materia2"]);
+                        tesis.Materia3 = Convert.ToInt32(reader["Materia3"]);
+                        tesis.ConsecIndx = Convert.ToInt32(reader["ConsecIndx"]);
 
                     }
                 }

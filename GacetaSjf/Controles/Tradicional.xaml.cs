@@ -26,6 +26,7 @@ namespace GacetaSjf.Controles
     {
         public ObservableCollection<TesisDto> listaTesis;
         private Tomos selectedTomo;
+        private TesisDto selectedTesis;
         private bool vaciarListado = true;
 
         public Tradicional()
@@ -89,6 +90,19 @@ namespace GacetaSjf.Controles
 
             GTesis.DataContext = listaTesis;
             vaciarListado = true;
+        }
+
+        private void GTesis_SelectionChanged(object sender, Telerik.Windows.Controls.SelectionChangeEventArgs e)
+        {
+            selectedTesis = GTesis.SelectedItem as TesisDto;
+        }
+
+        private void GTesis_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            int posActual = listaTesis.IndexOf(selectedTesis);
+
+            UnaTesis showTesis = new UnaTesis(listaTesis, posActual);
+            showTesis.ShowDialog();
         }
     }
 }

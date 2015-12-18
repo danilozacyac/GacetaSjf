@@ -14,11 +14,8 @@ namespace GacetaSjf
     public partial class UnaTesis : Window
     {
         private UnaTesisController controller;
-        private long ius;
-        private readonly byte accion;
         public ObservableCollection<TesisDto> ListaTesis;
         public int PosActual;
-        public readonly bool IsTesisUpdatable;
         private readonly bool isVerIusAccess;
         private TesisDto tesisMostrada;
 
@@ -30,41 +27,20 @@ namespace GacetaSjf
         /// <summary>
         /// 
         /// </summary>
-        /// <param name="ius">Número de registro IUS de la tesis a mostrar</param>
-        /// <param name="accion">Como se abrira el registro.   1  Visualiza  ----  2  Actualiza  ---- 3 Nueva tesis</param>
         /// <param name="listaTesis">Lista de Tesis mostrada en la ventana principal</param>
-        /// <param name="posActual">Posición de la tesis dentro del listado mostrado</param>
-        /// <param name="isTesisUpdatable"></param>
-        public UnaTesis(long ius, byte accion, ObservableCollection<TesisDto> listaTesis, int posActual, bool isTesisUpdatable)
+        /// <param name="posActual">Posición de la tesis seleccionada dentro del listado mostrado</param>
+        public UnaTesis( ObservableCollection<TesisDto> listaTesis, int posActual)
         {
             InitializeComponent();
-            this.ius = ius;
-            this.accion = accion;
             this.PosActual = posActual;
             this.ListaTesis = listaTesis;
-            this.IsTesisUpdatable = isTesisUpdatable;
-            this.isVerIusAccess = false;
-            controller = new UnaTesisController(this);
+            controller = new UnaTesisController(this,listaTesis[posActual]);
         }
 
-        /// <summary>
-        /// Constructor que utiliza la funcionalidad de Ver IUS para lanzar la una nueva ventana con la tesis buscada
-        /// </summary>
-        /// <param name="tesisMostrada"></param>
-        /// <param name="isTesisUpdatable"></param>
-        public UnaTesis(TesisDto tesisMostrada, bool isTesisUpdatable) : this()
-        {
-            this.tesisMostrada = tesisMostrada;
-            this.ius = tesisMostrada.Ius;
-            this.IsTesisUpdatable = isTesisUpdatable;
-            isVerIusAccess = true;
-            controller = new UnaTesisController(this, tesisMostrada);
-        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            controller.LoadTesisWindow(this.ius);
-            this.Title = (IsTesisUpdatable) ? "Actualizar Tesis" : "Visualizar Tesis";
+            controller.LoadTesisWindow(ListaTesis[PosActual]);
         }
 
         private void RibbonButton_Click(object sender, RoutedEventArgs e)
