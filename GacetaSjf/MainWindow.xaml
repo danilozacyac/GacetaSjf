@@ -1,0 +1,56 @@
+﻿<Window x:Class="GacetaSjf.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:Controles="clr-namespace:GacetaSjf.Controles"
+        xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+        Title="MainWindow"
+        Width="525"
+        Height="350">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+
+        <Grid Grid.Row="1">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".3*" MinWidth="150" />
+                <ColumnDefinition Width="*" MinWidth="150" />
+            </Grid.ColumnDefinitions>
+
+            <telerik:RadOutlookBar HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                <telerik:RadOutlookBarItem Header="Consulta Tradicional">
+                    <Grid Background="Transparent" />
+                </telerik:RadOutlookBarItem>
+                <telerik:RadOutlookBarItem Header="Consulta en PDF">
+                    <Grid Background="Transparent" />
+                </telerik:RadOutlookBarItem>
+                <telerik:RadOutlookBarItem Header="Consulta temática y por ordenamientos">
+                    <Grid Background="Transparent" />
+                </telerik:RadOutlookBarItem>
+                <telerik:RadOutlookBarItem Header="Consulta por órgano emisor">
+                    <Grid Background="Transparent">
+                        <TreeView x:Name="TreeOrganismo"
+                                  HorizontalAlignment="Stretch"
+                                  VerticalAlignment="Stretch" />
+                    </Grid>
+                </telerik:RadOutlookBarItem>
+                <telerik:RadOutlookBarItem Header="Consulta Otros Índices">
+                    <Grid Background="Transparent" />
+                </telerik:RadOutlookBarItem>
+
+            </telerik:RadOutlookBar>
+            <Controles:Tradicional x:Name="CTradicional"
+                                   Grid.Column="1"
+                                   HorizontalAlignment="Stretch"
+                                   VerticalAlignment="Stretch" />
+
+
+
+
+        </Grid>
+    </Grid>
+</Window>
