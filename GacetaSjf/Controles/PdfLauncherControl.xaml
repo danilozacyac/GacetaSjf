@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="GacetaSjf.Controles.PdfLauncherControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             Width="256"
+             Height="256"
+             Background="White"
+             mc:Ignorable="d">
+    <Grid>
+        <Image x:Name="ImgGaceta" Width="196"
+               Height="186"
+               Margin="0,15,0,0"
+               HorizontalAlignment="Center"
+               VerticalAlignment="Top"
+               Source="/GacetaSjf;component/Resources/pdf_256.png" Cursor="Hand" MouseLeftButtonDown="ImgGaceta_MouseLeftButtonDown" />
+        <TextBlock Margin="0,215,0,0" x:Name="TxtMes"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Top"
+                   FontSize="18"
+                   Text="Mes de publicación"
+                   TextWrapping="Wrap" Cursor="Hand" />
+
+    </Grid>
+</UserControl>

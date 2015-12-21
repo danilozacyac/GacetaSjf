@@ -4,8 +4,9 @@
         xmlns:Controles="clr-namespace:GacetaSjf.Controles"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         Title="MainWindow"
-        Width="525"
-        Height="350">
+        Width="700"
+        Height="350"
+        WindowState="Maximized" Loaded="Window_Loaded">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -14,39 +15,49 @@
         </Grid.RowDefinitions>
 
 
+        <telerik:RadRibbonView ApplicationName="Gaceta del Semanario Judicial de la Federación" QuickAccessToolBarPosition="NotHosted">
+            <telerik:RadRibbonTab Header="Consultas">
+                <telerik:RadRibbonGroup Header="Tipo de consulta">
+                    <telerik:RadRibbonButton x:Name="BtnTradicional"
+                                             Content="Consulta Tradicional"
+                                             Size="Large" Click="BtnTradicional_Click" />
+                    <telerik:RadRibbonButton x:Name="BtnTematica"
+                                             Content="Consulta Temática"
+                                             Size="Large" Click="BtnTematica_Click"  />
+                    <telerik:RadRibbonButton x:Name="BtnOrdenamientos"
+                                             Content="Consulta por Ordenamientos"
+                                             Size="Large" Click="BtnOrdenamientos_Click"  />
+                    <telerik:RadRibbonButton x:Name="BtnOrganismo"
+                                             Content="Consulta por órgano emisor"
+                                             Size="Large" Click="BtnOrganismo_Click"  />
+                    <telerik:RadRibbonButton x:Name="BtnConsultaPdf"
+                                             Content="Consulta en PDF"
+                                             Size="Large" Click="BtnConsultaPdf_Click"   />
+
+                </telerik:RadRibbonGroup>
+            </telerik:RadRibbonTab>
+        </telerik:RadRibbonView>
+
         <Grid Grid.Row="1">
 
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width=".3*" MinWidth="150" />
+                <ColumnDefinition Width="auto" MinWidth="0" />
                 <ColumnDefinition Width="*" MinWidth="150" />
             </Grid.ColumnDefinitions>
 
-            <telerik:RadOutlookBar HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                <telerik:RadOutlookBarItem Header="Consulta Tradicional">
-                    <Grid Background="Transparent" />
-                </telerik:RadOutlookBarItem>
-                <telerik:RadOutlookBarItem Header="Consulta en PDF">
-                    <Grid Background="Transparent" />
-                </telerik:RadOutlookBarItem>
-                <telerik:RadOutlookBarItem Header="Consulta temática y por ordenamientos">
-                    <Grid Background="Transparent" />
-                </telerik:RadOutlookBarItem>
-                <telerik:RadOutlookBarItem Header="Consulta por órgano emisor">
-                    <Grid Background="Transparent">
-                        <TreeView x:Name="TreeOrganismo"
-                                  HorizontalAlignment="Stretch"
-                                  VerticalAlignment="Stretch" />
-                    </Grid>
-                </telerik:RadOutlookBarItem>
-                <telerik:RadOutlookBarItem Header="Consulta Otros Índices">
-                    <Grid Background="Transparent" />
-                </telerik:RadOutlookBarItem>
 
-            </telerik:RadOutlookBar>
-            <Controles:Tradicional x:Name="CTradicional"
-                                   Grid.Column="1"
-                                   HorizontalAlignment="Stretch"
-                                   VerticalAlignment="Stretch" />
+            <telerik:RadDocking x:Name="Docking"
+                                Grid.Column="1"
+                                HorizontalAlignment="Stretch"
+                                VerticalAlignment="Stretch">
+                <telerik:RadDocking.DocumentHost>
+                    <telerik:RadSplitContainer>
+                        <telerik:RadPaneGroup x:Name="PanelCentral"
+                                              HorizontalAlignment="Stretch"
+                                              VerticalAlignment="Stretch" />
+                    </telerik:RadSplitContainer>
+                </telerik:RadDocking.DocumentHost>
+            </telerik:RadDocking>
 
 
 

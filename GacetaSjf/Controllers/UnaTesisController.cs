@@ -65,14 +65,12 @@ namespace GacetaSjf.Controllers
 
         public void LoadComboBoxes()
         {
-            unaTesis.CbxInstancia.ItemsSource = CompartidosSingleton.Instancias;
-            //unaTesis.CbxFuente.ItemsSource = DatosCompartidosSingleton.Fuentes;
 
-            unaTesis.CbxMat1.ItemsSource = MateriasSingleton.MateriasSin;
-            unaTesis.CbxMat2.ItemsSource = MateriasSingleton.MateriasSin;
-            unaTesis.CbxMat3.ItemsSource = MateriasSingleton.MateriasSin;
-            unaTesis.CbxMat4.ItemsSource = MateriasSingleton.MateriasSin;
-            unaTesis.CbxMat5.ItemsSource = MateriasSingleton.MateriasSin;
+            //unaTesis.CbxMat1.ItemsSource = MateriasSingleton.MateriasSin;
+            //unaTesis.CbxMat2.ItemsSource = MateriasSingleton.MateriasSin;
+            //unaTesis.CbxMat3.ItemsSource = MateriasSingleton.MateriasSin;
+            //unaTesis.CbxMat4.ItemsSource = MateriasSingleton.MateriasSin;
+            //unaTesis.CbxMat5.ItemsSource = MateriasSingleton.MateriasSin;
 
 
         }
@@ -82,14 +80,13 @@ namespace GacetaSjf.Controllers
             unaTesis.RbtAislada.FontWeight = System.Windows.FontWeights.Normal;
             unaTesis.RbtJurisp.FontWeight = System.Windows.FontWeights.Normal;
 
-            unaTesis.CbxInstancia.SelectedValue = tesisMostrada.Sala;
-            unaTesis.CbxFuente.SelectedValue = tesisMostrada.Fuente;
+            //unaTesis.CbxFuente.SelectedValue = tesisMostrada.Fuente;
 
-            unaTesis.CbxMat1.SelectedValue = tesisMostrada.Materia1;
-            unaTesis.CbxMat2.SelectedValue = tesisMostrada.Materia2;
-            unaTesis.CbxMat3.SelectedValue = tesisMostrada.Materia3;
-            unaTesis.CbxMat4.SelectedValue = tesisMostrada.Materia4;
-            unaTesis.CbxMat5.SelectedValue = tesisMostrada.Materia5;
+            //unaTesis.CbxMat1.SelectedValue = tesisMostrada.Materia1;
+            //unaTesis.CbxMat2.SelectedValue = tesisMostrada.Materia2;
+            //unaTesis.CbxMat3.SelectedValue = tesisMostrada.Materia3;
+            //unaTesis.CbxMat4.SelectedValue = tesisMostrada.Materia4;
+            //unaTesis.CbxMat5.SelectedValue = tesisMostrada.Materia5;
 
             if (tesisMostrada.TaTj == 0)
             {
@@ -174,12 +171,12 @@ namespace GacetaSjf.Controllers
                 case 1: // Toda la tesis
                     Clipboard.SetText(
                                       unaTesis.TxtEpoca.Text + "\r\n" + "Registro: " + tesisMostrada.Ius + "\r\n" +
-                                      "Instancia: " + unaTesis.CbxInstancia.Text + "\r\n" +
+                                      "Instancia: " + unaTesis.TxtInstancia.Text + "\r\n" +
                                       ((unaTesis.RbtJurisp.IsChecked == true) ? "Jurisprudencia" : "Tesis Aislada") + "\r\n" +
                                       "Fuente: " + unaTesis.CbxFuente.Text + "\r\n" +
                                       unaTesis.TxtVolumen.Text + "\r\n" +
-                                      "Materia(s): " + unaTesis.CbxMat1.Text + ((!unaTesis.CbxMat2.Text.Equals("<sin materia>"))
-                                                                                ? (", " + unaTesis.CbxMat2.Text + ((!unaTesis.CbxMat3.Text.Equals("<sin materia>")) ? ", " + unaTesis.CbxMat3.Text : "")) : "") + "\r\n" +
+                                      "Materia(s): " + unaTesis.TxtMat1.Text + ((!unaTesis.TxtMat2.Text.Equals("<sin materia>"))
+                                                                                ? (", " + unaTesis.TxtMat2.Text + ((!unaTesis.TxtMat3.Text.Equals("<sin materia>")) ? ", " + unaTesis.TxtMat3.Text : "")) : "") + "\r\n" +
                                       "Tesis: " + unaTesis.TxtTesis.Text + "\r\n" + "Página: " + unaTesis.TxtPag.Text + "\r\n" +
                                       "\r\n" +
                                       ((!unaTesis.TxtGenealogia.Text.Equals(String.Empty)) ? "Genealogía: " + unaTesis.TxtGenealogia.Text + "\r\n" : String.Empty) +

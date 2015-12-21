@@ -16,7 +16,6 @@ namespace GacetaSjf
         private UnaTesisController controller;
         public ObservableCollection<TesisDto> ListaTesis;
         public int PosActual;
-        private readonly bool isVerIusAccess;
         private TesisDto tesisMostrada;
 
         public UnaTesis()

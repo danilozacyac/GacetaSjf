@@ -1,4 +1,5 @@
-﻿using MantesisVerIusCommonObjects.Dto;
+﻿using GacetaSjf.Dao;
+using MantesisVerIusCommonObjects.Dto;
 using ScjnUtilities;
 using System;
 using System.Collections.Generic;
@@ -131,6 +132,61 @@ namespace GacetaSjf.Model
             }
 
             return tesis;
+        }
+
+
+
+
+        public ObservableCollection<TesisDto> GetTesis(Temas tema)
+        {
+            ObservableCollection<TesisDto> listaTesis = new ObservableCollection<TesisDto>();
+
+
+            OleDbConnection connection = new OleDbConnection(connectionString);
+            OleDbCommand cmd = null;
+            OleDbDataReader reader = null;
+
+            String sqlCadena = "SELECT * FROM zzzzzTematicoIUS Where IdTema = @IdTema ORDER BY Rubro";
+
+            try
+            {
+                connection.Open();
+
+                cmd = new OleDbCommand(sqlCadena, connection);
+                cmd.Parameters.AddWithValue("@IdTema", tema.IdTema);
+                reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        TesisDto tesis = new TesisDto();
+                        tesis.Ius = Convert.ToInt32(reader["Ius"]);
+                        tesis.Tesis = reader["CveTesis"].ToString();
+                        tesis.Rubro = reader["Rubro"].ToString();
+
+                        listaTesis.Add(tesis);
+                    }
+                }
+                cmd.Dispose();
+                reader.Close();
+            }
+            catch (OleDbException ex)
+            {
+                string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,TesisSjfModel", "Gaceta");
+            }
+            catch (Exception ex)
+            {
+                string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,TesisSjfModel", "Gaceta");
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return listaTesis;
         }
 
     }

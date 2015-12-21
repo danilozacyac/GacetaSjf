@@ -4,31 +4,44 @@ using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using GacetaSjf.Dao;
-using GacetaSjf.Model;
 using MantesisVerIusCommonObjects.Dto;
+using GacetaSjf.Model;
 
 namespace GacetaSjf.Controles
 {
     /// <summary>
-    /// Interaction logic for Tematica.xaml
+    /// Interaction logic for Ordenamientos.xaml
     /// </summary>
-    public partial class Tematica : UserControl
+    public partial class Ordenamientos : UserControl
     {
 
-        ObservableCollection<Temas> listaTematico;
+        ObservableCollection<Temas> listaOrdenamientos;
         ObservableCollection<TesisDto> listaTesis;
+
         Temas selectedTema;
         TesisDto selectedTesis;
 
-        public Tematica()
+        public Ordenamientos()
         {
             InitializeComponent();
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            listaTematico = new TemasModel().GetTemas(0);
-            LstTematico.DataContext = listaTematico;
+            listaOrdenamientos = new TemasModel().GetTemas(1);
+
+            GOrdenamientos.DataContext = listaOrdenamientos;
+
+            
+        }
+
+        private void GOrdenamientos_SelectionChanged(object sender, Telerik.Windows.Controls.SelectionChangeEventArgs e)
+        {
+            selectedTema = GOrdenamientos.SelectedItem as Temas;
+
+            listaTesis = new TesisSjfModel().GetTesis(selectedTema);
+
+            GTesis.DataContext = listaTesis;
         }
 
         private void GTesis_SelectionChanged(object sender, Telerik.Windows.Controls.SelectionChangeEventArgs e)
@@ -42,14 +55,6 @@ namespace GacetaSjf.Controles
 
             UnaTesis showTesis = new UnaTesis(listaTesis, index);
             showTesis.ShowDialog();
-        }
-
-        private void LstTematico_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            selectedTema = LstTematico.SelectedItem as Temas;
-            listaTesis = new TesisSjfModel().GetTesis(selectedTema);
-
-            GTesis.DataContext = listaTesis;
         }
     }
 }

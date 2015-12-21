@@ -43,3 +43,12 @@ C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debu
 C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\UnaTesis.g.cs
 C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\bin\Debug\Telerik.Windows.Controls.RibbonView.dll
 C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\bin\Debug\Telerik.Windows.Controls.RibbonView.xml
+C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\bin\Debug\uicontrols.dll
+C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\Ordenamientos.baml
+C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\Ordenamientos.g.cs
+C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\bin\Debug\Telerik.Windows.Controls.Docking.dll
+C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\bin\Debug\Telerik.Windows.Controls.Docking.xml
+C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\MesPdf.baml
+C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\PdfLauncherControl.baml
+C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\MesPdf.g.cs
+C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\PdfLauncherControl.g.cs
