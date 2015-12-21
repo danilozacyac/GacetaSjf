@@ -13,8 +13,8 @@ namespace GacetaSjf.Dao
         private string tomo;
         private string pdfFile;
         private int volumen;
-
-        public int Mes
+        private int habilitado;
+public int Mes
         {
             get
             {
@@ -63,17 +63,32 @@ namespace GacetaSjf.Dao
         }
 
 
+        public int Habilitado
+        {
+            get
+            {
+                return this.habilitado;
+            }
+            set
+            {
+                this.habilitado = value;
+            }
+        }
+
+        
+
+
 
         private readonly string connectionString = ConfigurationManager.ConnectionStrings["SJF"].ConnectionString;
         public ObservableCollection<Tomos> GetTomos()
         {
-            ObservableCollection<Tomos> listaTesis = new ObservableCollection<Tomos>();
+            ObservableCollection<Tomos> listaTomos = new ObservableCollection<Tomos>();
 
             OleDbConnection connection = new OleDbConnection(connectionString);
             OleDbCommand cmd = null;
             OleDbDataReader reader = null;
 
-            String sqlCadena = "SELECT * FROM TomosSjf Where Habilitado = 1 ORDER BY Mes";
+            String sqlCadena = "SELECT * FROM TomosSjf ORDER BY Mes";
 
             try
             {
@@ -86,13 +101,14 @@ namespace GacetaSjf.Dao
                 {
                     while (reader.Read())
                     {
-                        Tomos tesis = new Tomos();
-                        tesis.Mes = Convert.ToInt32(reader["mes"]);
-                        tesis.Tomo = reader["Tomo"].ToString();
-                        tesis.PdfFile = reader["PDF"].ToString();
-                        tesis.Volumen = Convert.ToInt32(reader["Volumen"]);
+                        Tomos tomo = new Tomos();
+                        tomo.Mes = Convert.ToInt32(reader["mes"]);
+                        tomo.Tomo = reader["Tomo"].ToString();
+                        tomo.PdfFile = reader["PDF"].ToString();
+                        tomo.Volumen = Convert.ToInt32(reader["Volumen"]);
+                        tomo.habilitado = Convert.ToInt32(reader["Habilitado"]);
 
-                        listaTesis.Add(tesis);
+                        listaTomos.Add(tomo);
                     }
                 }
                 cmd.Dispose();
@@ -101,19 +117,19 @@ namespace GacetaSjf.Dao
             catch (OleDbException ex)
             {
                 string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
-                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,TesisSjfModel", "Gaceta");
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,Tomos", "Gaceta");
             }
             catch (Exception ex)
             {
                 string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
-                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,TesisSjfModel", "Gaceta");
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,Tomos", "Gaceta");
             }
             finally
             {
                 connection.Close();
             }
 
-            return listaTesis;
+            return listaTomos;
         }
 
     }

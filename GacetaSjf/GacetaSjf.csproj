@@ -84,8 +84,10 @@
       <DependentUpon>PdfLauncherControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controllers\UnaTesisController.cs" />
+    <Compile Include="Converters\EnableConverter.cs" />
     <Compile Include="Converters\EpocaConverter.cs" />
     <Compile Include="Converters\MateriaConverter.cs" />
+    <Compile Include="Converters\PdfImageConverter.cs" />
     <Compile Include="Converters\VolumenConverter.cs" />
     <Compile Include="Dao\DatosCompartidos.cs" />
     <Compile Include="Dao\Materias.cs" />
@@ -94,6 +96,7 @@
     <Compile Include="Model\TemasModel.cs" />
     <Compile Include="Singletons\CompartidosSingleton.cs" />
     <Compile Include="Singletons\MateriasSingleton.cs" />
+    <Compile Include="Singletons\TomosSingleton.cs" />
     <Compile Include="UnaTesis.xaml.cs">
       <DependentUpon>UnaTesis.xaml</DependentUpon>
     </Compile>
@@ -262,6 +265,21 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\p_128.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\pdfDisable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\law.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\lupa.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\tematica.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\building.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

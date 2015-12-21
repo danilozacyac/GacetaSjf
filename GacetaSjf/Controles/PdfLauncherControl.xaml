@@ -1,25 +1,48 @@
 ﻿<UserControl x:Class="GacetaSjf.Controles.PdfLauncherControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converter="clr-namespace:GacetaSjf.Converters"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              Width="256"
              Height="256"
              Background="White"
              mc:Ignorable="d">
+    <UserControl.Resources>
+        <converter:PdfImageConverter x:Key="imConverter" />
+        <converter:EnableConverter x:Key="enConverter" />
+    </UserControl.Resources>
     <Grid>
-        <Image x:Name="ImgGaceta" Width="196"
+        <Image x:Name="ImgGaceta"
+               Width="196"
                Height="186"
                Margin="0,15,0,0"
                HorizontalAlignment="Center"
                VerticalAlignment="Top"
-               Source="/GacetaSjf;component/Resources/pdf_256.png" Cursor="Hand" MouseLeftButtonDown="ImgGaceta_MouseLeftButtonDown" />
-        <TextBlock Margin="0,215,0,0" x:Name="TxtMes"
+               Cursor="Hand"
+               IsEnabled="{Binding Habilitado,
+                                   Converter={StaticResource enConverter}}"
+               MouseLeftButtonDown="LanzaPdf"
+               Source="{Binding Habilitado,
+                                Converter={StaticResource imConverter}}" />
+        <TextBlock x:Name="TxtMes"
+                   Margin="0,215,0,0"
                    HorizontalAlignment="Center"
                    VerticalAlignment="Top"
+                   Cursor="Hand"
                    FontSize="18"
-                   Text="Mes de publicación"
-                   TextWrapping="Wrap" Cursor="Hand" />
+                   IsEnabled="{Binding Habilitado,
+                                       Converter={StaticResource enConverter}}"
+                   MouseLeftButtonDown="LanzaPdf"
+                   Text="{Binding Tomo}"
+                   TextWrapping="Wrap" />
+        <Label x:Name="LblPdfFile"
+               Height="0"
+               Margin="0,15,0,0"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Content="{Binding PdfFile}"
+               Foreground="White" />
 
     </Grid>
 </UserControl>

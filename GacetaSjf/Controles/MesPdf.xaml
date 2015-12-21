@@ -1,27 +1,32 @@
-﻿<UserControl xmlns:Controles="clr-namespace:GacetaSjf.Controles"  x:Class="GacetaSjf.Controles.MesPdf"
+﻿<UserControl x:Class="GacetaSjf.Controles.MesPdf"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" Background="White"
-             d:DesignHeight="500" d:DesignWidth="700">
+             xmlns:Controles="clr-namespace:GacetaSjf.Controles"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             Background="White"
+             Loaded="UserControl_Loaded"
+             d:DesignHeight="500"
+             d:DesignWidth="700"
+             mc:Ignorable="d">
     <Grid>
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <StackPanel Orientation="Horizontal">
-               <Controles:PdfLauncherControl />
-                <Controles:PdfLauncherControl />
-                <Controles:PdfLauncherControl />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Controles:PdfLauncherControl />
-                <Controles:PdfLauncherControl />
-                <Controles:PdfLauncherControl />
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <Controles:PdfLauncherControl />
-                <Controles:PdfLauncherControl />
-                <Controles:PdfLauncherControl />
-            </StackPanel>
-        </StackPanel>
+        <WrapPanel Margin="0"
+                   HorizontalAlignment="Stretch"
+                   VerticalAlignment="Stretch"
+                   Orientation="Horizontal">
+
+            <Controles:PdfLauncherControl x:Name="Enero" />
+            <Controles:PdfLauncherControl x:Name="Febrero" />
+            <Controles:PdfLauncherControl x:Name="Marzo" />
+            <Controles:PdfLauncherControl x:Name="Abril" />
+            <Controles:PdfLauncherControl x:Name="Mayo" />
+            <Controles:PdfLauncherControl x:Name="Junio" />
+            <Controles:PdfLauncherControl x:Name="Julio" />
+            <Controles:PdfLauncherControl x:Name="Agosto" />
+            <Controles:PdfLauncherControl x:Name="Septiembre" />
+            <Controles:PdfLauncherControl x:Name="Octubre" />
+            <Controles:PdfLauncherControl x:Name="Noviembre" />
+            <Controles:PdfLauncherControl x:Name="Diciembre" />
+        </WrapPanel>
     </Grid>
 </UserControl>

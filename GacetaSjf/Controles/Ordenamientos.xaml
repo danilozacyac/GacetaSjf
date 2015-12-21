@@ -24,7 +24,8 @@
                              CanUserDeleteRows="False"
                              CanUserInsertRows="False"
                              ItemsSource="{Binding}"
-                             ShowGroupPanel="False" SelectionChanged="GOrdenamientos_SelectionChanged">
+                             SelectionChanged="GOrdenamientos_SelectionChanged"
+                             ShowGroupPanel="False">
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn Width="*"
                                             DataMemberBinding="{Binding Tema}"

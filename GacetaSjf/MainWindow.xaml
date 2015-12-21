@@ -3,10 +3,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Controles="clr-namespace:GacetaSjf.Controles"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
-        Title="MainWindow"
+        Title="Gaceta Sjf"
         Width="700"
         Height="350"
-        WindowState="Maximized" Loaded="Window_Loaded">
+        Loaded="Window_Loaded"
+        WindowState="Maximized">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -19,20 +20,43 @@
             <telerik:RadRibbonTab Header="Consultas">
                 <telerik:RadRibbonGroup Header="Tipo de consulta">
                     <telerik:RadRibbonButton x:Name="BtnTradicional"
-                                             Content="Consulta Tradicional"
-                                             Size="Large" Click="BtnTradicional_Click" />
+                                             Click="BtnTradicional_Click"
+                                             Content="Tradicional"
+                                             LargeImage="Resources/lupa.png"
+                                             Size="Large" />
                     <telerik:RadRibbonButton x:Name="BtnTematica"
-                                             Content="Consulta Temática"
-                                             Size="Large" Click="BtnTematica_Click"  />
+                                             Click="BtnTematica_Click"
+                                             Content="Temática"
+                                             LargeImage="Resources/tematica.png"
+                                             Size="Large" />
                     <telerik:RadRibbonButton x:Name="BtnOrdenamientos"
-                                             Content="Consulta por Ordenamientos"
-                                             Size="Large" Click="BtnOrdenamientos_Click"  />
+                                             Click="BtnOrdenamientos_Click"
+                                             LargeImage="Resources/law.png"
+                                             Size="Large">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock HorizontalAlignment="Center" Text="Ordenamientos" />
+                            <TextBlock HorizontalAlignment="Center" Text="legales" />
+                        </StackPanel>
+
+                    </telerik:RadRibbonButton>
                     <telerik:RadRibbonButton x:Name="BtnOrganismo"
-                                             Content="Consulta por órgano emisor"
-                                             Size="Large" Click="BtnOrganismo_Click"  />
+                                             Click="BtnOrganismo_Click"
+                                             LargeImage="Resources/building.png"
+                                             Size="Large">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock HorizontalAlignment="Center" Text="Por órgano" />
+                            <TextBlock HorizontalAlignment="Center" Text="emisor" />
+                        </StackPanel>
+                    </telerik:RadRibbonButton>
                     <telerik:RadRibbonButton x:Name="BtnConsultaPdf"
-                                             Content="Consulta en PDF"
-                                             Size="Large" Click="BtnConsultaPdf_Click"   />
+                                             Click="BtnConsultaPdf_Click"
+                                             LargeImage="Resources/pdf_128.png"
+                                             Size="Large">
+                        <StackPanel Orientation="Vertical">
+                            <TextBlock HorizontalAlignment="Center" Text="Consulta" />
+                            <TextBlock HorizontalAlignment="Center" Text="en PDF" />
+                        </StackPanel>
+                    </telerik:RadRibbonButton>
 
                 </telerik:RadRibbonGroup>
             </telerik:RadRibbonTab>

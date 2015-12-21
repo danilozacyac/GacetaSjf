@@ -72,7 +72,9 @@
                                  CanUserDeleteRows="False"
                                  CanUserInsertRows="False"
                                  ItemsSource="{Binding}"
-                                 ShowGroupPanel="False" SelectionChanged="GTesis_SelectionChanged" MouseDoubleClick="GTesis_MouseDoubleClick">
+                                 MouseDoubleClick="GTesis_MouseDoubleClick"
+                                 SelectionChanged="GTesis_SelectionChanged"
+                                 ShowGroupPanel="False">
                 <telerik:RadGridView.Columns>
                     <telerik:GridViewDataColumn Width="100"
                                                 DataMemberBinding="{Binding Tesis}"

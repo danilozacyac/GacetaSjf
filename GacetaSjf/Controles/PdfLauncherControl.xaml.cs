@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
@@ -26,9 +27,17 @@ namespace GacetaSjf.Controles
             InitializeComponent();
         }
 
-        private void ImgGaceta_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void LanzaPdf(object sender, MouseButtonEventArgs e)
         {
-            Process.Start(@"D:\Datos\PDF\14_ENE.pdf");
+            string path = ConfigurationManager.AppSettings["Datos"].ToString();
+
+            Process.Start(path + @"PDF\" + LblPdfFile.Content);
         }
+
+
+
+        ///GacetaSjf;component/Resources/pdf_256.png
+
+
     }
 }
