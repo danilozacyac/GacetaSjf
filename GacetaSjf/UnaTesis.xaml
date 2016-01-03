@@ -11,6 +11,8 @@
         <converter:EpocaConverter x:Key="epocaConv" />
         <converter:VolumenConverter x:Key="volumConv" />
         <converter:MateriaConverter x:Key="materiaConv" />
+        <converter:Instanciaconverter x:Key="instanConv" />
+        <converter:FuenteConverter x:Key="fuenteConv" />
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -57,39 +59,19 @@
                     </StackPanel>
 
                 </telerik:RadRibbonGroup>
-                <telerik:RadRibbonGroup Header="Portapapeles">
-                    <StackPanel Orientation="Horizontal">
-                        <telerik:RadRibbonButton Name="RbtnClipboard"
-                                                 Click="RibbonButton_Click"
-                                                 Content="Tesis completa"
-                                                 LargeImage="Resources/tesis_256.png"
-                                                 Size="Large"
-                                                 SmallImage="Resources/tesis_128.png" />
-                        <telerik:RadRibbonButton Name="BtnCIus"
-                                                 Click="RibbonButton_Click"
-                                                 Content="Reg. IUS"
-                                                 LargeImage="Resources/number_256.png"
-                                                 Size="Large"
-                                                 SmallImage="Resources/number_128.png" />
-                        <telerik:RadRibbonButton Name="BtnCRubro"
-                                                 Click="RibbonButton_Click"
-                                                 Content="Rubro"
-                                                 LargeImage="Resources/r_128.png"
-                                                 Size="Large" />
-                        <telerik:RadRibbonButton Name="BtnCTexto"
-                                                 Click="RibbonButton_Click"
-                                                 Content="Texto"
-                                                 LargeImage="Resources/t_128.png"
-                                                 Size="Large" />
-                        <telerik:RadRibbonButton Name="BtnCPrec"
-                                                 Click="RibbonButton_Click"
-                                                 Content="Precedentes"
-                                                 LargeImage="Resources/p_128.png"
-                                                 Size="Large" />
-                    </StackPanel>
+                <telerik:RadRibbonGroup Name="DocsRel" Header="Documentos Relacionados">
+                    <telerik:RadRibbonButton Name="RBtnEjecutoria"
+                                             Content="Ver Ejecutoria"
+                                             LargeImage="Resources/ejecutoria.png"
+                                             Size="Large" />
                 </telerik:RadRibbonGroup>
                 <telerik:RadRibbonGroup Header="Exportar">
                     <StackPanel Orientation="Horizontal">
+                        <telerik:RadRibbonButton Name="RbtnClipboard"
+                                                 Click="RibbonButton_Click"
+                                                 Content="Portapapeles"
+                                                 LargeImage="Resources/clipboard.png"
+                                                 Size="Large" />
                         <telerik:RadRibbonButton Name="RBtnPdf"
                                                  Click="ExportarGroupClick"
                                                  Content="PDF"
@@ -173,7 +155,8 @@
                                      HorizontalAlignment="Left"
                                      VerticalAlignment="Top"
                                      IsReadOnly="True"
-                                     Text="{Binding Sala}" />
+                                     Text="{Binding Sala,
+                                                    Converter={StaticResource instanConv}}" />
                             <Label Margin="10,304,0,0"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Top"
@@ -184,7 +167,8 @@
                                      HorizontalAlignment="Left"
                                      VerticalAlignment="Top"
                                      IsReadOnly="False"
-                                     Text="{Binding Fuente}" />
+                                     Text="{Binding Fuente,
+                                                    Converter={StaticResource fuenteConv}}" />
                             <GroupBox Height="180"
                                       Margin="10,378,35,-19"
                                       HorizontalAlignment="Stretch"

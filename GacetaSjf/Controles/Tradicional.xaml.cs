@@ -1,5 +1,6 @@
 ﻿using GacetaSjf.Dao;
 using GacetaSjf.Model;
+using GacetaSjf.Singletons;
 using MantesisVerIusCommonObjects.Dto;
 using System;
 using System.Collections.Generic;
@@ -27,6 +28,8 @@ namespace GacetaSjf.Controles
         public ObservableCollection<TesisDto> listaTesis;
         private Tomos selectedTomo;
         private TesisDto selectedTesis;
+        private DatosCompartidos selectedInstancia;
+
         private bool vaciarListado = true;
 
         public Tradicional()
@@ -40,6 +43,9 @@ namespace GacetaSjf.Controles
 
             GTesis.DataContext = listaTesis;
             CbxVolumen.DataContext = new Tomos().GetTomos();
+
+            CbxInstancia.DataContext = CompartidosSingleton.InstanciasTesis;
+
         }
 
         private void CbxVolumen_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -103,6 +109,26 @@ namespace GacetaSjf.Controles
 
             UnaTesis showTesis = new UnaTesis(listaTesis, posActual);
             showTesis.ShowDialog();
+        }
+
+        private void CbxInstancia_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            selectedInstancia = CbxInstancia.SelectedItem as DatosCompartidos;
+
+            if (selectedTomo != null)
+            {
+                GTesis.DataContext = (from n in listaTesis
+                                      where n.VolumenInt == selectedTomo.Volumen && n.Sala == selectedInstancia.IdElemento
+                                      select n);
+            }
+            else
+            {
+                GTesis.DataContext = (from n in listaTesis
+                                      where n.Sala == selectedInstancia.IdElemento
+                                      select n);
+            }
+
+
         }
     }
 }

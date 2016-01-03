@@ -52,3 +52,9 @@ C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debu
 C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\PdfLauncherControl.baml
 C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\MesPdf.g.cs
 C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\PdfLauncherControl.g.cs
+C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\bin\Debug\Telerik.Windows.Controls.GanttView.dll
+C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\bin\Debug\Telerik.Windows.Scheduling.Core.dll
+C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\bin\Debug\Telerik.Windows.Controls.GanttView.xml
+C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\bin\Debug\Telerik.Windows.Scheduling.Core.xml
+C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\EjecTradicional.baml
+C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\EjecTradicional.g.cs

@@ -189,5 +189,72 @@ namespace GacetaSjf.Model
             return listaTesis;
         }
 
+
+        public ObservableCollection<TesisDto> GetTesis(int idSala, int idInstancia)
+        {
+            ObservableCollection<TesisDto> listaTesis = new ObservableCollection<TesisDto>();
+
+            OleDbConnection connection = new OleDbConnection(connectionString);
+            OleDbCommand cmd = null;
+            OleDbDataReader reader = null;
+
+            String sqlCadena;
+
+            try
+            {
+                connection.Open();
+
+                if (idSala < 7)
+                {
+                    sqlCadena = "SELECT * FROM Tesis Where Sala = @Sala AND Parte <> 99  ORDER BY ConsecIndx";
+                    cmd = new OleDbCommand(sqlCadena, connection);
+                    cmd.Parameters.AddWithValue("@Sala", idSala);
+                    reader = cmd.ExecuteReader();
+                }
+                else
+                {
+                    sqlCadena = "SELECT * FROM Tesis Where Instancia = @Instancia AND Parte <> 99  ORDER BY ConsecIndx";
+                    cmd = new OleDbCommand(sqlCadena, connection);
+                    cmd.Parameters.AddWithValue("@Instancia", idInstancia);
+                    reader = cmd.ExecuteReader();
+                }
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        TesisDto tesis = new TesisDto();
+                        tesis.Ius = Convert.ToInt32(reader["Ius"]);
+                        tesis.Tesis = reader["Tesis"].ToString();
+                        tesis.Rubro = reader["Rubro"].ToString();
+                        tesis.TaTj = Convert.ToInt32(reader["ta/tj"]);
+                        tesis.Sala = Convert.ToInt32(reader["Sala"]);
+                        tesis.LocAbr = reader["LocAbr"].ToString();
+                        tesis.VolumenInt = Convert.ToInt32(reader["Volumen"]);
+
+                        listaTesis.Add(tesis);
+                    }
+                }
+                cmd.Dispose();
+                reader.Close();
+            }
+            catch (OleDbException ex)
+            {
+                string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,TesisSjfModel", "Gaceta");
+            }
+            catch (Exception ex)
+            {
+                string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,TesisSjfModel", "Gaceta");
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return listaTesis;
+        }
+
     }
 }

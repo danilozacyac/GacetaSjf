@@ -57,6 +57,14 @@
                             <TextBlock HorizontalAlignment="Center" Text="en PDF" />
                         </StackPanel>
                     </telerik:RadRibbonButton>
+                    <telerik:RadRibbonComboBox Width="120" Height="25">
+                        <telerik:RadComboBoxItem Content="Tesis" />
+                        <telerik:RadComboBoxItem>Ejecutoria</telerik:RadComboBoxItem>
+                        <telerik:RadComboBoxItem>Votos</telerik:RadComboBoxItem>
+                        <telerik:RadComboBoxItem>Acuerdos</telerik:RadComboBoxItem>
+                    </telerik:RadRibbonComboBox>
+
+
 
                 </telerik:RadRibbonGroup>
             </telerik:RadRibbonTab>

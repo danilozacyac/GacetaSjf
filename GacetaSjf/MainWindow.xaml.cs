@@ -37,12 +37,12 @@ namespace GacetaSjf
         }
 
 
-
         Tradicional tesisTradicional;
         private void BtnTradicional_Click(object sender, RoutedEventArgs e)
         {
             tesisTradicional = new Tradicional();
             this.AddPane(1, "Consulta tradicional (Tesis)", tesisTradicional);
+
         }
 
         Tematica consultaTematica;

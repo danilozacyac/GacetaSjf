@@ -67,6 +67,56 @@ namespace GacetaSjf.Model
         }
 
 
+        public ObservableCollection<Organismos> GetOrganismos()
+        {
+            ObservableCollection<Organismos> listaOrganismos = new ObservableCollection<Organismos>();
+
+            OleDbConnection connection = new OleDbConnection(connectionString);
+            OleDbCommand cmd = null;
+            OleDbDataReader reader = null;
+
+            String sqlCadena = "SELECT * FROM TribCol ORDER BY IdTCC";
+
+            try
+            {
+                connection.Open();
+
+                cmd = new OleDbCommand(sqlCadena, connection);
+                reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Organismos organismo = new Organismos();
+
+                        organismo.IdOrganismo = Convert.ToInt32(reader["IdTCC"]);
+                        organismo.Organismo = reader["DescTCC"].ToString();
+                        //organismo.Children = this.GetOrganismosTree(organismo.IdOrganismo);
+
+                        listaOrganismos.Add(organismo);
+                    }
+                }
+                cmd.Dispose();
+                reader.Close();
+            }
+            catch (OleDbException ex)
+            {
+                string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                //ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,TesisModel", "ListadoDeTesis");
+            }
+            catch (Exception ex)
+            {
+                string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                //ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,TesisModel", "ListadoDeTesis");
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return listaOrganismos;
+        }
 
 
     }

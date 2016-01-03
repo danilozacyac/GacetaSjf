@@ -162,5 +162,55 @@ namespace GacetaSjf.Model
             return listaInstancias;
         }
 
+
+        public List<DatosCompartidos> GetFuentes()
+        {
+            List<DatosCompartidos> listaFuentes = new List<DatosCompartidos>();
+
+            OleDbConnection connection = new OleDbConnection(connectionString);
+            OleDbCommand cmd = null;
+            OleDbDataReader reader = null;
+
+            String sqlCadena = "SELECT * FROM cFuentes ORDER BY IdFte";
+
+            try
+            {
+                connection.Open();
+
+                cmd = new OleDbCommand(sqlCadena, connection);
+                reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        DatosCompartidos datos = new DatosCompartidos();
+                        datos.IdElemento = Convert.ToInt32(reader["IdFte"]);
+                        datos.Descripcion = reader["DescFte"].ToString();
+
+                        listaFuentes.Add(datos);
+                    }
+                }
+                cmd.Dispose();
+                reader.Close();
+            }
+            catch (OleDbException ex)
+            {
+                string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,DatosCompartidosModel", "Gaceta");
+            }
+            catch (Exception ex)
+            {
+                string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,DatosCompartidosModel", "Gaceta");
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return listaFuentes;
+        }
+
     }
 }

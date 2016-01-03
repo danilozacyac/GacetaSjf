@@ -27,7 +27,8 @@
                              HorizontalAlignment="Stretch"
                              VerticalAlignment="Stretch"
                              ItemTemplate="{StaticResource TreeDataTemp}"
-                             ItemsSource="{Binding}" />
+                             ItemsSource="{Binding}"
+                             SelectionChanged="TreeOrganismos_SelectionChanged" />
 
 
         <Grid Grid.Column="1">
@@ -41,7 +42,39 @@
                                  Grid.Row="1"
                                  HorizontalAlignment="Stretch"
                                  VerticalAlignment="Stretch"
-                                 ShowGroupPanel="False" />
+                                 AutoGenerateColumns="False"
+                                 CanUserDeleteRows="False"
+                                 CanUserInsertRows="False"
+                                 ItemsSource="{Binding}"
+                                 MouseDoubleClick="GTesis_MouseDoubleClick"
+                                 SelectionChanged="GTesis_SelectionChanged"
+                                 ShowGroupPanel="False">
+                <telerik:RadGridView.Columns>
+                    <telerik:GridViewDataColumn Width="100"
+                                                DataMemberBinding="{Binding Tesis}"
+                                                Header="Clave de Tesis"
+                                                IsFilterable="False"
+                                                IsReadOnly="True"
+                                                TextWrapping="Wrap" />
+                    <telerik:GridViewDataColumn Width="*"
+                                                DataMemberBinding="{Binding Rubro}"
+                                                Header="Rubro"
+                                                IsFilterable="False"
+                                                IsReadOnly="True"
+                                                TextWrapping="Wrap" />
+                    <telerik:GridViewDataColumn Width=".2*"
+                                                DataMemberBinding="{Binding LocAbr}"
+                                                Header="Localización"
+                                                IsFilterable="False"
+                                                IsReadOnly="True"
+                                                TextWrapping="Wrap" />
+                    <telerik:GridViewDataColumn Width="Auto"
+                                                DataMemberBinding="{Binding Ius}"
+                                                Header="Registro digital"
+                                                IsFilterable="False"
+                                                IsReadOnly="True" />
+                </telerik:RadGridView.Columns>
+            </telerik:RadGridView>
 
         </Grid>
 

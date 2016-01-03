@@ -103,6 +103,16 @@ namespace GacetaSjf.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap clipboard {
+            get {
+                object obj = ResourceManager.GetObject("clipboard", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap clipboars {
             get {
                 object obj = ResourceManager.GetObject("clipboars", resourceCulture);
@@ -146,6 +156,16 @@ namespace GacetaSjf.Properties {
         internal static System.Drawing.Bitmap editTesis_64 {
             get {
                 object obj = ResourceManager.GetObject("editTesis_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ejecutoria {
+            get {
+                object obj = ResourceManager.GetObject("ejecutoria", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
