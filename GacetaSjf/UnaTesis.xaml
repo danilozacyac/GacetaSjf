@@ -6,6 +6,7 @@
         Title="UnaTesis"
         Width="1200"
         Height="900"
+        Icon="Resources/GACETA-2.ico"
         Loaded="Window_Loaded">
     <Window.Resources>
         <converter:EpocaConverter x:Key="epocaConv" />

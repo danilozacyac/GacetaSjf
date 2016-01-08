@@ -27,5 +27,16 @@ namespace GacetaSjf.Controles
             listaEjecutorias = new EjecutoriaModel().GetEjecutoria();
             GEjecutoria.DataContext = listaEjecutorias;
         }
+
+        private void GEjecutoria_SelectionChanged(object sender, Telerik.Windows.Controls.SelectionChangeEventArgs e)
+        {
+            selectedEjecutoria = GEjecutoria.SelectedItem as Ejecutoria;
+        }
+
+        private void GEjecutoria_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            DetalleDoctos doctos = new DetalleDoctos(selectedEjecutoria);
+            doctos.ShowDialog();
+        }
     }
 }

@@ -17,7 +17,7 @@ namespace GacetaSjf.Converters
             if (epoca == 0)
                 return "/GacetaSjf;component/Resources/pdfDisable.png";
             else
-                return "/GacetaSjf;component/Resources/pdf_256.png";
+                return "/GacetaSjf;component/Resources/GACETA OCTUBRE 2015.jpg";
 
         }
 

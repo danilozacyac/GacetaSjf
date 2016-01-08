@@ -22,7 +22,7 @@
                              CanUserDeleteRows="False"
                              CanUserInsertRows="False"
                              ItemsSource="{Binding}"
-                             ShowGroupPanel="False">
+                             ShowGroupPanel="False" SelectionChanged="GEjecutoria_SelectionChanged" MouseDoubleClick="GEjecutoria_MouseDoubleClick">
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn Width="130"
                                             DataMemberBinding="{Binding Asunto}"

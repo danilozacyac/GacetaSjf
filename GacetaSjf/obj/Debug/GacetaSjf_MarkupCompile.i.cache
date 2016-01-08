@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\
+C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\
 GacetaSjf
 none
 false
 DEBUG;TRACE
-C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\App.xaml
-101808711962
+C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\App.xaml
+14-1963234129
 
-401073864413
-291104646845
-Controles\EjecTradicional.xaml;Controles\MesPdf.xaml;Controles\Ordenamientos.xaml;Controles\PdfLauncherControl.xaml;Controles\PorOrganismo.xaml;Controles\Tematica.xaml;Controles\TesisControl.xaml;Controles\Tradicional.xaml;MainWindow.xaml;UnaTesis.xaml;
+461285022883
+34-663933809
+Controles\EjecTradicional.xaml;Controles\MesPdf.xaml;Controles\Ordenamientos.xaml;Controles\PdfLauncherControl.xaml;Controles\PorOrganismo.xaml;Controles\Presentacion.xaml;Controles\Tematica.xaml;Controles\TesisControl.xaml;Controles\Tradicional.xaml;DetalleDoctos.xaml;EjecutoriasFolder\ListaEjecutorias.xaml;MainWindow.xaml;UnaEjecutoria.xaml;UnaTesis.xaml;
 
-False
+True
 

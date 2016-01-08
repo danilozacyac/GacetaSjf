@@ -2,6 +2,7 @@
 using GacetaSjf.Model;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,6 +24,8 @@ namespace GacetaSjf
     /// </summary>
     public partial class MainWindow : Window
     {
+        Presentacion presentacion;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -30,8 +33,11 @@ namespace GacetaSjf
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
+            string filePath = ConfigurationManager.AppSettings["Datos"].ToString();
 
-
+            filePath += "presentacion.pdf";
+            presentacion = new Presentacion(filePath);
+            this.AddPane(100, "Presentación", presentacion);
 
 
         }
@@ -43,6 +49,14 @@ namespace GacetaSjf
             tesisTradicional = new Tradicional();
             this.AddPane(1, "Consulta tradicional (Tesis)", tesisTradicional);
 
+        }
+
+
+        EjecTradicional ejecutoriaTradicional;
+        private void BtnEjecutoria_Click(object sender, RoutedEventArgs e)
+        {
+            ejecutoriaTradicional = new EjecTradicional();
+            this.AddPane(50, "Consulta tradicional (ejecutorias)", ejecutoriaTradicional);
         }
 
         Tematica consultaTematica;
@@ -109,6 +123,8 @@ namespace GacetaSjf
             }
             return pane;
         }
+
+       
 
         
 
