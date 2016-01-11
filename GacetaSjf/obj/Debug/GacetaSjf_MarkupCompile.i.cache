@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\
+C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\
 GacetaSjf
 none
 false
 DEBUG;TRACE
-C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\App.xaml
-14-1355336003
+C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\App.xaml
+16-837065918
 
-49-312514101
-34-1610351694
-Controles\EjecTradicional.xaml;Controles\MesPdf.xaml;Controles\Ordenamientos.xaml;Controles\PdfLauncherControl.xaml;Controles\PorOrganismo.xaml;Controles\Presentacion.xaml;Controles\Tematica.xaml;Controles\TesisControl.xaml;Controles\Tradicional.xaml;Controles\VotoTradicional.xaml;DetalleDoctos.xaml;EjecutoriasFolder\ListaEjecutorias.xaml;MainWindow.xaml;UnaTesis.xaml;
+52-1053802604
+34-663933809
+Controles\AcuerdoTradicional.xaml;Controles\EjecTradicional.xaml;Controles\MesPdf.xaml;Controles\Ordenamientos.xaml;Controles\PdfLauncherControl.xaml;Controles\PorOrganismo.xaml;Controles\Presentacion.xaml;Controles\Tematica.xaml;Controles\TesisControl.xaml;Controles\Tradicional.xaml;Controles\VerVotacion.xaml;Controles\VotoTradicional.xaml;DetalleDoctos.xaml;EjecutoriasFolder\ListaEjecutorias.xaml;MainWindow.xaml;UnaTesis.xaml;
 
-True
+False
 

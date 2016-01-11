@@ -49,7 +49,7 @@
                     <telerik:RadRibbonButton x:Name="BtnAcuerdo"
                                              Content="Acuerdos"
                                              LargeImage="Resources/acuerdo.png"
-                                             Size="Large" />
+                                             Size="Large" Click="BtnAcuerdo_Click" />
                 </telerik:RadRibbonGroup>
                 <telerik:RadRibbonGroup Header="Otras Consultas">
 

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace GacetaSjf.Dao
 {
-    public class Ejecutoria : Documento
+    public class Ejecutoria : Votos
     {
         private List<TesisDto> tesisRelacionadas;
     }

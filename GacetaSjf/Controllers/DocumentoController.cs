@@ -4,6 +4,13 @@ using System.Windows;
 using System.Windows.Documents;
 using GacetaSjf.Dao;
 using GacetaSjf.Model;
+using Telerik.Windows.Controls;
+using System.Configuration;
+using System.IO;
+using Telerik.Windows.Documents.Fixed.FormatProviders;
+using Telerik.Windows.Documents.Fixed.FormatProviders.Pdf;
+using Telerik.Windows.Documents.Fixed.Model;
+using GacetaSjf.Controles;
 
 namespace GacetaSjf.Controllers
 {
@@ -31,15 +38,17 @@ namespace GacetaSjf.Controllers
         {
 
             //LoadComboBoxes();
-            LoadTesis(documento);
+            LoadDocumento(documento);
             //LoadNoBindingValues();
 
 
         }
 
 
-        public void LoadTesis(Documento documentoAMostrar)
+        public void LoadDocumento(Documento documentoAMostrar)
         {
+            unDocumento.flowDoc.Blocks.Clear();
+            textoCompleto = String.Empty;
 
             if (documentoAMostrar is Ejecutoria)
             {
@@ -50,6 +59,11 @@ namespace GacetaSjf.Controllers
             {
                 documentoAMostrar.Partes = new VotosModel().GetVotosPartes(documentoAMostrar.Ius);
                 documentoAMostrar.Anexos = new VotosModel().GetAnexos(documentoAMostrar.Ius);
+            }
+            else if (documentoAMostrar is Documento)
+            {
+                documentoAMostrar.Partes = new AcuerdoModel().GetAcuerdosPartes(documentoAMostrar.Ius);
+                documentoAMostrar.Anexos = new AcuerdoModel().GetAnexos(documentoAMostrar.Ius);
             }
 
             textoCompleto += documentoAMostrar.Rubro + "\r\n";
@@ -62,31 +76,100 @@ namespace GacetaSjf.Controllers
 
             string[] parrafos = textoCompleto.Replace('\n', ' ').Split('\r');
 
-            foreach (string par in parrafos)
-            {
-                Paragraph paraHeader = new Paragraph();
-                paraHeader.FontSize = 12;
-                paraHeader.FontWeight = FontWeights.Bold;
-                paraHeader.Inlines.Add(new Run(par));
-                unDocumento.flowDoc.Blocks.Add(paraHeader);
-            }
-
             if (documentoAMostrar.Anexos.Count == 0)
             {
+                foreach (string par in parrafos)
+                {
+                    if (String.IsNullOrWhiteSpace(par)) { }
+                    else
+                    {
+                        Paragraph paraHeader = new Paragraph();
+                        paraHeader.FontSize = 12;
+                        paraHeader.FontWeight = FontWeights.Bold;
+                        paraHeader.Inlines.Add(new Run(par));
+                        unDocumento.flowDoc.Blocks.Add(paraHeader);
+                    }
+                }
                 unDocumento.LblAnexos.Visibility = Visibility.Collapsed;
                 unDocumento.LstAnexos.Visibility = Visibility.Collapsed;
             }
             else
             {
+                foreach (string par in parrafos)
+                {
+                    if (String.IsNullOrWhiteSpace(par)) { }
+                    else
+                    {
+                        bool esAnexo = false;
+                        BlockUIContainer elemento = null;
+
+                        foreach (Anexos anexo in documentoAMostrar.Anexos)
+                        {
+                            if (par.Contains(anexo.Frase))
+                            {
+                                esAnexo = true;
+
+                                if (par.Contains("Ver votación"))
+                                {
+                                    string tempString = par.Replace(anexo.Frase, "");
+
+                                    elemento = new BlockUIContainer(new VerVotacion());
+
+                                    Paragraph paraHeader = new Paragraph();
+                                    paraHeader.FontSize = 12;
+                                    paraHeader.FontWeight = FontWeights.Bold;
+                                    paraHeader.Inlines.Add(new Run(tempString));
+                                    paraHeader.Inlines.Add(new VerVotacion());
+                                    unDocumento.flowDoc.Blocks.Add(paraHeader);
+                                }
+                                else if (anexo.Archivo.EndsWith(".PDF"))
+                                {
+                                    RadPdfViewer viewer = new RadPdfViewer();
+
+                                    MemoryStream stream = new MemoryStream();
+
+                                    using (Stream input = File.OpenRead(ConfigurationManager.AppSettings["Datos"].ToString() + @"Anexos\" + anexo.Archivo))
+                                    {
+                                        input.CopyTo(stream);
+                                    }
+
+                                    FormatProviderSettings settings = new FormatProviderSettings(ReadingMode.OnDemand);
+                                    PdfFormatProvider provider = new PdfFormatProvider(stream, settings);
+                                    RadFixedDocument doc = provider.Import();
+                                    viewer.Document = doc;
+                                    elemento = new BlockUIContainer(viewer);
+
+                                    unDocumento.flowDoc.Blocks.Add(elemento);
+                                }
+
+                                break;
+                            }
+
+                        }
+
+                        if (!esAnexo)
+                        {
+                            Paragraph paraHeader = new Paragraph();
+                            paraHeader.FontSize = 12;
+                            paraHeader.FontWeight = FontWeights.Bold;
+                            paraHeader.Inlines.Add(new Run(par));
+                            unDocumento.flowDoc.Blocks.Add(paraHeader);
+                        }
+                    }
+                }
+
+
                 unDocumento.LblAnexos.Visibility = Visibility.Collapsed;
                 unDocumento.LstAnexos.Visibility = Visibility.Visible;
                 unDocumento.LstAnexos.DataContext = documentoAMostrar.Anexos;
             }
 
+            
+
             unDocumento.DataContext = documentoAMostrar;
 
-            if (unDocumento.ListaDocumentos != null && unDocumento.ListaDocumentos.Count > 1)
-                unDocumento.LblContador.Content = "     " + (unDocumento.PosActual + 1) + " / " + unDocumento.ListaDocumentos.Count;
+            if (unDocumento.DocsMostrar != null && unDocumento.DocsMostrar.Count > 1)
+                unDocumento.LblContador.Content = "     " + (unDocumento.PosActual + 1) + " / " + unDocumento.DocsMostrar.Count;
             else
             {
                 unDocumento.LblContador.Content = "    1 / 1";
@@ -104,10 +187,10 @@ namespace GacetaSjf.Controllers
         {
             documentoMostrada = null;
             unDocumento.PosActual = 0;
-            Documento documento = unDocumento.ListaDocumentos[unDocumento.PosActual];
+            Documento documento = unDocumento.DocsMostrar[unDocumento.PosActual];
             this.LoadDocumentoWindow(documento);
 
-            unDocumento.LblContador.Content = "     " + (unDocumento.PosActual + 1) + " / " + unDocumento.ListaDocumentos.Count;
+            unDocumento.LblContador.Content = "     " + (unDocumento.PosActual + 1) + " / " + unDocumento.DocsMostrar.Count;
         }
 
         public void DocumentoPrevious()
@@ -116,26 +199,26 @@ namespace GacetaSjf.Controllers
             if (unDocumento.PosActual > 0)
             {
                 unDocumento.PosActual--;
-                Documento documento = unDocumento.ListaDocumentos[unDocumento.PosActual];
+                Documento documento = unDocumento.DocsMostrar[unDocumento.PosActual];
                 this.LoadDocumentoWindow(documento);
 
-                unDocumento.LblContador.Content = "     " + (unDocumento.PosActual + 1) + " / " + unDocumento.ListaDocumentos.Count;
+                unDocumento.LblContador.Content = "     " + (unDocumento.PosActual + 1) + " / " + unDocumento.DocsMostrar.Count;
             }
         }
 
         public void DocumentoNext()
         {
             documentoMostrada = null;
-            if (unDocumento.PosActual < unDocumento.ListaDocumentos.Count - 1)
+            if (unDocumento.PosActual < unDocumento.DocsMostrar.Count - 1)
             {
                 unDocumento.PosActual++;
-                Documento documento = unDocumento.ListaDocumentos[unDocumento.PosActual];
+                Documento documento = unDocumento.DocsMostrar[unDocumento.PosActual];
 
                 //unaTesisModel.DbConnectionOpen();
                 this.LoadDocumentoWindow(documento);
                 //unaTesisModel.DbConnectionClose();
 
-                unDocumento.LblContador.Content = "     " + (unDocumento.PosActual + 1) + " / " + unDocumento.ListaDocumentos.Count;
+                unDocumento.LblContador.Content = "     " + (unDocumento.PosActual + 1) + " / " + unDocumento.DocsMostrar.Count;
             }
         }
 
@@ -143,13 +226,13 @@ namespace GacetaSjf.Controllers
         {
             documentoMostrada = null;
 
-            unDocumento.PosActual = unDocumento.ListaDocumentos.Count - 1;
-            Documento documento = unDocumento.ListaDocumentos[unDocumento.PosActual];
+            unDocumento.PosActual = unDocumento.DocsMostrar.Count - 1;
+            Documento documento = unDocumento.DocsMostrar[unDocumento.PosActual];
 
             //unaTesisModel.DbConnectionOpen();
             this.LoadDocumentoWindow(documento);
             //unaTesisModel.DbConnectionClose();
-            unDocumento.LblContador.Content = "     " + (unDocumento.PosActual + 1) + " / " + unDocumento.ListaDocumentos.Count;
+            unDocumento.LblContador.Content = "     " + (unDocumento.PosActual + 1) + " / " + unDocumento.DocsMostrar.Count;
         }
 
         public void TesisToClipboard(int queMando)

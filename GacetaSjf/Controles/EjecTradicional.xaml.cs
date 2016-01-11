@@ -37,7 +37,8 @@ namespace GacetaSjf.Controles
         {
             int index = listaEjecutorias.IndexOf(selectedEjecutoria);
 
-            DetalleDoctos doctos = new DetalleDoctos(listaEjecutorias,index);
+
+            DetalleDoctos doctos = new DetalleDoctos(listaEjecutorias.Cast<Votos>() ,index);
             doctos.ShowDialog();
         }
     }

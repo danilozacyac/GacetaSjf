@@ -103,7 +103,6 @@ C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\De
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\TesisControl.baml
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\Tradicional.baml
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\EjecutoriasFolder\ListaEjecutorias.baml
-C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\UnaEjecutoria.baml
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\EjecTradicional.g.cs
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\MesPdf.g.cs
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\Ordenamientos.g.cs
@@ -116,7 +115,6 @@ C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\De
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\DetalleDoctos.g.cs
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\EjecutoriasFolder\ListaEjecutorias.g.cs
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\MainWindow.g.cs
-C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\UnaEjecutoria.g.cs
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\UnaTesis.g.cs
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\App.g.cs
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\GeneratedInternalTypeHelper.g.cs
@@ -154,3 +152,9 @@ C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debu
 C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\DetalleDoctos.baml
 C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\VotoTradicional.baml
 C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\VotoTradicional.g.cs
+C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\VotoTradicional.baml
+C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\VotoTradicional.g.cs
+C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\AcuerdoTradicional.baml
+C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\AcuerdoTradicional.g.cs
+C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\VerVotacion.baml
+C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\VerVotacion.g.cs

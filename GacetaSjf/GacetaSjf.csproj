@@ -89,6 +89,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Controles\AcuerdoTradicional.xaml.cs">
+      <DependentUpon>AcuerdoTradicional.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controles\EjecTradicional.xaml.cs">
       <DependentUpon>EjecTradicional.xaml</DependentUpon>
     </Compile>
@@ -103,6 +106,9 @@
     </Compile>
     <Compile Include="Controles\Presentacion.xaml.cs">
       <DependentUpon>Presentacion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\VerVotacion.xaml.cs">
+      <DependentUpon>VerVotacion.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controles\VotoTradicional.xaml.cs">
       <DependentUpon>VotoTradicional.xaml</DependentUpon>
@@ -129,6 +135,7 @@
     <Compile Include="EjecutoriasFolder\ListaEjecutorias.xaml.cs">
       <DependentUpon>ListaEjecutorias.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Model\AcuerdoModel.cs" />
     <Compile Include="Model\DatosCompartidosModel.cs" />
     <Compile Include="Model\EjecutoriaModel.cs" />
     <Compile Include="Model\TemasModel.cs" />
@@ -144,6 +151,10 @@
     <Compile Include="UnaTesis.xaml.cs">
       <DependentUpon>UnaTesis.xaml</DependentUpon>
     </Compile>
+    <Page Include="Controles\AcuerdoTradicional.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controles\EjecTradicional.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -177,6 +188,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controles\Tradicional.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\VerVotacion.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

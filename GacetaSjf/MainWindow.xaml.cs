@@ -39,7 +39,7 @@ namespace GacetaSjf
             //presentacion = new Presentacion(filePath);
             //this.AddPane(100, "Presentación", presentacion);
 
-
+            this.AddPane(1000, "Probando", new VerVotacion());
         }
 
 
@@ -129,6 +129,13 @@ namespace GacetaSjf
                 }
             }
             return pane;
+        }
+
+        AcuerdoTradicional acuerdoTradicional = null;
+        private void BtnAcuerdo_Click(object sender, RoutedEventArgs e)
+        {
+            acuerdoTradicional = new AcuerdoTradicional();
+            this.AddPane(53, "Consulta tradicional (Acuerdos)", acuerdoTradicional);
         }
 
        

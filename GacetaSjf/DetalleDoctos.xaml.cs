@@ -1,21 +1,13 @@
-﻿using GacetaSjf.Controllers;
-using GacetaSjf.Dao;
-using GacetaSjf.Model;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+using GacetaSjf.Controllers;
+using GacetaSjf.Dao;
 using Telerik.Windows.Controls;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace GacetaSjf
 {
@@ -24,15 +16,15 @@ namespace GacetaSjf
     /// </summary>
     public partial class DetalleDoctos : Window
     {
-        Documento documento;
+        Votos documento;
         string textoCompleto = String.Empty;
 
 
         private DocumentoController controller;
-        public ObservableCollection<Documento> ListaDocumentos;
+        public IEnumerable<Votos> ListaDocumentos;
         public int PosActual;
-        private Documento documentoMostrado;
-
+        private Votos documentoMostrado;
+        public List<Votos> DocsMostrar;
 
         public DetalleDoctos()
         {
@@ -40,19 +32,19 @@ namespace GacetaSjf
         }
 
 
-        public DetalleDoctos(ObservableCollection<Documento> listaDocumentos, int posActual)
+        public DetalleDoctos(IEnumerable<Votos> listaDocumentos, int posActual)
         {
             InitializeComponent();
             this.PosActual = posActual;
             this.ListaDocumentos = listaDocumentos;
-            controller = new DocumentoController(this, listaDocumentos[posActual]);
+            
         }
 
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-
-
+            DocsMostrar = ListaDocumentos.ToList();
+            controller = new DocumentoController(this, DocsMostrar[PosActual]);
             
         }
 

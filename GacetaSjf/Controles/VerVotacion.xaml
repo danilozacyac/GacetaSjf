@@ -1,0 +1,50 @@
+﻿<UserControl x:Class="GacetaSjf.Controles.VerVotacion"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             Background="White"
+             Height="Auto"
+             Width="Auto"
+             mc:Ignorable="d">
+    <Grid>
+        <ToggleButton Name="tbWithPopup"
+                      Content="Ver votación"
+                      Width="75"
+                      Height="20"
+                      FontSize="10"
+                      HorizontalAlignment="Left"
+                      Margin="0"
+                      IsChecked="{Binding ElementName=pUp,
+                                          Path=IsOpen}">
+            
+            <ToggleButton.Style>
+                <Style TargetType="ToggleButton">
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding ElementName=pUp, Path=IsOpen}" 
+                         Value="True">
+                            <Setter Property="IsHitTestVisible" Value="False" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </ToggleButton.Style>
+        </ToggleButton>
+
+        <Popup Name="pUp"
+               Width="200"
+               
+               AllowsTransparency="True"
+               PlacementTarget="{Binding ElementName=tbWithPopup}"
+               StaysOpen="False">
+            <RichTextBox IsReadOnly="True" Background="LightBlue">
+                <RichTextBox.Document>
+                    <FlowDocument>
+                        <Paragraph>
+                            Aquí iría el texto de cada una de las votaciónes que aparecen en las ejecutorias
+                        </Paragraph>
+                    </FlowDocument>
+                </RichTextBox.Document>
+            </RichTextBox>
+        </Popup>
+    </Grid>
+</UserControl>

@@ -34,7 +34,9 @@ namespace GacetaSjf.Controles
 
         private void GEjecutoria_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            DetalleDoctos doctos = new DetalleDoctos(selectedVoto);
+            int index = listaVotos.IndexOf(selectedVoto);
+
+            DetalleDoctos doctos = new DetalleDoctos(listaVotos.Cast<Votos>(), index);
             doctos.ShowDialog();
         }
     }
