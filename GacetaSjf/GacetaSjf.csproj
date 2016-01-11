@@ -104,6 +104,10 @@
     <Compile Include="Controles\Presentacion.xaml.cs">
       <DependentUpon>Presentacion.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controles\VotoTradicional.xaml.cs">
+      <DependentUpon>VotoTradicional.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\DocumentoController.cs" />
     <Compile Include="Controllers\UnaTesisController.cs" />
     <Compile Include="Converters\EnableConverter.cs" />
     <Compile Include="Converters\EpocaConverter.cs" />
@@ -118,6 +122,7 @@
     <Compile Include="Dao\Ejecutoria.cs" />
     <Compile Include="Dao\Materias.cs" />
     <Compile Include="Dao\Temas.cs" />
+    <Compile Include="Dao\Votos.cs" />
     <Compile Include="DetalleDoctos.xaml.cs">
       <DependentUpon>DetalleDoctos.xaml</DependentUpon>
     </Compile>
@@ -127,6 +132,7 @@
     <Compile Include="Model\DatosCompartidosModel.cs" />
     <Compile Include="Model\EjecutoriaModel.cs" />
     <Compile Include="Model\TemasModel.cs" />
+    <Compile Include="Model\VotosModel.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -135,9 +141,6 @@
     <Compile Include="Singletons\CompartidosSingleton.cs" />
     <Compile Include="Singletons\MateriasSingleton.cs" />
     <Compile Include="Singletons\TomosSingleton.cs" />
-    <Compile Include="UnaEjecutoria.xaml.cs">
-      <DependentUpon>UnaEjecutoria.xaml</DependentUpon>
-    </Compile>
     <Compile Include="UnaTesis.xaml.cs">
       <DependentUpon>UnaTesis.xaml</DependentUpon>
     </Compile>
@@ -177,6 +180,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controles\VotoTradicional.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DetalleDoctos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -211,10 +218,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="UnaEjecutoria.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="UnaTesis.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -351,6 +354,18 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\GACETA OCTUBRE 2015.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\acuerdo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\ejecutorias.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\tesis.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\juez.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

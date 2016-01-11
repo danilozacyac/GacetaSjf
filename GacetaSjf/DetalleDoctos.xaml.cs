@@ -1,7 +1,9 @@
-﻿using GacetaSjf.Dao;
+﻿using GacetaSjf.Controllers;
+using GacetaSjf.Dao;
 using GacetaSjf.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Telerik.Windows.Controls;
 
 namespace GacetaSjf
 {
@@ -24,15 +27,25 @@ namespace GacetaSjf
         Documento documento;
         string textoCompleto = String.Empty;
 
+
+        private DocumentoController controller;
+        public ObservableCollection<Documento> ListaDocumentos;
+        public int PosActual;
+        private Documento documentoMostrado;
+
+
         public DetalleDoctos()
         {
             InitializeComponent();
         }
 
-        public DetalleDoctos(Ejecutoria ejecutoria)
+
+        public DetalleDoctos(ObservableCollection<Documento> listaDocumentos, int posActual)
         {
             InitializeComponent();
-            this.documento = ejecutoria;
+            this.PosActual = posActual;
+            this.ListaDocumentos = listaDocumentos;
+            controller = new DocumentoController(this, listaDocumentos[posActual]);
         }
 
 
@@ -40,43 +53,7 @@ namespace GacetaSjf
         {
 
 
-            if (documento is Ejecutoria)
-            {
-                documento.Partes = new EjecutoriaModel().GetEjecutoriaPartes(documento.Ius);
-                documento.Anexos = new EjecutoriaModel().GetAnexos(documento.Ius);
-            }
-
-            textoCompleto += documento.Rubro + "\r\n";
-            foreach (string parte in documento.Partes)
-            {
-                textoCompleto += parte;
-            }
-
-            //TxtDetalle.Text = textoCompleto;
-
-            string[] parrafos = textoCompleto.Replace('\n',' ').Split('\r');
-
-            foreach (string par in parrafos)
-            {
-                Paragraph paraHeader = new Paragraph();
-                paraHeader.FontSize = 12;
-                paraHeader.FontWeight = FontWeights.Bold;
-                paraHeader.Inlines.Add(new Run(par));
-                flowDoc.Blocks.Add(paraHeader);
-            }
-
-            if (documento.Anexos.Count == 0)
-            {
-                LblAnexos.Visibility = Visibility.Collapsed;
-                LstAnexos.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                LblAnexos.Visibility = Visibility.Collapsed;
-                LstAnexos.Visibility = Visibility.Visible;
-                LstAnexos.DataContext = documento.Anexos;
-            }
-
+            
         }
 
         Anexos selectedAnexo;
@@ -87,6 +64,43 @@ namespace GacetaSjf
             //selectedAnexo = LstAnexos.SelectedItem as Anexos;
 
             //int position = TxtDetalle.Text.IndexOf(selectedAnexo.Frase);
+        }
+
+
+        private void RibbonButton_Click(object sender, RoutedEventArgs e)
+        {
+            RadRibbonButton ribbon = sender as RadRibbonButton;
+
+            switch (ribbon.Name)
+            {
+                case "RbtnInicio":
+                    controller.DocumentoStart();
+                    break;
+                case "RbtnPrevious":
+                    controller.DocumentoPrevious();
+                    break;
+                case "RbtnNext":
+                    controller.DocumentoNext();
+                    break;
+                case "RbtnFin":
+                    controller.DocumentoEnd();
+                    break;
+                case "RbtnClipboard":
+                    controller.TesisToClipboard(1);
+                    break;
+                case "BtnCIus":
+                    controller.TesisToClipboard(2);
+                    break;
+                case "BtnCRubro":
+                    controller.TesisToClipboard(3);
+                    break;
+                case "BtnCTexto":
+                    controller.TesisToClipboard(4);
+                    break;
+                case "BtnCPrec":
+                    controller.TesisToClipboard(5);
+                    break;
+            }
         }
     }
 }

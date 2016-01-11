@@ -118,29 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="addTesis_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\addTesis_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="addTesis_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\addTesis_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="back" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\back.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="clipboars" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\clipboars.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="delTesis_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delTesis_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="delTesis_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\delTesis_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="editTesis_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\editTesis_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="editTesis_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\editTesis_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="exit_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\exit_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -169,12 +151,6 @@
   <data name="pdf_256" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pdf_256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="p_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\p_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="r_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\r_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="save_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\save_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -186,9 +162,6 @@
   </data>
   <data name="tesis_256" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\tesis_256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="t_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\t_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="word_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\word_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -222,5 +195,17 @@
   </data>
   <data name="GACETA_OCTUBRE_20151" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\GACETA OCTUBRE 2015.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="acuerdo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\acuerdo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ejecutorias" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ejecutorias.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="juez" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\juez.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="tesis" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\tesis.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

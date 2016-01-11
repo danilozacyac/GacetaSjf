@@ -9,35 +9,32 @@ using GacetaSjf.Model;
 namespace GacetaSjf.Controles
 {
     /// <summary>
-    /// Interaction logic for EjecTradicional.xaml
+    /// Lógica de interacción para VotoTradicional.xaml
     /// </summary>
-    public partial class EjecTradicional : UserControl
+    public partial class VotoTradicional : UserControl
     {
+        ObservableCollection<Votos> listaVotos;
+        Votos selectedVoto;
 
-        ObservableCollection<Ejecutoria> listaEjecutorias;
-        Ejecutoria selectedEjecutoria;
-
-        public EjecTradicional()
+        public VotoTradicional()
         {
             InitializeComponent();
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            listaEjecutorias = new EjecutoriaModel().GetEjecutoria();
-            GEjecutoria.DataContext = listaEjecutorias;
+            listaVotos = new VotosModel().GetVotos();
+            GVotos.DataContext = listaVotos;
         }
 
         private void GEjecutoria_SelectionChanged(object sender, Telerik.Windows.Controls.SelectionChangeEventArgs e)
         {
-            selectedEjecutoria = GEjecutoria.SelectedItem as Ejecutoria;
+            selectedVoto = GVotos.SelectedItem as Votos;
         }
 
         private void GEjecutoria_MouseDoubleClick(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
-            int index = listaEjecutorias.IndexOf(selectedEjecutoria);
-
-            DetalleDoctos doctos = new DetalleDoctos(listaEjecutorias,index);
+            DetalleDoctos doctos = new DetalleDoctos(selectedVoto);
             doctos.ShowDialog();
         }
     }

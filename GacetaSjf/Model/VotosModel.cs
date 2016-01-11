@@ -1,28 +1,29 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Configuration;
 using System.Data.OleDb;
 using System.Linq;
 using GacetaSjf.Dao;
 using ScjnUtilities;
-using System.Configuration;
-using System.Collections.Generic;
 
 namespace GacetaSjf.Model
 {
-    public class EjecutoriaModel
+    public class VotosModel
     {
+
         private readonly string connectionString = ConfigurationManager.ConnectionStrings["SJF"].ConnectionString;
 
-        public ObservableCollection<Ejecutoria> GetEjecutoria()
+        public ObservableCollection<Votos> GetVotos()
         {
-            ObservableCollection<Ejecutoria> listaEjecutoria = new ObservableCollection<Ejecutoria>();
+            ObservableCollection<Votos> listaVotos = new ObservableCollection<Votos>();
 
 
             OleDbConnection connection = new OleDbConnection(connectionString);
             OleDbCommand cmd = null;
             OleDbDataReader reader = null;
 
-            String sqlCadena = "SELECT * FROM Ejecutoria Where ParteT <> 99 ORDER BY ConsecIndx";
+            String sqlCadena = "SELECT * FROM VotosParticulares Where ParteT <> 99 ORDER BY ConsecIndx";
 
             try
             {
@@ -35,18 +36,20 @@ namespace GacetaSjf.Model
                 {
                     while (reader.Read())
                     {
-                        Ejecutoria ejecutoria = new Ejecutoria();
-                        ejecutoria.Ius = Convert.ToInt32(reader["Id"]);
-                        ejecutoria.Sala = Convert.ToInt32(reader["Sala"]);
-                        ejecutoria.Epoca = Convert.ToInt32(reader["Epoca"]);
-                        ejecutoria.Volumen = Convert.ToInt32(reader["Volumen"]);
-                        ejecutoria.Fuente = Convert.ToInt32(reader["Fuente"]);
-                        ejecutoria.Pagina = Convert.ToInt32(reader["Pagina"]);
-                        ejecutoria.Rubro = reader["Rubro"].ToString();
-                        ejecutoria.Asunto = reader["TpoAsunto"].ToString();
-                        ejecutoria.Promovente = reader["Promovente"].ToString();
+                        Votos voto = new Votos();
+                        voto.Ius = Convert.ToInt32(reader["Id"]);
+                        voto.Sala = Convert.ToInt32(reader["Sala"]);
+                        voto.Epoca = Convert.ToInt32(reader["Epoca"]);
+                        voto.Volumen = Convert.ToInt32(reader["Volumen"]);
+                        voto.Fuente = Convert.ToInt32(reader["Fuente"]);
+                        voto.Pagina = Convert.ToInt32(reader["Pagina"]);
+                        voto.Rubro = reader["Rubro"].ToString();
+                        voto.Asunto = reader["TpoAsunto"].ToString();
+                        voto.Promovente = reader["Promovente"].ToString();
+                        voto.TipoVoto = Convert.ToInt32(reader["Clasificacion"]);
+                        voto.Emisor = reader["Complemento"].ToString();
 
-                        listaEjecutoria.Add(ejecutoria);
+                        listaVotos.Add(voto);
                     }
                 }
                 cmd.Dispose();
@@ -55,37 +58,36 @@ namespace GacetaSjf.Model
             catch (OleDbException ex)
             {
                 string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
-                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,EjecutoriaModel", "Gaceta");
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,VotosModel", "Gaceta");
             }
             catch (Exception ex)
             {
                 string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
-                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,EjecutoriaModel", "Gaceta");
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,VotosModel", "Gaceta");
             }
             finally
             {
                 connection.Close();
             }
 
-            return listaEjecutoria;
+            return listaVotos;
         }
 
-
         /// <summary>
-        /// Obtiene una ejecutoria por el número de registro digital
+        /// Devuelve el voto del registro que se esta buscando
         /// </summary>
-        /// <param name="registroDigital">Registro digital de la ejecutoria que se esta buscando</param>
+        /// <param name="registroDigital">Número de registro del voto que se quiere obtener</param>
         /// <returns></returns>
-        public Ejecutoria GetEjecutoria(int registroDigital)
+        public Votos GetVotos(int registroDigital)
         {
-            Ejecutoria ejecutoria = null;
+            Votos voto = null;
 
 
             OleDbConnection connection = new OleDbConnection(connectionString);
             OleDbCommand cmd = null;
             OleDbDataReader reader = null;
 
-            String sqlCadena = "SELECT * FROM Ejecutoria Where Id = @Id ParteT <> 99 ORDER BY ConsecIndx";
+            String sqlCadena = "SELECT * FROM VotosParticulares Where Id = @Id AND ParteT <> 99 ORDER BY ConsecIndx";
 
             try
             {
@@ -99,16 +101,18 @@ namespace GacetaSjf.Model
                 {
                     while (reader.Read())
                     {
-                        ejecutoria = new Ejecutoria();
-                        ejecutoria.Ius = Convert.ToInt32(reader["Id"]);
-                        ejecutoria.Sala = Convert.ToInt32(reader["Sala"]);
-                        ejecutoria.Epoca = Convert.ToInt32(reader["Epoca"]);
-                        ejecutoria.Volumen = Convert.ToInt32(reader["Volumen"]);
-                        ejecutoria.Fuente = Convert.ToInt32(reader["Fuente"]);
-                        ejecutoria.Pagina = Convert.ToInt32(reader["Pagina"]);
-                        ejecutoria.Rubro = reader["Rubro"].ToString();
-                        ejecutoria.Asunto = reader["TpoAsunto"].ToString();
-                        ejecutoria.Promovente = reader["Promovente"].ToString();
+                        voto = new Votos();
+                        voto.Ius = Convert.ToInt32(reader["Id"]);
+                        voto.Sala = Convert.ToInt32(reader["Sala"]);
+                        voto.Epoca = Convert.ToInt32(reader["Epoca"]);
+                        voto.Volumen = Convert.ToInt32(reader["Volumen"]);
+                        voto.Fuente = Convert.ToInt32(reader["Fuente"]);
+                        voto.Pagina = Convert.ToInt32(reader["Pagina"]);
+                        voto.Rubro = reader["Rubro"].ToString();
+                        voto.Asunto = reader["TpoAsunto"].ToString();
+                        voto.Promovente = reader["Promovente"].ToString();
+                        voto.TipoVoto = Convert.ToInt32(reader["Clasificacion"]);
+                        voto.Emisor = reader["Complemento"].ToString();
 
                     }
                 }
@@ -118,23 +122,24 @@ namespace GacetaSjf.Model
             catch (OleDbException ex)
             {
                 string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
-                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,EjecutoriaModel", "Gaceta");
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,VotosModel", "Gaceta");
             }
             catch (Exception ex)
             {
                 string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
-                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,EjecutoriaModel", "Gaceta");
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,VotosModel", "Gaceta");
             }
             finally
             {
                 connection.Close();
             }
 
-            return ejecutoria;
+            return voto;
         }
 
 
-        public List<string> GetEjecutoriaPartes(int iusEjecutoria)
+
+        public List<string> GetVotosPartes(int registroDigital)
         {
             List<string> partes = new List<string>();
 
@@ -143,14 +148,14 @@ namespace GacetaSjf.Model
             OleDbCommand cmd = null;
             OleDbDataReader reader = null;
 
-            String sqlCadena = "SELECT * FROM ParteEjecutoria Where Id = @Id ORDER BY Parte";
+            String sqlCadena = "SELECT * FROM ParteVotos Where Id = @Id ORDER BY Parte";
 
             try
             {
                 connection.Open();
 
                 cmd = new OleDbCommand(sqlCadena, connection);
-                cmd.Parameters.AddWithValue("@Id", iusEjecutoria);
+                cmd.Parameters.AddWithValue("@Id", registroDigital);
                 reader = cmd.ExecuteReader();
 
                 if (reader.HasRows)
@@ -166,12 +171,12 @@ namespace GacetaSjf.Model
             catch (OleDbException ex)
             {
                 string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
-                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,EjecutoriaModel", "Gaceta");
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,VotosModel", "Gaceta");
             }
             catch (Exception ex)
             {
                 string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
-                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,EjecutoriaModel", "Gaceta");
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,VotosModel", "Gaceta");
             }
             finally
             {
@@ -224,12 +229,12 @@ namespace GacetaSjf.Model
             catch (OleDbException ex)
             {
                 string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
-                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,EjecutoriaModel", "Gaceta");
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,VotosModel", "Gaceta");
             }
             catch (Exception ex)
             {
                 string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
-                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,EjecutoriaModel", "Gaceta");
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,VotosModel", "Gaceta");
             }
             finally
             {
@@ -238,6 +243,5 @@ namespace GacetaSjf.Model
 
             return listaAnexos;
         }
-
     }
 }

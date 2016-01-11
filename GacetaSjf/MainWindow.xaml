@@ -30,16 +30,29 @@
                                TitleBarBackground="Green"
                                telerik:StyleManager.Theme="Transparent">
             <telerik:RadRibbonTab Background="Red" Header="Consultas">
-                <telerik:RadRibbonGroup Header="Tipo de Consulta">
+                <telerik:RadRibbonGroup Header="Consulta Tradicional">
                     <telerik:RadRibbonButton x:Name="BtnTradicional"
                                              Click="BtnTradicional_Click"
-                                             Content="Tradicional"
-                                             LargeImage="Resources/lupa.png"
+                                             Content="Tesis"
+                                             LargeImage="Resources/tesis.png"
                                              Size="Large" />
                     <telerik:RadRibbonButton x:Name="BtnEjecutoria"
-                                             Content="Tradicional Ejecutoria"
-                                             LargeImage="Resources/lupa.png"
-                                             Size="Large" Click="BtnEjecutoria_Click" />
+                                             Click="BtnEjecutoria_Click"
+                                             Content="Ejecutorias"
+                                             LargeImage="Resources/ejecutorias.png"
+                                             Size="Large" />
+                    <telerik:RadRibbonButton x:Name="BtnVotos"
+                                             Click="BtnVotos_Click"
+                                             Content="Votos"
+                                             LargeImage="Resources/juez.png"
+                                             Size="Large" />
+                    <telerik:RadRibbonButton x:Name="BtnAcuerdo"
+                                             Content="Acuerdos"
+                                             LargeImage="Resources/acuerdo.png"
+                                             Size="Large" />
+                </telerik:RadRibbonGroup>
+                <telerik:RadRibbonGroup Header="Otras Consultas">
+
                     <telerik:RadRibbonButton x:Name="BtnTematica"
                                              Click="BtnTematica_Click"
                                              Content="Temática"

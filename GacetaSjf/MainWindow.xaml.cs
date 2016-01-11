@@ -33,11 +33,11 @@ namespace GacetaSjf
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            string filePath = ConfigurationManager.AppSettings["Datos"].ToString();
+            //string filePath = ConfigurationManager.AppSettings["Datos"].ToString();
 
-            filePath += "presentacion.pdf";
-            presentacion = new Presentacion(filePath);
-            this.AddPane(100, "Presentación", presentacion);
+            //filePath += "presentacion.pdf";
+            //presentacion = new Presentacion(filePath);
+            //this.AddPane(100, "Presentación", presentacion);
 
 
         }
@@ -57,6 +57,13 @@ namespace GacetaSjf
         {
             ejecutoriaTradicional = new EjecTradicional();
             this.AddPane(50, "Consulta tradicional (ejecutorias)", ejecutoriaTradicional);
+        }
+
+        VotoTradicional votoTradicional;
+        private void BtnVotos_Click(object sender, RoutedEventArgs e)
+        {
+            votoTradicional = new VotoTradicional();
+            this.AddPane(51, "Consulta tradicional (Votos)", votoTradicional);
         }
 
         Tematica consultaTematica;
@@ -123,6 +130,8 @@ namespace GacetaSjf
             }
             return pane;
         }
+
+       
 
        
 

@@ -22,6 +22,7 @@
             <RowDefinition Height="35" />
         </Grid.RowDefinitions>
         <telerik:RadRibbonView Grid.Row="0"
+                               ApplicationButtonVisibility="Collapsed"
                                ApplicationName=""
                                WindowIconVisibility="Visible">
 
@@ -29,18 +30,22 @@
                 <telerik:RadRibbonGroup Name="Navega" Header="Navegar">
                     <StackPanel Orientation="Horizontal">
                         <telerik:RadRibbonButton Name="RbtnInicio"
+                                                 Click="RibbonButton_Click"
                                                  Content="Inicio"
                                                  LargeImage="Resources/first.png"
                                                  Size="Large" />
                         <telerik:RadRibbonButton Name="RbtnPrevious"
+                                                 Click="RibbonButton_Click"
                                                  Content="Anterior"
                                                  LargeImage="Resources/back.png"
                                                  Size="Large" />
                         <telerik:RadRibbonButton Name="RbtnNext"
+                                                 Click="RibbonButton_Click"
                                                  Content="Siguiente"
                                                  LargeImage="Resources/next.png"
                                                  Size="Large" />
                         <telerik:RadRibbonButton Name="RbtnFin"
+                                                 Click="RibbonButton_Click"
                                                  Content="Final"
                                                  LargeImage="Resources/last.png"
                                                  Size="Large" />
@@ -149,7 +154,7 @@
                                      HorizontalAlignment="Left"
                                      VerticalAlignment="Top"
                                      IsReadOnly="True"
-                                     Text="{Binding EpocaInt,
+                                     Text="{Binding Epoca,
                                                     Converter={StaticResource epocaConv}}"
                                      TextWrapping="Wrap" />
                             <TextBox x:Name="TxtVolumen"
@@ -159,7 +164,7 @@
                                      HorizontalAlignment="Left"
                                      VerticalAlignment="Top"
                                      IsReadOnly="True"
-                                     Text="{Binding VolumenInt,
+                                     Text="{Binding Volumen,
                                                     Converter={StaticResource volumConv}}"
                                      TextWrapping="NoWrap" />
                             <TextBox x:Name="TxtPag"
