@@ -1,12 +1,15 @@
-﻿using GacetaSjf.Model;
+﻿using GacetaSjf.Dao;
+using GacetaSjf.Model;
 using GacetaSjf.Singletons;
 using MantesisVerIusCommonObjects.Dto;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Documents;
 
 namespace GacetaSjf.Controllers
 {
@@ -16,7 +19,7 @@ namespace GacetaSjf.Controllers
 
 
         private TesisDto tesisMostrada = null;
-
+        
 
 
        
@@ -25,13 +28,12 @@ namespace GacetaSjf.Controllers
         {
             this.unaTesis = unaTesis;
             this.tesisMostrada = tesisMostrada;
-            LoadTesisWindow(tesisMostrada);
+            //LoadTesisWindow(tesisMostrada);
         }
 
         public void LoadTesisWindow(TesisDto tesisMostrada)
         {
 
-            LoadComboBoxes();
             LoadTesis(tesisMostrada);
             LoadNoBindingValues();
 
@@ -43,9 +45,12 @@ namespace GacetaSjf.Controllers
         /// </summary>
         public void LoadTesis(TesisDto tesisAMostrar)
         {
+            unaTesis.flowDoc.Blocks.Clear();
+            string textoCompleto = String.Empty;
 
             tesisMostrada = new TesisSjfModel().GetTesis(tesisAMostrar.Ius);
-           
+
+            ObservableCollection<Liga> ligasTesis = new LigasModel().GetLigas(tesisMostrada.Ius);
 
             tesisMostrada.IsReadOnly = true;
 
@@ -59,19 +64,20 @@ namespace GacetaSjf.Controllers
                 unaTesis.Navega.IsEnabled = false;
             }
 
+            //Agregamos el rubro
+            this.LoadParteTesis(tesisMostrada.Rubro, ligasTesis, 1);
 
+            //Agregamos el texto
+            this.LoadParteTesis(tesisMostrada.Texto, ligasTesis, 2);
 
-        }
+            //Agregamos precedentes
+            this.LoadParteTesis(tesisMostrada.Precedentes, ligasTesis, 4);
 
-        public void LoadComboBoxes()
-        {
+            //Agregamos tribunal
+            //this.LoadParteTesis(tesisMostrada, ligasTesis, 4);
 
-            //unaTesis.CbxMat1.ItemsSource = MateriasSingleton.MateriasSin;
-            //unaTesis.CbxMat2.ItemsSource = MateriasSingleton.MateriasSin;
-            //unaTesis.CbxMat3.ItemsSource = MateriasSingleton.MateriasSin;
-            //unaTesis.CbxMat4.ItemsSource = MateriasSingleton.MateriasSin;
-            //unaTesis.CbxMat5.ItemsSource = MateriasSingleton.MateriasSin;
-
+            //Agregamos Nota Publica
+            this.LoadParteTesis(tesisMostrada.NotaPublica, ligasTesis, 1000);
 
         }
 
@@ -79,14 +85,6 @@ namespace GacetaSjf.Controllers
         {
             unaTesis.RbtAislada.FontWeight = System.Windows.FontWeights.Normal;
             unaTesis.RbtJurisp.FontWeight = System.Windows.FontWeights.Normal;
-
-            //unaTesis.CbxFuente.SelectedValue = tesisMostrada.Fuente;
-
-            //unaTesis.CbxMat1.SelectedValue = tesisMostrada.Materia1;
-            //unaTesis.CbxMat2.SelectedValue = tesisMostrada.Materia2;
-            //unaTesis.CbxMat3.SelectedValue = tesisMostrada.Materia3;
-            //unaTesis.CbxMat4.SelectedValue = tesisMostrada.Materia4;
-            //unaTesis.CbxMat5.SelectedValue = tesisMostrada.Materia5;
 
             if (tesisMostrada.TaTj == 0)
             {
@@ -99,14 +97,63 @@ namespace GacetaSjf.Controllers
                 unaTesis.RbtJurisp.FontWeight = System.Windows.FontWeights.Bold;
             }
 
-            //binaryMotivos = NumericUtilities.ToBinaryInvert(tesisMostrada.MotivoModificar);
-            //binaryArray = binaryMotivos.ToCharArray();
         }
 
-        //private char[] binaryArray;
-        //private string sCamposModif = "";
+
+        public void LoadParteTesis(string texto, ObservableCollection<Liga> ligasTesis,int seccion)
+        {
+            Paragraph paragraphTesis;
+
+            var ligasTexto = (from n in ligasTesis
+                              where n.Seccion == seccion
+                              orderby n.Posicion
+                              select n).ToList();
+
+            if (ligasTexto.Count > 0)
+            {
+                string textoRecortable = texto;
+
+                paragraphTesis = new Paragraph();
+                paragraphTesis.FontSize = 12;
+                paragraphTesis.FontWeight = FontWeights.Normal;
+
+                foreach (Liga link in ligasTexto)
+                {
+                    int index = textoRecortable.IndexOf(link.Frase);
+
+                    Run textoPlano = new Run(textoRecortable.Substring(0, index));
+
+                    Hyperlink hl = new Hyperlink(new Run(link.Frase));
+                    hl.FontSize = 12; 
+                    hl.NavigateUri = new Uri("http://www.scjn.gob.mx/");
+                    hl.Click += new RoutedEventHandler(LinkClick);
+                    hl.Tag = link;
+
+                    paragraphTesis.Inlines.Add(textoPlano);
+                    paragraphTesis.Inlines.Add(hl);
+
+                    textoRecortable = textoRecortable.Substring(index + link.Frase.Length);
 
 
+                }
+                Run textosobra = new Run(textoRecortable);
+                paragraphTesis.Inlines.Add(textosobra);
+                unaTesis.flowDoc.Blocks.Add(paragraphTesis);
+            }
+            else
+            {
+                paragraphTesis = new Paragraph();
+                paragraphTesis.FontSize = 12;
+                paragraphTesis.FontWeight = FontWeights.Normal;
+                paragraphTesis.Inlines.Add(new Run(texto));
+                unaTesis.flowDoc.Blocks.Add(paragraphTesis);
+            }
+        }
+
+        public void LinkClick(object sender, RoutedEventArgs e)
+        {
+
+        }
 
 
 
@@ -164,6 +211,9 @@ namespace GacetaSjf.Controllers
             unaTesis.LblContador.Content = "     " + (unaTesis.PosActual + 1) + " / " + unaTesis.ListaTesis.Count;
         }
 
+        
+
+
         public void TesisToClipboard(int queMando)
         {
             switch (queMando)
@@ -184,7 +234,7 @@ namespace GacetaSjf.Controllers
                                       tesisMostrada.Precedentes + "\r\n" + "\r\n" + "\r\n" +
                                       ((!unaTesis.TxtObservaciones.Text.Equals(String.Empty)) ? "Notas: " + "\r\n" + unaTesis.TxtObservaciones.Text + "\r\n" + "\r\n" : "") +
                                       ((!unaTesis.TxtConcordancia.Text.Equals(String.Empty)) ? "Notas: " + "\r\n" + unaTesis.TxtConcordancia.Text + "\r\n" + "\r\n" : "") +
-                                      "Nota de publicación:" + "\r\n" + unaTesis.TxtNotaPublica.Text);
+                                      "Nota de publicación:" + "\r\n" + tesisMostrada.NotaPublica);
                     MessageBox.Show("Tesis enviada al portapapeles");
                     break;
                 case 2: // NumIus

@@ -85,7 +85,7 @@ namespace GacetaSjf.Controllers
                     {
                         Paragraph paraHeader = new Paragraph();
                         paraHeader.FontSize = 12;
-                        paraHeader.FontWeight = FontWeights.Bold;
+                        paraHeader.FontWeight = FontWeights.Normal;
                         paraHeader.Inlines.Add(new Run(par));
                         unDocumento.flowDoc.Blocks.Add(paraHeader);
                     }
@@ -117,7 +117,7 @@ namespace GacetaSjf.Controllers
 
                                     Paragraph paraHeader = new Paragraph();
                                     paraHeader.FontSize = 12;
-                                    paraHeader.FontWeight = FontWeights.Bold;
+                                    paraHeader.FontWeight = FontWeights.Normal;
                                     paraHeader.Inlines.Add(new Run(tempString));
                                     paraHeader.Inlines.Add(new VerVotacion());
                                     unDocumento.flowDoc.Blocks.Add(paraHeader);
@@ -151,7 +151,7 @@ namespace GacetaSjf.Controllers
                         {
                             Paragraph paraHeader = new Paragraph();
                             paraHeader.FontSize = 12;
-                            paraHeader.FontWeight = FontWeights.Bold;
+                            paraHeader.FontWeight = FontWeights.Normal;
                             paraHeader.Inlines.Add(new Run(par));
                             unDocumento.flowDoc.Blocks.Add(paraHeader);
                         }

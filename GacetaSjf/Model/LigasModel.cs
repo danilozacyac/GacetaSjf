@@ -1,0 +1,75 @@
+﻿using GacetaSjf.Dao;
+using ScjnUtilities;
+using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Configuration;
+using System.Data.OleDb;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace GacetaSjf.Model
+{
+    public class LigasModel
+    {
+
+        private readonly string connectionString = ConfigurationManager.ConnectionStrings["Ligas"].ConnectionString;
+
+        public ObservableCollection<Liga> GetLigas(int registroDigital)
+        {
+            ObservableCollection<Liga> listaRelaciones = new ObservableCollection<Liga>();
+
+
+            OleDbConnection connection = new OleDbConnection(connectionString);
+            OleDbCommand cmd = null;
+            OleDbDataReader reader = null;
+
+            String sqlCadena = "SELECT * FROM Relaciones WHERE IUS = @IUS ORDER BY Seccion,Posicion";
+
+            try
+            {
+                connection.Open();
+
+                cmd = new OleDbCommand(sqlCadena, connection);
+                cmd.Parameters.AddWithValue("@IUS", registroDigital);
+                reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Liga relacion = new Liga();
+                        relacion.Ius = Convert.ToInt32(reader["IUS"]);
+                        relacion.IdRelacion = Convert.ToInt32(reader["IdRel"]);
+                        relacion.Frase = reader["MiDescriptor"].ToString();
+                        relacion.Seccion = Convert.ToInt32(reader["Seccion"]);
+                        relacion.Posicion = Convert.ToInt32(reader["Posicion"]);
+                        relacion.Tipo = Convert.ToInt32(reader["Tipo"]);
+
+                        listaRelaciones.Add(relacion);
+                    }
+                }
+                cmd.Dispose();
+                reader.Close();
+            }
+            catch (OleDbException ex)
+            {
+                string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,LigasModel", "Gaceta");
+            }
+            catch (Exception ex)
+            {
+                string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,LigasModel", "Gaceta");
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return listaRelaciones;
+        }
+
+    }
+}

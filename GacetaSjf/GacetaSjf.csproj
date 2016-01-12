@@ -126,6 +126,7 @@
     <Compile Include="Dao\DatosCompartidos.cs" />
     <Compile Include="Dao\Documento.cs" />
     <Compile Include="Dao\Ejecutoria.cs" />
+    <Compile Include="Dao\Liga.cs" />
     <Compile Include="Dao\Materias.cs" />
     <Compile Include="Dao\Temas.cs" />
     <Compile Include="Dao\Votos.cs" />
@@ -138,6 +139,7 @@
     <Compile Include="Model\AcuerdoModel.cs" />
     <Compile Include="Model\DatosCompartidosModel.cs" />
     <Compile Include="Model\EjecutoriaModel.cs" />
+    <Compile Include="Model\LigasModel.cs" />
     <Compile Include="Model\TemasModel.cs" />
     <Compile Include="Model\VotosModel.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
