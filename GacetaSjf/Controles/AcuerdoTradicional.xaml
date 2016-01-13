@@ -9,6 +9,11 @@
              d:DesignHeight="300"
              d:DesignWidth="900"
              mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style x:Key="CustomCellStyle" TargetType="telerik:GridViewCell">
+            <Setter Property="VerticalContentAlignment" Value="Top" />
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200" />
@@ -49,7 +54,7 @@
 
             </Grid>
         </telerik:GroupBox>
-        
+
         <telerik:RadGridView x:Name="GAcuerdos"
                              Grid.Column="1"
                              HorizontalAlignment="Stretch"
@@ -58,38 +63,50 @@
                              CanUserDeleteRows="False"
                              CanUserInsertRows="False"
                              ItemsSource="{Binding}"
-                             ShowGroupPanel="False" SelectionChanged="GAcuerdos_SelectionChanged" MouseDoubleClick="GAcuerdos_MouseDoubleClick">
+                             MouseDoubleClick="GAcuerdos_MouseDoubleClick"
+                             SelectionChanged="GAcuerdos_SelectionChanged"
+                             ShowGroupPanel="False">
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn Width="130"
+                                            CellStyle="{StaticResource CustomCellStyle}"
                                             DataMemberBinding="{Binding Asunto}"
                                             Header="Acuerdo"
                                             IsFilterable="False"
                                             IsReadOnly="True"
                                             TextWrapping="Wrap" />
                 <telerik:GridViewDataColumn Width="*"
+                                            CellStyle="{StaticResource CustomCellStyle}"
                                             DataMemberBinding="{Binding Rubro}"
                                             Header="Tema"
                                             IsFilterable="False"
                                             IsReadOnly="True"
                                             TextWrapping="Wrap" />
                 <telerik:GridViewDataColumn Width=".2*"
+                                            CellStyle="{StaticResource CustomCellStyle}"
                                             DataMemberBinding="{Binding LocAbr}"
                                             Header="Localización"
                                             IsFilterable="False"
                                             IsReadOnly="True"
                                             TextWrapping="Wrap" />
                 <telerik:GridViewDataColumn Width="Auto"
+                                            CellStyle="{StaticResource CustomCellStyle}"
                                             DataMemberBinding="{Binding Ius}"
                                             Header="Registro digital"
                                             IsFilterable="False"
                                             IsReadOnly="True" />
                 <telerik:GridViewDataColumn Width=".2*"
+                                            CellStyle="{StaticResource CustomCellStyle}"
                                             DataMemberBinding="{Binding Promovente}"
                                             Header="Instancia"
                                             IsFilterable="False"
                                             IsReadOnly="True"
                                             TextWrapping="Wrap" />
             </telerik:RadGridView.Columns>
+            <telerik:RadGridView.RowStyle>
+                <Style TargetType="telerik:GridViewRow">
+                    <Setter Property="Height" Value="50" />
+                </Style>
+            </telerik:RadGridView.RowStyle>
         </telerik:RadGridView>
 
     </Grid>

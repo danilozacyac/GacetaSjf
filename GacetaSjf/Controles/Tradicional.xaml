@@ -122,7 +122,7 @@
                                                 IsFilterable="False"
                                                 IsReadOnly="True"
                                                 TextWrapping="Wrap" />
-                    <telerik:GridViewDataColumn Width=".2*"
+                    <telerik:GridViewDataColumn Width=".25*"
                                                 DataMemberBinding="{Binding LocAbr}"
                                                 Header="Localización"
                                                 IsFilterable="False"

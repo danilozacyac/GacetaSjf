@@ -97,47 +97,61 @@ namespace GacetaSjf.Controllers
 
         public void LoadParteTesis(string texto, ObservableCollection<Liga> ligasTesis,int seccion)
         {
-            Paragraph paragraphTesis;
-
-            var ligasTexto = (from n in ligasTesis
-                              where n.Seccion == seccion
-                              orderby n.Posicion
-                              select n).ToList();
-
-            if (ligasTexto.Count > 0)
+            try
             {
-                string textoRecortable = texto;
+                Paragraph paragraphTesis;
 
-                paragraphTesis = new Paragraph();
-                paragraphTesis.FontSize = 12;
-                paragraphTesis.FontWeight = FontWeights.Normal;
+                var ligasTexto = (from n in ligasTesis
+                                  where n.Seccion == seccion
+                                  orderby n.Posicion
+                                  select n).ToList();
 
-                foreach (Liga link in ligasTexto)
+                if (ligasTexto.Count > 0)
                 {
-                    int index = textoRecortable.IndexOf(link.Frase);
+                    string textoRecortable = texto;
 
-                    Run textoPlano = new Run(textoRecortable.Substring(0, index));
+                    paragraphTesis = new Paragraph();
+                    paragraphTesis.FontSize = 12;
+                    paragraphTesis.FontWeight = FontWeights.Normal;
 
-                    Hyperlink hl = new Hyperlink(new Run(link.Frase));
-                    hl.FontSize = 12; 
-                    hl.NavigateUri = new Uri("http://www.scjn.gob.mx/");
-                    hl.Click += new RoutedEventHandler(LinkClick);
-                    hl.Tag = link;
+                    foreach (Liga link in ligasTexto)
+                    {
+                        link.Frase = link.Frase.Replace("–", "-");
+                        int index = textoRecortable.IndexOf(link.Frase);
 
-                    paragraphTesis.Inlines.Add(textoPlano);
-                    paragraphTesis.Inlines.Add(hl);
+                        Run textoPlano = new Run(textoRecortable.Substring(0, index));
 
-                    textoRecortable = textoRecortable.Substring(index + link.Frase.Length);
+                        Hyperlink hl = new Hyperlink(new Run(link.Frase));
+                        hl.FontSize = 12;
+                        hl.NavigateUri = new Uri("http://www.scjn.gob.mx/");
+                        hl.Click += new RoutedEventHandler(LinkClick);
+                        hl.Tag = link;
+
+                        paragraphTesis.Inlines.Add(textoPlano);
+                        paragraphTesis.Inlines.Add(hl);
+
+                        textoRecortable = textoRecortable.Substring(index + link.Frase.Length);
 
 
+                    }
+                    Run textosobra = new Run(textoRecortable);
+                    paragraphTesis.Inlines.Add(textosobra);
+                    unaTesis.flowDoc.Blocks.Add(paragraphTesis);
                 }
-                Run textosobra = new Run(textoRecortable);
-                paragraphTesis.Inlines.Add(textosobra);
-                unaTesis.flowDoc.Blocks.Add(paragraphTesis);
+                else
+                {
+                    paragraphTesis = new Paragraph();
+                    paragraphTesis.FontSize = 12;
+                    paragraphTesis.FontWeight = FontWeights.Normal;
+                    paragraphTesis.Inlines.Add(new Run(texto));
+                    unaTesis.flowDoc.Blocks.Add(paragraphTesis);
+                }
             }
-            else
+            catch (ArgumentOutOfRangeException)
             {
-                paragraphTesis = new Paragraph();
+                MessageBox.Show(tesisMostrada.Ius.ToString());
+
+                Paragraph paragraphTesis = new Paragraph();
                 paragraphTesis.FontSize = 12;
                 paragraphTesis.FontWeight = FontWeights.Normal;
                 paragraphTesis.Inlines.Add(new Run(texto));

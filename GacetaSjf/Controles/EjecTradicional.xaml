@@ -5,9 +5,15 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
              Background="White"
+             Loaded="UserControl_Loaded"
              d:DesignHeight="300"
              d:DesignWidth="900"
-             mc:Ignorable="d" Loaded="UserControl_Loaded">
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style x:Key="CustomCellStyle" TargetType="telerik:GridViewCell">
+            <Setter Property="VerticalContentAlignment" Value="Top" />
+        </Style>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200" />
@@ -57,41 +63,52 @@
                              AutoGenerateColumns="False"
                              CanUserDeleteRows="False"
                              CanUserInsertRows="False"
-                             RowHeight="80"
-                             
                              ItemsSource="{Binding}"
-                             ShowGroupPanel="False" SelectionChanged="GEjecutoria_SelectionChanged" MouseDoubleClick="GEjecutoria_MouseDoubleClick">
+                             MouseDoubleClick="GEjecutoria_MouseDoubleClick"
+                             RowHeight="80"
+                             SelectionChanged="GEjecutoria_SelectionChanged"
+                             ShowGroupPanel="False">
             <telerik:RadGridView.Columns>
                 <telerik:GridViewDataColumn Width="130"
+                                            CellStyle="{StaticResource CustomCellStyle}"
                                             DataMemberBinding="{Binding Asunto}"
                                             Header="Asunto"
                                             IsFilterable="False"
                                             IsReadOnly="True"
                                             TextWrapping="Wrap" />
                 <telerik:GridViewDataColumn Width="*"
+                                            CellStyle="{StaticResource CustomCellStyle}"
                                             DataMemberBinding="{Binding Rubro}"
                                             Header="Rubro / Tema"
                                             IsFilterable="False"
                                             IsReadOnly="True"
                                             TextWrapping="Wrap" />
                 <telerik:GridViewDataColumn Width=".2*"
+                                            CellStyle="{StaticResource CustomCellStyle}"
                                             DataMemberBinding="{Binding LocAbr}"
                                             Header="Localización"
                                             IsFilterable="False"
                                             IsReadOnly="True"
                                             TextWrapping="Wrap" />
                 <telerik:GridViewDataColumn Width="Auto"
+                                            CellStyle="{StaticResource CustomCellStyle}"
                                             DataMemberBinding="{Binding Ius}"
                                             Header="Registro digital"
                                             IsFilterable="False"
                                             IsReadOnly="True" />
                 <telerik:GridViewDataColumn Width=".2*"
+                                            CellStyle="{StaticResource CustomCellStyle}"
                                             DataMemberBinding="{Binding Promovente}"
                                             Header="Promovente"
                                             IsFilterable="False"
                                             IsReadOnly="True"
                                             TextWrapping="Wrap" />
             </telerik:RadGridView.Columns>
+            <telerik:RadGridView.RowStyle>
+                <Style TargetType="telerik:GridViewRow">
+                    <Setter Property="Height" Value="50" />
+                </Style>
+            </telerik:RadGridView.RowStyle>
         </telerik:RadGridView>
 
     </Grid>

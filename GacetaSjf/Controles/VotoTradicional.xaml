@@ -9,11 +9,17 @@
              d:DesignHeight="300"
              d:DesignWidth="900"
              mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style x:Key="CustomCellStyle" TargetType="telerik:GridViewCell">
+            <Setter Property="VerticalContentAlignment" Value="Top" />
+        </Style>
+    </UserControl.Resources>
     <Grid>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="200" />
             <ColumnDefinition Width="*" />
-            
+
         </Grid.ColumnDefinitions>
 
         <Button x:Name="BtnSecuencial"
@@ -50,8 +56,8 @@
 
             </Grid>
         </telerik:GroupBox>
-        
-        
+
+
         <telerik:RadGridView x:Name="GVotos"
                              Grid.Column="1"
                              HorizontalAlignment="Stretch"
@@ -64,36 +70,46 @@
                              SelectionChanged="GEjecutoria_SelectionChanged"
                              ShowGroupPanel="False">
             <telerik:RadGridView.Columns>
-                <telerik:GridViewDataColumn Width="200"
+                <telerik:GridViewDataColumn Width="230"
+                                            CellStyle="{StaticResource CustomCellStyle}"
                                             DataMemberBinding="{Binding Asunto}"
                                             Header="Asunto"
                                             IsFilterable="False"
                                             IsReadOnly="True"
                                             TextWrapping="Wrap" />
                 <telerik:GridViewDataColumn Width="*"
+                                            CellStyle="{StaticResource CustomCellStyle}"
                                             DataMemberBinding="{Binding Rubro}"
                                             Header="Rubro / Tema"
                                             IsFilterable="False"
                                             IsReadOnly="True"
                                             TextWrapping="Wrap" />
                 <telerik:GridViewDataColumn Width=".2*"
+                                            CellStyle="{StaticResource CustomCellStyle}"
                                             DataMemberBinding="{Binding LocAbr}"
                                             Header="Localización"
                                             IsFilterable="False"
                                             IsReadOnly="True"
                                             TextWrapping="Wrap" />
                 <telerik:GridViewDataColumn Width="Auto"
+                                            CellStyle="{StaticResource CustomCellStyle}"
                                             DataMemberBinding="{Binding Ius}"
                                             Header="Registro digital"
                                             IsFilterable="False"
                                             IsReadOnly="True" />
                 <telerik:GridViewDataColumn Width=".2*"
+                                            CellStyle="{StaticResource CustomCellStyle}"
                                             DataMemberBinding="{Binding Emisor}"
                                             Header="Emisor"
                                             IsFilterable="False"
                                             IsReadOnly="True"
                                             TextWrapping="Wrap" />
             </telerik:RadGridView.Columns>
+            <telerik:RadGridView.RowStyle>
+                <Style TargetType="telerik:GridViewRow">
+                    <Setter Property="Height" Value="50" />
+                </Style>
+            </telerik:RadGridView.RowStyle>
         </telerik:RadGridView>
 
     </Grid>
