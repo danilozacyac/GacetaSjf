@@ -1,13 +1,11 @@
-﻿using MantesisVerIusCommonObjects.Dto;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using MantesisVerIusCommonObjects.Dto;
 
 namespace GacetaSjf.Dao
 {
-    public class Ejecutoria : Votos
+    public class Ejecutoria : Documento
     {
         private List<TesisDto> tesisRelacionadas;
     }

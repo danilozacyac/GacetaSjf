@@ -1,12 +1,10 @@
-﻿using GacetaSjf.Dao;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Data.OleDb;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using GacetaSjf.Dao;
+using ScjnUtilities;
 
 namespace GacetaSjf.Model
 {
@@ -51,12 +49,12 @@ namespace GacetaSjf.Model
             catch (OleDbException ex)
             {
                 string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
-                //ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,TesisModel", "ListadoDeTesis");
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,OrganismosModel", "ListadoDeTesis");
             }
             catch (Exception ex)
             {
                 string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
-                //ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,TesisModel", "ListadoDeTesis");
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,OrganismosModel", "ListadoDeTesis");
             }
             finally
             {
@@ -103,12 +101,12 @@ namespace GacetaSjf.Model
             catch (OleDbException ex)
             {
                 string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
-                //ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,TesisModel", "ListadoDeTesis");
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,OrganismosModel", "ListadoDeTesis");
             }
             catch (Exception ex)
             {
                 string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
-                //ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,TesisModel", "ListadoDeTesis");
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,OrganismosModel", "ListadoDeTesis");
             }
             finally
             {

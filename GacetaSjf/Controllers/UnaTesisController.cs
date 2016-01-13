@@ -1,15 +1,11 @@
-﻿using GacetaSjf.Dao;
-using GacetaSjf.Model;
-using GacetaSjf.Singletons;
-using MantesisVerIusCommonObjects.Dto;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Documents;
+using GacetaSjf.Dao;
+using GacetaSjf.Model;
+using MantesisVerIusCommonObjects.Dto;
 
 namespace GacetaSjf.Controllers
 {
@@ -46,7 +42,6 @@ namespace GacetaSjf.Controllers
         public void LoadTesis(TesisDto tesisAMostrar)
         {
             unaTesis.flowDoc.Blocks.Clear();
-            string textoCompleto = String.Empty;
 
             tesisMostrada = new TesisSjfModel().GetTesis(tesisAMostrar.Ius);
 

@@ -158,3 +158,7 @@ C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\De
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\AcuerdoTradicional.g.cs
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\VerVotacion.baml
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\VerVotacion.g.cs
+C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\AcuerdoTradicional.baml
+C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\VerVotacion.baml
+C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\AcuerdoTradicional.g.cs
+C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\VerVotacion.g.cs

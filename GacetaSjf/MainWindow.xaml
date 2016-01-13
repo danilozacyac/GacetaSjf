@@ -25,11 +25,11 @@
 
         <telerik:RadRibbonView ApplicationButtonVisibility="Collapsed"
                                ApplicationName="Gaceta del Semanario Judicial de la Federación"
-                               Background="Red"
+                               Background="#3AA7CC"
                                QuickAccessToolBarPosition="NotHosted"
-                               TitleBarBackground="Green"
+                               TitleBarBackground="White"
                                telerik:StyleManager.Theme="Transparent">
-            <telerik:RadRibbonTab Background="Red" Header="Consultas">
+            <telerik:RadRibbonTab Background="#3AA7CC" Header="Consultas">
                 <telerik:RadRibbonGroup Header="Consulta Tradicional">
                     <telerik:RadRibbonButton x:Name="BtnTradicional"
                                              Click="BtnTradicional_Click"
@@ -47,9 +47,10 @@
                                              LargeImage="Resources/juez.png"
                                              Size="Large" />
                     <telerik:RadRibbonButton x:Name="BtnAcuerdo"
+                                             Click="BtnAcuerdo_Click"
                                              Content="Acuerdos"
                                              LargeImage="Resources/acuerdo.png"
-                                             Size="Large" Click="BtnAcuerdo_Click" />
+                                             Size="Large" />
                 </telerik:RadRibbonGroup>
                 <telerik:RadRibbonGroup Header="Otras Consultas">
 

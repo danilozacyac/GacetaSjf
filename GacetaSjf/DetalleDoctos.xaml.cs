@@ -1,13 +1,11 @@
 ﻿using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
 using GacetaSjf.Controllers;
 using GacetaSjf.Dao;
 using Telerik.Windows.Controls;
-using System.Collections;
-using System.Collections.Generic;
 
 namespace GacetaSjf
 {
@@ -21,10 +19,10 @@ namespace GacetaSjf
 
 
         private DocumentoController controller;
-        public IEnumerable<Votos> ListaDocumentos;
+        public IEnumerable<Documento> ListaDocumentos;
         public int PosActual;
-        private Votos documentoMostrado;
-        public List<Votos> DocsMostrar;
+        private Documento documentoMostrado;
+        public List<Documento> DocsMostrar;
 
         public DetalleDoctos()
         {
@@ -32,7 +30,7 @@ namespace GacetaSjf
         }
 
 
-        public DetalleDoctos(IEnumerable<Votos> listaDocumentos, int posActual)
+        public DetalleDoctos(IEnumerable<Documento> listaDocumentos, int posActual)
         {
             InitializeComponent();
             this.PosActual = posActual;

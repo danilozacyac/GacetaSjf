@@ -6,13 +6,49 @@
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
              Background="White"
              d:DesignHeight="300"
-             d:DesignWidth="300"
+             d:DesignWidth="900"
              mc:Ignorable="d" Loaded="UserControl_Loaded">
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="200" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
+
+        <Button x:Name="BtnSecuencial"
+                Width="180"
+                Margin="10,30,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="BtnSecuencial_Click"
+                Content="Lectura Secuencial" />
+
+        <telerik:GroupBox Height="140"
+                          Margin="10,90,10,0"
+                          HorizontalAlignment="Stretch"
+                          VerticalAlignment="Top"
+                          Header="Búsqueda por registro">
+            <Grid>
+                <Label Margin="10,18,0,0"
+                       HorizontalAlignment="Left"
+                       VerticalAlignment="Top"
+                       Content="Registro digital:" />
+                <TextBox x:Name="TxtIus"
+                         Width="140"
+                         Height="23"
+                         Margin="10,45,0,0"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Top" />
+                <Button x:Name="BtnIncorpora"
+                        Width="75"
+                        Margin="75,73,0,0"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        Click="BtnIncorpora_Click"
+                        Content="Incorporar" />
+
+            </Grid>
+        </telerik:GroupBox>
+
 
         <telerik:RadGridView x:Name="GEjecutoria"
                              Grid.Column="1"
@@ -21,6 +57,8 @@
                              AutoGenerateColumns="False"
                              CanUserDeleteRows="False"
                              CanUserInsertRows="False"
+                             RowHeight="80"
+                             
                              ItemsSource="{Binding}"
                              ShowGroupPanel="False" SelectionChanged="GEjecutoria_SelectionChanged" MouseDoubleClick="GEjecutoria_MouseDoubleClick">
             <telerik:RadGridView.Columns>

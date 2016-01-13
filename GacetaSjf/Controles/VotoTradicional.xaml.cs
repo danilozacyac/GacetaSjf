@@ -16,6 +16,8 @@ namespace GacetaSjf.Controles
         ObservableCollection<Votos> listaVotos;
         Votos selectedVoto;
 
+        private bool vaciarListado = true;
+
         public VotoTradicional()
         {
             InitializeComponent();
@@ -36,8 +38,46 @@ namespace GacetaSjf.Controles
         {
             int index = listaVotos.IndexOf(selectedVoto);
 
-            DetalleDoctos doctos = new DetalleDoctos(listaVotos.Cast<Votos>(), index);
+            DetalleDoctos doctos = new DetalleDoctos(listaVotos.Cast<Documento>(), index);
             doctos.ShowDialog();
+        }
+
+        private void BtnSecuencial_Click(object sender, RoutedEventArgs e)
+        {
+            listaVotos = new VotosModel().GetVotos();
+            GVotos.DataContext = listaVotos;
+            vaciarListado = true;
+        }
+
+        private void BtnIncorpora_Click(object sender, RoutedEventArgs e)
+        {
+            if (vaciarListado)
+            {
+                listaVotos = new ObservableCollection<Votos>();
+                GVotos.DataContext = listaVotos;
+                vaciarListado = false;
+            }
+
+            int ius = Convert.ToInt32(TxtIus.Text);
+
+            Votos ejecutoria = new VotosModel().GetVotos(ius);
+
+            if (ejecutoria == null)
+            {
+                MessageBox.Show("El registro digital que ingresaste no existe, favor de verificar", "Atención:", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            else if (listaVotos.Contains(ejecutoria))
+            {
+                MessageBox.Show("El voto solicitado ya se encuentra dentro del listado", "Atención:", MessageBoxButton.OK, MessageBoxImage.Information);
+                TxtIus.Text = String.Empty;
+                return;
+            }
+            else
+            {
+                listaVotos.Add(ejecutoria);
+                TxtIus.Text = String.Empty;
+            }
         }
     }
 }

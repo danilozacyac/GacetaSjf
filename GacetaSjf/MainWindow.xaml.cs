@@ -1,20 +1,7 @@
-﻿using GacetaSjf.Controles;
-using GacetaSjf.Model;
-using System;
-using System.Collections.Generic;
-using System.Configuration;
+﻿using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using GacetaSjf.Controles;
 using Telerik.Windows.Controls;
 
 namespace GacetaSjf
@@ -28,6 +15,8 @@ namespace GacetaSjf
 
         public MainWindow()
         {
+            StyleManager.ApplicationTheme = new Office_BlueTheme();
+            //StyleManager.ApplicationTheme = new Windows8Theme();
             InitializeComponent();
         }
 
@@ -39,7 +28,6 @@ namespace GacetaSjf
             //presentacion = new Presentacion(filePath);
             //this.AddPane(100, "Presentación", presentacion);
 
-            this.AddPane(1000, "Probando", new VerVotacion());
         }
 
 

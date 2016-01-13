@@ -333,7 +333,7 @@
                                  Height="25"
                                  HorizontalAlignment="Left"
                                  VerticalAlignment="Bottom"
-                                 BackgroundText="Form Search"
+                                 BackgroundText="Buscar palabra..."
                                  BackgroundTextBrush="Gray"
                                  BorderThickness="1"
                                  Document="{Binding ElementName=flowDocViewer,

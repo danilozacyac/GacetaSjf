@@ -85,7 +85,7 @@ namespace GacetaSjf.Model
             OleDbCommand cmd = null;
             OleDbDataReader reader = null;
 
-            String sqlCadena = "SELECT * FROM Ejecutoria Where Id = @Id ParteT <> 99 ORDER BY ConsecIndx";
+            String sqlCadena = "SELECT * FROM Ejecutoria Where Id = @Id AND ParteT <> 99 ORDER BY ConsecIndx";
 
             try
             {

@@ -17,6 +17,8 @@ namespace GacetaSjf.Controles
         ObservableCollection<Ejecutoria> listaEjecutorias;
         Ejecutoria selectedEjecutoria;
 
+        private bool vaciarListado = true;
+
         public EjecTradicional()
         {
             InitializeComponent();
@@ -38,8 +40,46 @@ namespace GacetaSjf.Controles
             int index = listaEjecutorias.IndexOf(selectedEjecutoria);
 
 
-            DetalleDoctos doctos = new DetalleDoctos(listaEjecutorias.Cast<Votos>() ,index);
+            DetalleDoctos doctos = new DetalleDoctos(listaEjecutorias.Cast<Documento>(), index);
             doctos.ShowDialog();
+        }
+
+        private void BtnSecuencial_Click(object sender, RoutedEventArgs e)
+        {
+            listaEjecutorias = new EjecutoriaModel().GetEjecutoria();
+            GEjecutoria.DataContext = listaEjecutorias;
+            vaciarListado = true;
+        }
+
+        private void BtnIncorpora_Click(object sender, RoutedEventArgs e)
+        {
+            if (vaciarListado)
+            {
+                listaEjecutorias = new ObservableCollection<Ejecutoria>();
+                GEjecutoria.DataContext = listaEjecutorias;
+                vaciarListado = false;
+            }
+
+            int ius = Convert.ToInt32(TxtIus.Text);
+
+            Ejecutoria ejecutoria = new EjecutoriaModel().GetEjecutoria(ius);
+
+            if (ejecutoria == null)
+            {
+                MessageBox.Show("El registro digital que ingresaste no existe, favor de verificar", "Atención:", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            else if (listaEjecutorias.Contains(ejecutoria))
+            {
+                MessageBox.Show("La ejecutoria solicitada ya se encuentra dentro del listado", "Atención:", MessageBoxButton.OK, MessageBoxImage.Information);
+                TxtIus.Text = String.Empty;
+                return;
+            }
+            else
+            {
+                listaEjecutorias.Add(ejecutoria);
+                TxtIus.Text = String.Empty;
+            }
         }
     }
 }

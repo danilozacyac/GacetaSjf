@@ -3,9 +3,8 @@ using System.Collections.ObjectModel;
 using System.Configuration;
 using System.Data.OleDb;
 using System.Linq;
-using MantesisVerIusCommonObjects.Dto;
-using ScjnUtilities;
 using GacetaSjf.Dao;
+using ScjnUtilities;
 
 namespace GacetaSjf.Model
 {
