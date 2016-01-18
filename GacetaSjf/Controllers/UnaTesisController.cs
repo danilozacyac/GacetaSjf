@@ -6,6 +6,8 @@ using System.Windows.Documents;
 using GacetaSjf.Dao;
 using GacetaSjf.Model;
 using MantesisVerIusCommonObjects.Dto;
+using System.Windows.Media;
+using System.Collections.Generic;
 
 namespace GacetaSjf.Controllers
 {
@@ -29,11 +31,17 @@ namespace GacetaSjf.Controllers
 
         public void LoadTesisWindow(TesisDto tesisMostrada)
         {
+            if (unaTesis.tesisAbiertas == null)
+                unaTesis.tesisAbiertas = new List<int>();
+            else
+                unaTesis.tesisAbiertas.Clear();
+
+            unaTesis.tesisAbiertas.Add(tesisMostrada.Ius);
 
             LoadTesis(tesisMostrada);
             LoadNoBindingValues();
 
-            if (unaTesis.ListaTesis.Count == 1)
+            if (unaTesis.ListaTesis == null || unaTesis.ListaTesis.Count == 1)
                 unaTesis.Navega.Visibility = Visibility.Collapsed;
 
         }
@@ -44,6 +52,8 @@ namespace GacetaSjf.Controllers
         public void LoadTesis(TesisDto tesisAMostrar)
         {
             unaTesis.flowDoc.Blocks.Clear();
+
+            this.FlowdocBackgroundColor();
 
             tesisMostrada = new TesisSjfModel().GetTesis(tesisAMostrar.Ius);
 
@@ -178,10 +188,20 @@ namespace GacetaSjf.Controllers
                 {
                     TesisDto tesisToLaunch = new TesisSjfModel().GetTesis(infoToLaunch.Ius);
 
-                    UnaTesis newWindow = new UnaTesis(new ObservableCollection<TesisDto>() { tesisToLaunch }, 0);
-                    newWindow.Title = tesisMostrada.Ius + " ---> " + tesisToLaunch.Ius;
-                    newWindow.Owner = unaTesis;
-                    newWindow.ShowDialog();
+
+                    if (unaTesis.tesisAbiertas.Contains(tesisToLaunch.Ius))
+                    {
+                        MessageBox.Show("La tesis con registro digital " + tesisToLaunch.Ius + " ya se encuentra abierta");
+                        return;
+                    }
+                    else
+                    {
+                        unaTesis.tesisAbiertas.Add(tesisToLaunch.Ius);
+                        UnaTesis newWindow = new UnaTesis(tesisToLaunch, unaTesis.tesisAbiertas, 1);
+                        newWindow.MainRibbon.ApplicationName = tesisMostrada.Ius + " ---> " + tesisToLaunch.Ius;
+                        newWindow.Owner = unaTesis;
+                        newWindow.ShowDialog();
+                    }
                 }
                 else if (infoToLaunch.Tipo == 2) //Lanza una ejecutoria
                 {
@@ -199,6 +219,15 @@ namespace GacetaSjf.Controllers
         }
 
 
+        public void FlowdocBackgroundColor()
+        {
+            if (unaTesis.ColorFondo == 0)
+                unaTesis.flowDoc.Background = new SolidColorBrush(Colors.White);
+            if (unaTesis.ColorFondo == 1)
+                unaTesis.flowDoc.Background = new SolidColorBrush(Colors.LightPink);
+            if (unaTesis.ColorFondo == 2)
+                unaTesis.flowDoc.Background = new SolidColorBrush(Colors.LightGreen);
+        }
 
         #region RibbonButtons
 

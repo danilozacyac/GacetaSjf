@@ -22,7 +22,9 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="35" />
         </Grid.RowDefinitions>
-        <telerik:RadRibbonView Grid.Row="0"
+        <telerik:RadRibbonView x:Name="MainRibbon"
+                               Grid.Row="0"
+                               ApplicationButtonVisibility="Collapsed"
                                ApplicationName=""
                                WindowIconVisibility="Visible">
 

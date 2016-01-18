@@ -5,6 +5,7 @@ using System.Windows;
 using GacetaSjf.Controllers;
 using MantesisVerIusCommonObjects.Dto;
 using Telerik.Windows.Controls;
+using System.Collections.Generic;
 
 namespace GacetaSjf
 {
@@ -17,6 +18,8 @@ namespace GacetaSjf
         public ObservableCollection<TesisDto> ListaTesis;
         public int PosActual;
         private TesisDto tesisMostrada;
+        public List<int> tesisAbiertas;
+        public int ColorFondo;
 
         public UnaTesis()
         {
@@ -24,7 +27,7 @@ namespace GacetaSjf
         }
 
         /// <summary>
-        /// 
+        /// Muestra el detalle de tesis con la posibilidad de navegar a traves de un listado
         /// </summary>
         /// <param name="listaTesis">Lista de Tesis mostrada en la ventana principal</param>
         /// <param name="posActual">Posición de la tesis seleccionada dentro del listado mostrado</param>
@@ -36,10 +39,28 @@ namespace GacetaSjf
             controller = new UnaTesisController(this,listaTesis[posActual]);
         }
 
+        /// <summary>
+        /// Muestra el detalle de una sola tesis, no se puede navegar a través de un listado
+        /// </summary>
+        /// <param name="tesisMostrada">Tesis de la cual se visualiza el detalle</param>
+        /// <param name="tesisAbiertas">Lista de tesis que se han abierto por ligas entre ellas</param>
+        /// <param name="colorFondo">Color de fondo de la tesis que se muestra</param>
+        public UnaTesis(TesisDto tesisMostrada, List<int> tesisAbiertas,int colorFondo)
+        {
+            InitializeComponent();
+            this.tesisMostrada = tesisMostrada;
+            this.tesisAbiertas = tesisAbiertas;
+            this.ColorFondo = colorFondo;
+            controller = new UnaTesisController(this, tesisMostrada);
+        }
+
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            controller.LoadTesisWindow(ListaTesis[PosActual]);
+            if (ListaTesis == null)
+                controller.LoadTesisWindow(tesisMostrada);
+            else
+                controller.LoadTesisWindow(ListaTesis[PosActual]);
         }
 
         private void RibbonButton_Click(object sender, RoutedEventArgs e)
