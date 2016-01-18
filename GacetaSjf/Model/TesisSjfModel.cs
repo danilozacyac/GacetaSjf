@@ -76,7 +76,7 @@ namespace GacetaSjf.Model
             OleDbCommand cmd = null;
             OleDbDataReader reader = null;
 
-            String sqlCadena = "SELECT * FROM Tesis Where IUS = @IUS AND parte <> 99  ORDER BY ConsecIndx";
+            String sqlCadena = "SELECT * FROM Tesis Where IUS = @IUS   ORDER BY ConsecIndx";
 
             try
             {

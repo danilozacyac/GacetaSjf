@@ -33,6 +33,8 @@ namespace GacetaSjf.Controllers
             LoadTesis(tesisMostrada);
             LoadNoBindingValues();
 
+            if (unaTesis.ListaTesis.Count == 1)
+                unaTesis.Navega.Visibility = Visibility.Collapsed;
 
         }
 
@@ -161,6 +163,38 @@ namespace GacetaSjf.Controllers
 
         public void LinkClick(object sender, RoutedEventArgs e)
         {
+            Hyperlink link = sender as Hyperlink;
+            Liga clickedLiga = link.Tag as Liga;
+
+            if (clickedLiga.Tipo == 0) //Legislación federal
+            {
+
+            }
+            else if (clickedLiga.Tipo == 10) // Ligas entre tesis, ejecutorias, votos y acuerdos
+            {
+                Liga infoToLaunch = new LigasModel().GetNumiusLiga(clickedLiga.Ius, clickedLiga.IdRelacion);
+
+                if (infoToLaunch.Tipo == 1) //Lanza una tesis
+                {
+                    TesisDto tesisToLaunch = new TesisSjfModel().GetTesis(infoToLaunch.Ius);
+
+                    UnaTesis newWindow = new UnaTesis(new ObservableCollection<TesisDto>() { tesisToLaunch }, 0);
+                    newWindow.Title = tesisMostrada.Ius + " ---> " + tesisToLaunch.Ius;
+                    newWindow.Owner = unaTesis;
+                    newWindow.ShowDialog();
+                }
+                else if (infoToLaunch.Tipo == 2) //Lanza una ejecutoria
+                {
+
+                }
+
+            }
+            else if (clickedLiga.Tipo == 50) //Legislaciones estatales
+            {
+
+            }
+
+
 
         }
 
