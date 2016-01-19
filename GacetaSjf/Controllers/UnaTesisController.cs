@@ -8,6 +8,7 @@ using GacetaSjf.Model;
 using MantesisVerIusCommonObjects.Dto;
 using System.Windows.Media;
 using System.Collections.Generic;
+using GacetaSjf.Ligas;
 
 namespace GacetaSjf.Controllers
 {
@@ -187,11 +188,7 @@ namespace GacetaSjf.Controllers
             Hyperlink link = sender as Hyperlink;
             Liga clickedLiga = link.Tag as Liga;
 
-            if (clickedLiga.Tipo == 0) //Legislación federal
-            {
-
-            }
-            else if (clickedLiga.Tipo == 10) // Ligas entre tesis, ejecutorias, votos y acuerdos
+            if (clickedLiga.Tipo == 10) // Ligas entre tesis, ejecutorias, votos y acuerdos
             {
                 Liga infoToLaunch = new LigasModel().GetNumiusLiga(clickedLiga.Ius, clickedLiga.IdRelacion);
 
@@ -220,9 +217,22 @@ namespace GacetaSjf.Controllers
                 }
 
             }
-            else if (clickedLiga.Tipo == 50) //Legislaciones estatales
+            else if (clickedLiga.Tipo == 50 || clickedLiga.Tipo == 0) //Legislaciones estatales
             {
+                ObservableCollection<Articulos> listaArticulos = new ArticuloModel().GetLegislacionRelacionada(clickedLiga.Ius, clickedLiga.IdRelacion);
 
+                if (listaArticulos.Count == 1)
+                {
+                    DetalleArticulo detalle = new DetalleArticulo(listaArticulos[0]);
+                    detalle.Owner = unaTesis;
+                    detalle.ShowDialog();
+                }
+                else
+                {
+                    ListaRelacionados lista = new ListaRelacionados(listaArticulos);
+                    lista.Owner = unaTesis;
+                    lista.ShowDialog();
+                }
             }
 
 

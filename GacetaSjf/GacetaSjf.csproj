@@ -123,6 +123,7 @@
     <Compile Include="Converters\PdfImageConverter.cs" />
     <Compile Include="Converters\VolumenConverter.cs" />
     <Compile Include="Dao\Anexos.cs" />
+    <Compile Include="Dao\Articulos.cs" />
     <Compile Include="Dao\DatosCompartidos.cs" />
     <Compile Include="Dao\Documento.cs" />
     <Compile Include="Dao\Ejecutoria.cs" />
@@ -130,13 +131,20 @@
     <Compile Include="Dao\Materias.cs" />
     <Compile Include="Dao\Temas.cs" />
     <Compile Include="Dao\Votos.cs" />
+    <Compile Include="Ligas\DetalleArticulo.xaml.cs">
+      <DependentUpon>DetalleArticulo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DetalleDoctos.xaml.cs">
       <DependentUpon>DetalleDoctos.xaml</DependentUpon>
     </Compile>
     <Compile Include="EjecutoriasFolder\ListaEjecutorias.xaml.cs">
       <DependentUpon>ListaEjecutorias.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Ligas\ListaRelacionados.xaml.cs">
+      <DependentUpon>ListaRelacionados.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\AcuerdoModel.cs" />
+    <Compile Include="Model\ArticuloModel.cs" />
     <Compile Include="Model\DatosCompartidosModel.cs" />
     <Compile Include="Model\EjecutoriaModel.cs" />
     <Compile Include="Model\LigasModel.cs" />
@@ -201,11 +209,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Ligas\DetalleArticulo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="DetalleDoctos.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="EjecutoriasFolder\ListaEjecutorias.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Ligas\ListaRelacionados.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

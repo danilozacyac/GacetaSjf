@@ -1,0 +1,36 @@
+﻿<Window x:Class="GacetaSjf.Ligas.DetalleArticulo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:icp="clr-namespace:ICP.Controls.Document;assembly=ICP.Controls.Document.Find"
+        Title="Visualizar artículo"
+        Width="600"
+        Height="500"
+        Loaded="Window_Loaded"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <FlowDocumentScrollViewer x:Name="flowDocViewer"
+                                  Margin="0,0,0,40"
+                                  Background="#FF414141"
+                                  Zoom="130">
+            <FlowDocument x:Name="flowDoc"
+                          FontFamily="Arial"
+                          FontWeight="Normal"
+                          Foreground="Black" />
+        </FlowDocumentScrollViewer>
+
+        <icp:FindControl Grid.Row="0"
+                         Width="350"
+                         Height="25"
+                         HorizontalAlignment="Left"
+                         VerticalAlignment="Bottom"
+                         BackgroundText="Buscar palabra..."
+                         BackgroundTextBrush="Gray"
+                         BorderThickness="1"
+                         Document="{Binding ElementName=flowDocViewer,
+                                            Path=Document}"
+                         HighlightedParagraphBrush="LightSkyBlue"
+                         HighlightedTextBrush="Red"
+                         NextPreviousButtonsForegroundBrush="Blue"
+                         TextBoxBackgroundBrush="White" />
+    </Grid>
+</Window>
