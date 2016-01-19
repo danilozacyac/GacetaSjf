@@ -65,9 +65,20 @@
                 </telerik:RadRibbonGroup>
                 <telerik:RadRibbonGroup Name="DocsRel" Header="Documentos Relacionados">
                     <telerik:RadRibbonButton Name="RBtnEjecutoria"
+                                             Click="RBtnEjecutoria_Click"
                                              Content="Ver Ejecutoria"
                                              LargeImage="Resources/ejecutoria.png"
                                              Size="Large" />
+                    <telerik:RadRibbonButton Name="RBtnVerVoto"
+                                             Content="Ver Voto(s)"
+                                             LargeImage="Resources/juez.png"
+                                             Size="Large" />
+                    <telerik:RadRibbonButton Name="RBtnPdf"
+                                             Click="ExportarGroupClick"
+                                             Content="Ver PDF"
+                                             LargeImage="Resources/pdf_256.png"
+                                             Size="Large"
+                                             SmallImage="Resources/pdf_128.png" />
                 </telerik:RadRibbonGroup>
                 <telerik:RadRibbonGroup Header="Exportar">
                     <StackPanel Orientation="Horizontal">
@@ -76,12 +87,7 @@
                                                  Content="Portapapeles"
                                                  LargeImage="Resources/clipboard.png"
                                                  Size="Large" />
-                        <telerik:RadRibbonButton Name="RBtnPdf"
-                                                 Click="ExportarGroupClick"
-                                                 Content="PDF"
-                                                 LargeImage="Resources/pdf_256.png"
-                                                 Size="Large"
-                                                 SmallImage="Resources/pdf_128.png" />
+
                         <telerik:RadRibbonButton Name="RBtnWord"
                                                  Click="ExportarGroupClick"
                                                  Content="Word"
@@ -124,7 +130,7 @@
                                    VerticalAlignment="Top"
                                    Content="Página:" />
                             <GroupBox Height="50"
-                                      Margin="21,192,35,0"
+                                      Margin="21,255,35,0"
                                       HorizontalAlignment="Stretch"
                                       VerticalAlignment="Top"
                                       Header="Tipo de Tesis"
@@ -149,32 +155,32 @@
                                                  IsEnabled="False" />
                                 </Grid>
                             </GroupBox>
-                            <Label Margin="10,251,0,0"
+                            <Label Margin="10,314,0,0"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Top"
                                    Content="Instancia:" />
                             <TextBox x:Name="TxtInstancia"
                                      Width="245"
-                                     Margin="10,278,0,0"
+                                     Margin="10,341,0,0"
                                      HorizontalAlignment="Left"
                                      VerticalAlignment="Top"
                                      IsReadOnly="True"
                                      Text="{Binding Sala,
                                                     Converter={StaticResource instanConv}}" />
-                            <Label Margin="10,304,0,0"
+                            <Label Margin="10,367,0,0"
                                    HorizontalAlignment="Left"
                                    VerticalAlignment="Top"
                                    Content="Fuente:" />
                             <TextBox x:Name="CbxFuente"
                                      Width="245"
-                                     Margin="10,332,0,0"
+                                     Margin="10,395,0,0"
                                      HorizontalAlignment="Left"
                                      VerticalAlignment="Top"
                                      IsReadOnly="False"
                                      Text="{Binding Fuente,
                                                     Converter={StaticResource fuenteConv}}" />
                             <GroupBox Height="180"
-                                      Margin="10,378,35,-19"
+                                      Margin="10,423,35,0"
                                       HorizontalAlignment="Stretch"
                                       VerticalAlignment="Top"
                                       Header="Materias">

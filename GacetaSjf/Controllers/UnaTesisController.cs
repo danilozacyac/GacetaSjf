@@ -17,8 +17,8 @@ namespace GacetaSjf.Controllers
 
 
         private TesisDto tesisMostrada = null;
-        
-
+        private Ejecutoria ejecutoriaRelacionada;
+        private ObservableCollection<Votos> votosRelacionados;
 
        
 
@@ -51,11 +51,22 @@ namespace GacetaSjf.Controllers
         /// </summary>
         public void LoadTesis(TesisDto tesisAMostrar)
         {
+            TesisSjfModel model = new TesisSjfModel();
+
             unaTesis.flowDoc.Blocks.Clear();
 
             this.FlowdocBackgroundColor();
 
-            tesisMostrada = new TesisSjfModel().GetTesis(tesisAMostrar.Ius);
+            tesisMostrada = model.GetTesis(tesisAMostrar.Ius);
+
+            ejecutoriaRelacionada = model.GetTesisEjecutoria(tesisAMostrar.Ius);
+
+            unaTesis.RBtnEjecutoria.Visibility = (ejecutoriaRelacionada == null) ? Visibility.Collapsed : Visibility.Visible;
+
+            votosRelacionados = model.GetTesisVotos(tesisAMostrar.Ius);
+
+            unaTesis.RBtnVerVoto.Visibility = (votosRelacionados.Count == 0) ? Visibility.Collapsed : Visibility.Visible;
+
 
             ObservableCollection<Liga> ligasTesis = new LigasModel().GetLigas(tesisMostrada.Ius);
 
@@ -283,7 +294,13 @@ namespace GacetaSjf.Controllers
             unaTesis.LblContador.Content = "     " + (unaTesis.PosActual + 1) + " / " + unaTesis.ListaTesis.Count;
         }
 
-        
+
+        public void VerEjecutoria()
+        {
+            DetalleDoctos documento = new DetalleDoctos(ejecutoriaRelacionada);
+            documento.Owner = unaTesis;
+            documento.ShowDialog();
+        }
 
 
         public void TesisToClipboard(int queMando)

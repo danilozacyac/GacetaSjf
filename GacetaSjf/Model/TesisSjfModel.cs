@@ -186,7 +186,6 @@ namespace GacetaSjf.Model
             return listaTesis;
         }
 
-
         public ObservableCollection<TesisDto> GetTesis(int idSala, int idInstancia)
         {
             ObservableCollection<TesisDto> listaTesis = new ObservableCollection<TesisDto>();
@@ -252,6 +251,133 @@ namespace GacetaSjf.Model
 
             return listaTesis;
         }
+
+        /// <summary>
+        /// Devuelve la Ejecutoria relacionada al número de registro digital de la tesis solicitada
+        /// </summary>
+        /// <param name="registroDigital">Identificador de la tesis</param>
+        /// <returns></returns>
+        public Ejecutoria GetTesisEjecutoria(int registroDigital)
+        {
+            Ejecutoria ejecutoria = null;
+
+            OleDbConnection connection = new OleDbConnection(connectionString);
+            OleDbCommand cmd = null;
+            OleDbDataReader reader = null;
+
+            String sqlCadena;
+
+            try
+            {
+                connection.Open();
+
+
+                sqlCadena = "SELECT E.* FROM RelPartes R INNER JOIN Ejecutoria E ON E.Id = R.IdPte Where IUS = @IUS AND Cve = 2";
+                    cmd = new OleDbCommand(sqlCadena, connection);
+                    cmd.Parameters.AddWithValue("@IUS", registroDigital);
+                    reader = cmd.ExecuteReader();
+                
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        ejecutoria = new Ejecutoria();
+                        ejecutoria.Ius = Convert.ToInt32(reader["Id"]);
+                        ejecutoria.Sala = Convert.ToInt32(reader["Sala"]);
+                        ejecutoria.Epoca = Convert.ToInt32(reader["Epoca"]);
+                        ejecutoria.Volumen = Convert.ToInt32(reader["Volumen"]);
+                        ejecutoria.Fuente = Convert.ToInt32(reader["Fuente"]);
+                        ejecutoria.Pagina = Convert.ToInt32(reader["Pagina"]);
+                        ejecutoria.Rubro = reader["Rubro"].ToString();
+                        ejecutoria.Asunto = reader["TpoAsunto"].ToString();
+                        ejecutoria.Promovente = reader["Promovente"].ToString();
+                    }
+                }
+                cmd.Dispose();
+                reader.Close();
+            }
+            catch (OleDbException ex)
+            {
+                string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,TesisSjfModel", "Gaceta");
+            }
+            catch (Exception ex)
+            {
+                string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,TesisSjfModel", "Gaceta");
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return ejecutoria;
+        }
+
+
+        public ObservableCollection<Votos> GetTesisVotos(int registroDigital)
+        {
+            ObservableCollection<Votos> listaVotos = new ObservableCollection<Votos>();
+
+            OleDbConnection connection = new OleDbConnection(connectionString);
+            OleDbCommand cmd = null;
+            OleDbDataReader reader = null;
+
+            String sqlCadena;
+
+            try
+            {
+                connection.Open();
+
+
+                sqlCadena = "SELECT V.* FROM RelPartes R INNER JOIN VotosParticulares V ON V.Id = R.IdPte Where IUS = @IUS AND Cve = 3";
+                cmd = new OleDbCommand(sqlCadena, connection);
+                cmd.Parameters.AddWithValue("@IUS", registroDigital);
+                reader = cmd.ExecuteReader();
+                
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Votos voto = new Votos();
+                        voto.Ius = Convert.ToInt32(reader["Id"]);
+                        voto.Sala = Convert.ToInt32(reader["Sala"]);
+                        voto.Epoca = Convert.ToInt32(reader["Epoca"]);
+                        voto.Volumen = Convert.ToInt32(reader["Volumen"]);
+                        voto.Fuente = Convert.ToInt32(reader["Fuente"]);
+                        voto.Pagina = Convert.ToInt32(reader["Pagina"]);
+                        voto.Rubro = reader["Rubro"].ToString();
+                        voto.Asunto = reader["TpoAsunto"].ToString();
+                        voto.Promovente = reader["Promovente"].ToString();
+                        voto.TipoVoto = Convert.ToInt32(reader["Clasificacion"]);
+                        voto.Emisor = reader["Complemento"].ToString();
+
+                        listaVotos.Add(voto);
+                    }
+                }
+                cmd.Dispose();
+                reader.Close();
+            }
+            catch (OleDbException ex)
+            {
+                string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,TesisSjfModel", "Gaceta");
+            }
+            catch (Exception ex)
+            {
+                string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,TesisSjfModel", "Gaceta");
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return listaVotos;
+        }
+
 
     }
 }

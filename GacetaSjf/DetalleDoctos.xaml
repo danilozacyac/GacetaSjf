@@ -66,6 +66,10 @@
                                              Content="Ver Ejecutoria"
                                              LargeImage="Resources/ejecutoria.png"
                                              Size="Large" />
+                    <telerik:RadRibbonButton Name="RBtnVotos"
+                                             Content="Ver Voto(s)"
+                                             LargeImage="Resources/ejecutoria.png"
+                                             Size="Large" />
                 </telerik:RadRibbonGroup>
                 <telerik:RadRibbonGroup Header="Exportar">
                     <StackPanel Orientation="Horizontal">

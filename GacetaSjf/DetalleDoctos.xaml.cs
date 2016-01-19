@@ -18,6 +18,7 @@ namespace GacetaSjf
         string textoCompleto = String.Empty;
 
 
+
         private DocumentoController controller;
         public IEnumerable<Documento> ListaDocumentos;
         public int PosActual;
@@ -35,14 +36,21 @@ namespace GacetaSjf
             InitializeComponent();
             this.PosActual = posActual;
             this.ListaDocumentos = listaDocumentos;
-            
+            DocsMostrar = ListaDocumentos.ToList();
+            controller = new DocumentoController(this, DocsMostrar[PosActual]);
         }
 
 
+        public DetalleDoctos(Documento documentoMostrado)
+        {
+            InitializeComponent();
+            this.documentoMostrado = documentoMostrado;
+            controller = new DocumentoController(this, documentoMostrado);
+        }
+
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            DocsMostrar = ListaDocumentos.ToList();
-            controller = new DocumentoController(this, DocsMostrar[PosActual]);
+            
             
         }
 

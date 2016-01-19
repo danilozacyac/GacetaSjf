@@ -104,5 +104,10 @@ namespace GacetaSjf
             RadRibbonButton action = sender as RadRibbonButton;
             controller.ExportarOptions(action.Name);
         }
+
+        private void RBtnEjecutoria_Click(object sender, RoutedEventArgs e)
+        {
+            controller.VerEjecutoria();
+        }
     }
 }
