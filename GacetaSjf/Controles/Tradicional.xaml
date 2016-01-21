@@ -117,7 +117,7 @@
                                                 TextWrapping="Wrap" />
                     <telerik:GridViewDataColumn Width="*"
                                                 DataMemberBinding="{Binding Rubro}"
-                                                Header="Rubro"
+                                                Header="Rubro (Título/Subtítulo)"
                                                 IsFilterable="False"
                                                 IsReadOnly="True"
                                                 TextWrapping="Wrap" />

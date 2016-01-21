@@ -3,6 +3,7 @@ using System.Linq;
 using System.Windows;
 using GacetaSjf.Controles;
 using Telerik.Windows.Controls;
+using GacetaSjf.Controles.Indices;
 
 namespace GacetaSjf
 {
@@ -124,6 +125,42 @@ namespace GacetaSjf
         {
             acuerdoTradicional = new AcuerdoTradicional();
             this.AddPane(53, "Consulta tradicional (Acuerdos)", acuerdoTradicional);
+        }
+
+
+        IndiceTesis indiceTesis;
+        private void BtnIndiceTesis_Click(object sender, RoutedEventArgs e)
+        {
+            indiceTesis = new IndiceTesis();
+            this.AddPane(84, "Indice Anual de Tesis", indiceTesis);
+        }
+
+        IndiceDocumentos indiceEjecutorias;
+        private void BtnIndiceEjecutoria_Click(object sender, RoutedEventArgs e)
+        {
+            indiceEjecutorias = new IndiceDocumentos(2);
+            this.AddPane(85, "Indice Anual de Ejecutorias", indiceEjecutorias);
+        }
+
+        IndiceDocumentos indiceCorte;
+        private void BtnIndiceScjn_Click(object sender, RoutedEventArgs e)
+        {
+            indiceCorte = new IndiceDocumentos(5);
+            this.AddPane(86, "Indice Anual de Acuerdos de la SCJN", indiceCorte);
+        }
+
+        IndiceDocumentos indiceConsejo;
+        private void BtnIndiceCjf_Click(object sender, RoutedEventArgs e)
+        {
+            indiceConsejo = new IndiceDocumentos(6);
+            this.AddPane(87, "Indice Anual de Acuerdos del CJF", indiceConsejo);
+        }
+
+        IndiceDocumentos indiceConjunto;
+        private void BtnIndiceConjunto_Click(object sender, RoutedEventArgs e)
+        {
+            indiceConjunto = new IndiceDocumentos(7);
+            this.AddPane(88, "Indice Anual de Acuerdos Conjuntos", indiceConjunto);
         }
 
        

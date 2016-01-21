@@ -100,7 +100,6 @@ C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\De
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\PorOrganismo.baml
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\Presentacion.baml
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\Tematica.baml
-C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\TesisControl.baml
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\Tradicional.baml
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\EjecutoriasFolder\ListaEjecutorias.baml
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\EjecTradicional.g.cs
@@ -110,7 +109,6 @@ C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\De
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\PorOrganismo.g.cs
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\Presentacion.g.cs
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\Tematica.g.cs
-C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\TesisControl.g.cs
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\Tradicional.g.cs
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\DetalleDoctos.g.cs
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\EjecutoriasFolder\ListaEjecutorias.g.cs
@@ -166,3 +164,7 @@ C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\De
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Ligas\ListaRelacionados.baml
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Ligas\DetalleArticulo.g.cs
 C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Ligas\ListaRelacionados.g.cs
+C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\Indices\IndiceTesis.g.cs
+C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\Indices\IndiceTesis.baml
+C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\Indices\IndiceDocumentos.g.cs
+C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\Indices\IndiceDocumentos.baml

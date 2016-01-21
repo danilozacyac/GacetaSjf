@@ -95,9 +95,16 @@
     <Compile Include="Controles\EjecTradicional.xaml.cs">
       <DependentUpon>EjecTradicional.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controles\Indices\IndiceDocumentos.xaml.cs">
+      <DependentUpon>IndiceDocumentos.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controles\Indices\IndiceTesis.xaml.cs">
+      <DependentUpon>IndiceTesis.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controles\MesPdf.xaml.cs">
       <DependentUpon>MesPdf.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controles\MyColumnNumber.cs" />
     <Compile Include="Controles\Ordenamientos.xaml.cs">
       <DependentUpon>Ordenamientos.xaml</DependentUpon>
     </Compile>
@@ -166,6 +173,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Controles\EjecTradicional.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\Indices\IndiceDocumentos.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controles\Indices\IndiceTesis.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

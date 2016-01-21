@@ -133,6 +133,60 @@ namespace GacetaSjf.Model
             return ejecutoria;
         }
 
+        public Ejecutoria GetEjecutoria(Ejecutoria ejecutoria)
+        {
+            OleDbConnection connection = new OleDbConnection(connectionString);
+            OleDbCommand cmd = null;
+            OleDbDataReader reader = null;
+
+            String sqlCadena = "SELECT * FROM Ejecutoria Where Id = @Id AND ParteT <> 99 ORDER BY ConsecIndx";
+
+            try
+            {
+                connection.Open();
+
+                cmd = new OleDbCommand(sqlCadena, connection);
+                cmd.Parameters.AddWithValue("@Id", ejecutoria.Ius);
+                reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        ejecutoria = new Ejecutoria();
+                        ejecutoria.Ius = Convert.ToInt32(reader["Id"]);
+                        ejecutoria.Sala = Convert.ToInt32(reader["Sala"]);
+                        ejecutoria.Epoca = Convert.ToInt32(reader["Epoca"]);
+                        ejecutoria.Volumen = Convert.ToInt32(reader["Volumen"]);
+                        ejecutoria.Fuente = Convert.ToInt32(reader["Fuente"]);
+                        ejecutoria.Pagina = Convert.ToInt32(reader["Pagina"]);
+                        ejecutoria.Rubro = reader["Rubro"].ToString();
+                        ejecutoria.Asunto = reader["TpoAsunto"].ToString();
+                        ejecutoria.Promovente = reader["Promovente"].ToString();
+
+                    }
+                }
+                cmd.Dispose();
+                reader.Close();
+            }
+            catch (OleDbException ex)
+            {
+                string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,EjecutoriaModel", "Gaceta");
+            }
+            catch (Exception ex)
+            {
+                string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,EjecutoriaModel", "Gaceta");
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return ejecutoria;
+        }
+
 
         public List<string> GetEjecutoriaPartes(int iusEjecutoria)
         {
@@ -182,7 +236,59 @@ namespace GacetaSjf.Model
         }
 
 
+        public ObservableCollection<Ejecutoria> GetEjecutoriaIndices()
+        {
+            ObservableCollection<Ejecutoria> listaEjecutoria = new ObservableCollection<Ejecutoria>();
 
+
+            OleDbConnection connection = new OleDbConnection(connectionString);
+            OleDbCommand cmd = null;
+            OleDbDataReader reader = null;
+
+            String sqlCadena = "SELECT EI.* , E.Sala FROM xEjecutoriasSinTesis EI INNER JOIN Ejecutoria E ON EI.NumRegistroIUS = E.Id " +
+                                " ORDER BY EI.ConsecIndx"; 
+
+            try
+            {
+                connection.Open();
+
+                cmd = new OleDbCommand(sqlCadena, connection);
+                reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        Ejecutoria ejecutoria = new Ejecutoria();
+                        ejecutoria.Ius = Convert.ToInt32(reader["NumRegistroIUS"]);
+                        ejecutoria.Sala = Convert.ToInt32(reader["Sala"]);
+                        ejecutoria.Pagina = Convert.ToInt32(reader["Pagina"]);
+                        ejecutoria.TextoListaIndice = reader["Texto"].ToString();
+                        ejecutoria.Mes = reader["Mes"].ToString();
+
+                        listaEjecutoria.Add(ejecutoria);
+                    }
+                }
+                cmd.Dispose();
+                reader.Close();
+            }
+            catch (OleDbException ex)
+            {
+                string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,EjecutoriaModel", "Gaceta");
+            }
+            catch (Exception ex)
+            {
+                string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,EjecutoriaModel", "Gaceta");
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return listaEjecutoria;
+        }
 
 
         public List<Anexos> GetAnexos(int registroDigital)

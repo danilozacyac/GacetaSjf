@@ -131,9 +131,6 @@ namespace GacetaSjf.Model
             return tesis;
         }
 
-
-
-
         public ObservableCollection<TesisDto> GetTesis(Temas tema)
         {
             ObservableCollection<TesisDto> listaTesis = new ObservableCollection<TesisDto>();
@@ -228,6 +225,61 @@ namespace GacetaSjf.Model
                         tesis.LocAbr = reader["LocAbr"].ToString();
                         tesis.VolumenInt = Convert.ToInt32(reader["Volumen"]);
 
+                        listaTesis.Add(tesis);
+                    }
+                }
+                cmd.Dispose();
+                reader.Close();
+            }
+            catch (OleDbException ex)
+            {
+                string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,TesisSjfModel", "Gaceta");
+            }
+            catch (Exception ex)
+            {
+                string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,TesisSjfModel", "Gaceta");
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return listaTesis;
+        }
+
+
+        public ObservableCollection<TesisDto> GetTesisIndices()
+        {
+            ObservableCollection<TesisDto> listaTesis = new ObservableCollection<TesisDto>();
+
+            OleDbConnection connection = new OleDbConnection(connectionString);
+            OleDbCommand cmd = null;
+            OleDbDataReader reader = null;
+
+            String sqlCadena = "SELECT * FROM xSem_Tesis ORDER BY PosGral";
+
+            try
+            {
+                connection.Open();
+
+                cmd = new OleDbCommand(sqlCadena, connection);
+                reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        TesisDto tesis = new TesisDto();
+                        tesis.Ius = Convert.ToInt32(reader["Ius"]);
+                        tesis.Rubro = reader["xRubro"].ToString();
+                        //tesis.TaTj = Convert.ToInt32(reader["ta/tj"]);
+                        tesis.Sala = Convert.ToInt32(reader["xInst"]);
+                        tesis.Pagina = reader["Pag"].ToString();
+                        //tesis.VolumenInt = Convert.ToInt32(reader["Volumen"]);
+                        tesis.Volumen = DateTimeUtilities.ToMonthName( Convert.ToInt32(reader["xMes"]));
+                        
                         listaTesis.Add(tesis);
                     }
                 }

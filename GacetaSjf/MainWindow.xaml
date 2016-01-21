@@ -5,7 +5,7 @@
         xmlns:primitives="clr-namespace:Telerik.Windows.Controls.RibbonView.Primitives;assembly=Telerik.Windows.Controls.RibbonView"
         xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
         Title="Gaceta Sjf"
-        Width="700"
+        Width="1000"
         Height="350"
         Icon="Resources/GACETA-2.ico"
         Loaded="Window_Loaded"
@@ -95,6 +95,29 @@
                     </telerik:RadRibbonComboBox>
 
 
+
+                </telerik:RadRibbonGroup>
+                <telerik:RadRibbonGroup Header="Indices">
+                    <telerik:RadRibbonButton x:Name="BtnIndiceTesis"
+                                             Content="Tesis"
+                                             LargeImage="Resources/tesis.png"
+                                             Size="Large" Click="BtnIndiceTesis_Click" />
+                    <telerik:RadRibbonButton x:Name="BtnIndiceEjecutoria"
+                                             Content="Ejecutorias"
+                                             LargeImage="Resources/ejecutoria.png"
+                                             Size="Large" Click="BtnIndiceEjecutoria_Click"  />
+                    <telerik:RadRibbonButton x:Name="BtnIndiceScjn"
+                                             Content="A. SCJN"
+                                             LargeImage="Resources/acuerdo.png"
+                                             Size="Large" Click="BtnIndiceScjn_Click"   />
+                    <telerik:RadRibbonButton x:Name="BtnIndiceCjf"
+                                             Content="A. CJF"
+                                             LargeImage="Resources/acuerdo.png"
+                                             Size="Large" Click="BtnIndiceCjf_Click"   />
+                    <telerik:RadRibbonButton x:Name="BtnIndiceConjunto"
+                                             Content="A. Conjuntos"
+                                             LargeImage="Resources/acuerdo.png"
+                                             Size="Large" Click="BtnIndiceConjunto_Click"   />
 
                 </telerik:RadRibbonGroup>
             </telerik:RadRibbonTab>

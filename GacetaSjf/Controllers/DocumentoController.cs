@@ -52,6 +52,9 @@ namespace GacetaSjf.Controllers
 
             if (documentoAMostrar is Ejecutoria)
             {
+                if (documentoAMostrar.Rubro == null)
+                    documentoAMostrar = new EjecutoriaModel().GetEjecutoria(documentoAMostrar as Ejecutoria);
+
                 documentoAMostrar.Partes = new EjecutoriaModel().GetEjecutoriaPartes(documentoAMostrar.Ius);
                 documentoAMostrar.Anexos = new EjecutoriaModel().GetAnexos(documentoAMostrar.Ius);
             }
@@ -62,6 +65,9 @@ namespace GacetaSjf.Controllers
             }
             else if (documentoAMostrar is Documento)
             {
+                if (documentoAMostrar.Rubro == null)
+                    documentoAMostrar = new AcuerdoModel().GetAcuerdos(documentoAMostrar);
+
                 documentoAMostrar.Partes = new AcuerdoModel().GetAcuerdosPartes(documentoAMostrar.Ius);
                 documentoAMostrar.Anexos = new AcuerdoModel().GetAnexos(documentoAMostrar.Ius);
             }

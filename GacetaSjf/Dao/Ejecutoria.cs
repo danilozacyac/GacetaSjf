@@ -8,5 +8,7 @@ namespace GacetaSjf.Dao
     public class Ejecutoria : Documento
     {
         private List<TesisDto> tesisRelacionadas;
+
+        
     }
 }

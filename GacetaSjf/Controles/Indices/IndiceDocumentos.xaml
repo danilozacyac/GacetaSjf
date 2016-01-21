@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="GacetaSjf.Controles.Indices.IndiceDocumentos"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Converters="clr-namespace:GacetaSjf.Converters"
+             xmlns:CustomColumn="clr-namespace:GacetaSjf.Controles"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             Loaded="UserControl_Loaded"
+             d:DesignHeight="300"
+             d:DesignWidth="300"
+             mc:Ignorable="d">
+    <UserControl.Resources>
+        <Style x:Key="style1" TargetType="telerik:GridViewCell">
+            <Setter Property="Background" Value="{telerik:Windows8Resource ResourceKey=AccentBrush}" />
+            <Setter Property="Foreground" Value="{telerik:Windows8Resource ResourceKey=MainBrush}" />
+        </Style>
+        <Converters:Instanciaconverter x:Key="instConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <telerik:RadGridView x:Name="GDocumentos"
+                             Grid.Row="1"
+                             HorizontalAlignment="Stretch"
+                             VerticalAlignment="Stretch"
+                             AutoGenerateColumns="False"
+                             CanUserDeleteRows="False"
+                             CanUserInsertRows="False"
+                             ItemsSource="{Binding}"
+                             RowIndicatorVisibility="Collapsed"
+                             SelectionChanged="GDocumentos_SelectionChanged"
+                             ShowGroupPanel="False">
+            <telerik:RadGridView.Columns>
+                <CustomColumn:MyColumnNumber Width="30"
+                                             CellStyle="{StaticResource style1}"
+                                             Header="#" />
+                <telerik:GridViewDataColumn Width="*"
+                                            DataMemberBinding="{Binding TextoListaIndice}"
+                                            Header="Rubro (Título/Subtítulo)"
+                                            IsFilterable="False"
+                                            IsReadOnly="True"
+                                            TextWrapping="Wrap" />
+                <telerik:GridViewDataColumn Width=".20*"
+                                            DataMemberBinding="{Binding Sala,
+                                                                        Converter={StaticResource instConverter}}"
+                                            Header="Instancia"
+                                            IsFilterable="True"
+                                            IsReadOnly="True"
+                                            TextWrapping="Wrap" />
+                <telerik:GridViewDataColumn Width="Auto"
+                                            DataMemberBinding="{Binding Mes}"
+                                            Header="Mes"
+                                            IsFilterable="True"
+                                            IsReadOnly="True" />
+                <telerik:GridViewDataColumn Width="Auto"
+                                            DataMemberBinding="{Binding Pagina}"
+                                            Header="Página"
+                                            IsFilterable="False"
+                                            IsReadOnly="True" />
+
+                <telerik:GridViewDataColumn Width="80"
+                                            DataMemberBinding="{Binding Ius}"
+                                            Header="Reg. Digital"
+                                            IsFilterable="False"
+                                            IsReadOnly="True"
+                                            TextWrapping="Wrap" />
+            </telerik:RadGridView.Columns>
+            <telerik:RadGridView.RowStyle>
+                <Style TargetType="telerik:GridViewRow">
+                    <EventSetter Event="MouseDoubleClick" Handler="GDocumentos_MouseDoubleClick" />
+                </Style>
+            </telerik:RadGridView.RowStyle>
+        </telerik:RadGridView>
+    </Grid>
+</UserControl>

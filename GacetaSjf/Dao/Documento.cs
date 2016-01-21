@@ -7,6 +7,7 @@ namespace GacetaSjf.Dao
     public class Documento
     {
         private int ius;
+        private string textoListaIndice;
         private string rubro;
         private string asunto;
         private string promovente;
@@ -15,9 +16,34 @@ namespace GacetaSjf.Dao
         private int volumen;
         private int fuente;
         private int pagina;
+        private string mes;
         private List<string> partes;
         private List<Anexos> anexos;
 
+
+        public string TextoListaIndice
+        {
+            get
+            {
+                return this.textoListaIndice;
+            }
+            set
+            {
+                this.textoListaIndice = value;
+            }
+        }
+
+        public string Mes
+        {
+            get
+            {
+                return this.mes;
+            }
+            set
+            {
+                this.mes = value;
+            }
+        }
 
         public List<Anexos> Anexos
         {
