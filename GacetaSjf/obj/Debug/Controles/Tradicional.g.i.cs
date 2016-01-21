@@ -60,7 +60,7 @@ namespace GacetaSjf.Controles {
     /// <summary>
     /// Tradicional
     /// </summary>
-    public partial class Tradicional : System.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector {
+    public partial class Tradicional : System.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector, System.Windows.Markup.IStyleConnector {
         
         
         #line 28 "..\..\..\Controles\Tradicional.xaml"
@@ -191,12 +191,6 @@ namespace GacetaSjf.Controles {
             this.GTesis = ((Telerik.Windows.Controls.RadGridView)(target));
             
             #line 109 "..\..\..\Controles\Tradicional.xaml"
-            this.GTesis.MouseDoubleClick += new System.Windows.Input.MouseButtonEventHandler(this.GTesis_MouseDoubleClick);
-            
-            #line default
-            #line hidden
-            
-            #line 110 "..\..\..\Controles\Tradicional.xaml"
             this.GTesis.SelectionChanged += new System.EventHandler<Telerik.Windows.Controls.SelectionChangeEventArgs>(this.GTesis_SelectionChanged);
             
             #line default
@@ -204,6 +198,30 @@ namespace GacetaSjf.Controles {
             return;
             }
             this._contentLoaded = true;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.0.0.0")]
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Design", "CA1033:InterfaceMethodsShouldBeCallableByChildTypes")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1800:DoNotCastUnnecessarily")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
+        void System.Windows.Markup.IStyleConnector.Connect(int connectionId, object target) {
+            System.Windows.EventSetter eventSetter;
+            switch (connectionId)
+            {
+            case 8:
+            eventSetter = new System.Windows.EventSetter();
+            eventSetter.Event = System.Windows.Controls.Control.MouseDoubleClickEvent;
+            
+            #line 138 "..\..\..\Controles\Tradicional.xaml"
+            eventSetter.Handler = new System.Windows.Input.MouseButtonEventHandler(this.GTesis_MouseDoubleClick);
+            
+            #line default
+            #line hidden
+            ((System.Windows.Style)(target)).Setters.Add(eventSetter);
+            break;
+            }
         }
     }
 }

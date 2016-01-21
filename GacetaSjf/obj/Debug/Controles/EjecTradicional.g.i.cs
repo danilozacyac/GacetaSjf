@@ -59,7 +59,7 @@ namespace GacetaSjf.Controles {
     /// <summary>
     /// EjecTradicional
     /// </summary>
-    public partial class EjecTradicional : System.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector {
+    public partial class EjecTradicional : System.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector, System.Windows.Markup.IStyleConnector {
         
         
         #line 23 "..\..\..\Controles\EjecTradicional.xaml"
@@ -155,13 +155,7 @@ namespace GacetaSjf.Controles {
             case 5:
             this.GEjecutoria = ((Telerik.Windows.Controls.RadGridView)(target));
             
-            #line 67 "..\..\..\Controles\EjecTradicional.xaml"
-            this.GEjecutoria.MouseDoubleClick += new System.Windows.Input.MouseButtonEventHandler(this.GEjecutoria_MouseDoubleClick);
-            
-            #line default
-            #line hidden
-            
-            #line 69 "..\..\..\Controles\EjecTradicional.xaml"
+            #line 68 "..\..\..\Controles\EjecTradicional.xaml"
             this.GEjecutoria.SelectionChanged += new System.EventHandler<Telerik.Windows.Controls.SelectionChangeEventArgs>(this.GEjecutoria_SelectionChanged);
             
             #line default
@@ -169,6 +163,30 @@ namespace GacetaSjf.Controles {
             return;
             }
             this._contentLoaded = true;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.0.0.0")]
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Design", "CA1033:InterfaceMethodsShouldBeCallableByChildTypes")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1800:DoNotCastUnnecessarily")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
+        void System.Windows.Markup.IStyleConnector.Connect(int connectionId, object target) {
+            System.Windows.EventSetter eventSetter;
+            switch (connectionId)
+            {
+            case 6:
+            eventSetter = new System.Windows.EventSetter();
+            eventSetter.Event = System.Windows.Controls.Control.MouseDoubleClickEvent;
+            
+            #line 109 "..\..\..\Controles\EjecTradicional.xaml"
+            eventSetter.Handler = new System.Windows.Input.MouseButtonEventHandler(this.GEjecutoria_MouseDoubleClick);
+            
+            #line default
+            #line hidden
+            ((System.Windows.Style)(target)).Setters.Add(eventSetter);
+            break;
+            }
         }
     }
 }

@@ -59,7 +59,7 @@ namespace GacetaSjf.Controles {
     /// <summary>
     /// AcuerdoTradicional
     /// </summary>
-    public partial class AcuerdoTradicional : System.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector {
+    public partial class AcuerdoTradicional : System.Windows.Controls.UserControl, System.Windows.Markup.IComponentConnector, System.Windows.Markup.IStyleConnector {
         
         
         #line 23 "..\..\..\Controles\AcuerdoTradicional.xaml"
@@ -156,12 +156,6 @@ namespace GacetaSjf.Controles {
             this.GAcuerdos = ((Telerik.Windows.Controls.RadGridView)(target));
             
             #line 66 "..\..\..\Controles\AcuerdoTradicional.xaml"
-            this.GAcuerdos.MouseDoubleClick += new System.Windows.Input.MouseButtonEventHandler(this.GAcuerdos_MouseDoubleClick);
-            
-            #line default
-            #line hidden
-            
-            #line 67 "..\..\..\Controles\AcuerdoTradicional.xaml"
             this.GAcuerdos.SelectionChanged += new System.EventHandler<Telerik.Windows.Controls.SelectionChangeEventArgs>(this.GAcuerdos_SelectionChanged);
             
             #line default
@@ -169,6 +163,30 @@ namespace GacetaSjf.Controles {
             return;
             }
             this._contentLoaded = true;
+        }
+        
+        [System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [System.CodeDom.Compiler.GeneratedCodeAttribute("PresentationBuildTasks", "4.0.0.0")]
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Never)]
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Design", "CA1033:InterfaceMethodsShouldBeCallableByChildTypes")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1800:DoNotCastUnnecessarily")]
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Maintainability", "CA1502:AvoidExcessiveComplexity")]
+        void System.Windows.Markup.IStyleConnector.Connect(int connectionId, object target) {
+            System.Windows.EventSetter eventSetter;
+            switch (connectionId)
+            {
+            case 6:
+            eventSetter = new System.Windows.EventSetter();
+            eventSetter.Event = System.Windows.Controls.Control.MouseDoubleClickEvent;
+            
+            #line 107 "..\..\..\Controles\AcuerdoTradicional.xaml"
+            eventSetter.Handler = new System.Windows.Input.MouseButtonEventHandler(this.GAcuerdos_MouseDoubleClick);
+            
+            #line default
+            #line hidden
+            ((System.Windows.Style)(target)).Setters.Add(eventSetter);
+            break;
+            }
         }
     }
 }

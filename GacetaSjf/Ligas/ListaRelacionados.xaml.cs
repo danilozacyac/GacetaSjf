@@ -38,6 +38,11 @@ namespace GacetaSjf.Ligas
 
         private void GArticulos_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
+            DependencyObject source = e.OriginalSource as DependencyObject;
+            if (source == null)
+                return;
+
+
             DetalleArticulo detalle = new DetalleArticulo(selectedArticulo);
             detalle.Owner = this;
             detalle.ShowDialog();

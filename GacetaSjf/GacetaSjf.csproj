@@ -193,10 +193,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Controles\TesisControl.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Controles\Tradicional.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -238,9 +234,6 @@
     </Compile>
     <Compile Include="Controles\Tematica.xaml.cs">
       <DependentUpon>Tematica.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Controles\TesisControl.xaml.cs">
-      <DependentUpon>TesisControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controles\Tradicional.xaml.cs">
       <DependentUpon>Tradicional.xaml</DependentUpon>

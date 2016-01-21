@@ -41,7 +41,6 @@
                              CanUserDeleteRows="False"
                              CanUserInsertRows="False"
                              ItemsSource="{Binding}"
-                             MouseDoubleClick="GTesis_MouseDoubleClick"
                              SelectionChanged="GTesis_SelectionChanged"
                              ShowGroupPanel="False">
             <telerik:RadGridView.Columns>
@@ -63,6 +62,11 @@
                                             IsFilterable="False"
                                             IsReadOnly="True" />
             </telerik:RadGridView.Columns>
+            <telerik:RadGridView.RowStyle>
+                <Style TargetType="telerik:GridViewRow">
+                    <EventSetter Event="MouseDoubleClick" Handler="GTesis_MouseDoubleClick" />
+                </Style>
+            </telerik:RadGridView.RowStyle>
         </telerik:RadGridView>
     </Grid>
 </UserControl>

@@ -64,7 +64,6 @@
                              CanUserDeleteRows="False"
                              CanUserInsertRows="False"
                              ItemsSource="{Binding}"
-                             MouseDoubleClick="GEjecutoria_MouseDoubleClick"
                              RowHeight="80"
                              SelectionChanged="GEjecutoria_SelectionChanged"
                              ShowGroupPanel="False">
@@ -107,6 +106,7 @@
             <telerik:RadGridView.RowStyle>
                 <Style TargetType="telerik:GridViewRow">
                     <Setter Property="Height" Value="50" />
+                    <EventSetter Event="MouseDoubleClick" Handler="GEjecutoria_MouseDoubleClick" />
                 </Style>
             </telerik:RadGridView.RowStyle>
         </telerik:RadGridView>

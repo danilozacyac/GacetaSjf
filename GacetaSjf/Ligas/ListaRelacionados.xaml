@@ -5,6 +5,7 @@
         Title="Artículos relacionados"
         Width="600"
         Height="400"
+        Icon="/GacetaSjf;component/Resources/GACETA-2.ico"
         Loaded="Window_Loaded"
         ResizeMode="NoResize"
         WindowStartupLocation="CenterScreen">
@@ -27,7 +28,6 @@
                              VerticalAlignment="Stretch"
                              AutoGenerateColumns="False"
                              ItemsSource="{Binding}"
-                             MouseDoubleClick="GArticulos_MouseDoubleClick"
                              SelectionChanged="GArticulos_SelectionChanged"
                              ShowGroupPanel="False">
             <telerik:RadGridView.Columns>
@@ -41,6 +41,7 @@
             <telerik:RadGridView.RowStyle>
                 <Style TargetType="telerik:GridViewRow">
                     <Setter Property="Height" Value="35" />
+                    <EventSetter Event="MouseDoubleClick" Handler="GArticulos_MouseDoubleClick" />
                 </Style>
             </telerik:RadGridView.RowStyle>
         </telerik:RadGridView>

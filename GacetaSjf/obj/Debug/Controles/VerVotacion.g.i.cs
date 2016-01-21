@@ -48,7 +48,7 @@ namespace GacetaSjf.Controles {
         #line hidden
         
         
-        #line 33 "..\..\..\Controles\VerVotacion.xaml"
+        #line 32 "..\..\..\Controles\VerVotacion.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Primitives.Popup pUp;
         
