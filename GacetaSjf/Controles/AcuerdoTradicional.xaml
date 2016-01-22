@@ -57,6 +57,7 @@
 
         <telerik:RadGridView x:Name="GAcuerdos"
                              Grid.Column="1"
+                             Margin="0,60,0,0"
                              HorizontalAlignment="Stretch"
                              VerticalAlignment="Stretch"
                              AutoGenerateColumns="False"
@@ -108,6 +109,16 @@
                 </Style>
             </telerik:RadGridView.RowStyle>
         </telerik:RadGridView>
+        <Image x:Name="BtnPrint"
+               Grid.Column="1"
+               Width="45"
+               Height="43"
+               Margin="0,10,15,0"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Top"
+               Cursor="Hand"
+               MouseLeftButtonDown="BtnPrint_MouseLeftButtonDown"
+               Source="/GacetaSjf;component/Resources/printSave.png" />
 
     </Grid>
 </UserControl>

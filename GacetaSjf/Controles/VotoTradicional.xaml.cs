@@ -5,6 +5,7 @@ using System.Windows;
 using System.Windows.Controls;
 using GacetaSjf.Dao;
 using GacetaSjf.Model;
+using GacetaSjf.Reportes;
 
 namespace GacetaSjf.Controles
 {
@@ -78,6 +79,12 @@ namespace GacetaSjf.Controles
                 listaVotos.Add(ejecutoria);
                 TxtIus.Text = String.Empty;
             }
+        }
+
+        private void BtnPrint_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            WordReports word = new WordReports(listaVotos.Cast<Documento>());
+            word.ListadoDeDocumentosTabla();
         }
     }
 }

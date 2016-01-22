@@ -139,6 +139,7 @@
                     </Style>
                 </telerik:RadGridView.RowStyle>
             </telerik:RadGridView>
+            <Image x:Name="BtnPrint" HorizontalAlignment="Left" Height="43" Margin="627,52,0,0" VerticalAlignment="Top" Width="45" Source="/GacetaSjf;component/Resources/printSave.png" Cursor="Hand" MouseLeftButtonDown="BtnPrint_MouseLeftButtonDown"/>
         </Grid>
 
 

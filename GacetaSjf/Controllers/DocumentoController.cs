@@ -147,6 +147,34 @@ namespace GacetaSjf.Controllers
 
                                     unDocumento.flowDoc.Blocks.Add(elemento);
                                 }
+                                else if (anexo.Tipo == 22 || anexo.Tipo == 52)
+                                {
+                                    string textoRecortable = par;
+
+                                    Paragraph paragraphTesis = new Paragraph();
+                                    paragraphTesis.FontSize = 12;
+                                    paragraphTesis.FontWeight = FontWeights.Normal;
+
+                                        int index = textoRecortable.IndexOf(anexo.Frase);
+
+                                        Run textoPlano = new Run(textoRecortable.Substring(0, index));
+
+                                        Hyperlink hl = new Hyperlink(new Run(anexo.Frase));
+                                        hl.FontSize = 12;
+                                        hl.NavigateUri = new Uri("http://www.scjn.gob.mx/");
+                                        //hl.Click += new RoutedEventHandler(LinkClick);
+                                        hl.Tag = anexo;
+
+                                        paragraphTesis.Inlines.Add(textoPlano);
+                                        paragraphTesis.Inlines.Add(hl);
+
+                                        textoRecortable = textoRecortable.Substring(index + anexo.Frase.Length);
+
+
+                                    Run textosobra = new Run(textoRecortable);
+                                    paragraphTesis.Inlines.Add(textosobra);
+                                    unDocumento.flowDoc.Blocks.Add(paragraphTesis);
+                                }
 
                                 break;
                             }
@@ -164,10 +192,23 @@ namespace GacetaSjf.Controllers
                     }
                 }
 
+                var anexosDocs =  from n in documentoAMostrar.Anexos
+                                                    where n.Tipo != 22 && n.Tipo != 52
+                                                    select n;
 
-                unDocumento.LblAnexos.Visibility = Visibility.Collapsed;
-                unDocumento.LstAnexos.Visibility = Visibility.Visible;
-                unDocumento.LstAnexos.DataContext = documentoAMostrar.Anexos;
+                
+                unDocumento.LstAnexos.DataContext = anexosDocs;
+
+                if (anexosDocs.Count() > 0)
+                {
+                    unDocumento.LblAnexos.Visibility = Visibility.Visible;
+                    unDocumento.LstAnexos.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    unDocumento.LblAnexos.Visibility = Visibility.Collapsed;
+                    unDocumento.LstAnexos.Visibility = Visibility.Collapsed;
+                }
             }
 
             

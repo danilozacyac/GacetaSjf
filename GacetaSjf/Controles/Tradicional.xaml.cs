@@ -8,6 +8,7 @@ using GacetaSjf.Dao;
 using GacetaSjf.Model;
 using GacetaSjf.Singletons;
 using MantesisVerIusCommonObjects.Dto;
+using GacetaSjf.Reportes;
 
 namespace GacetaSjf.Controles
 {
@@ -120,6 +121,12 @@ namespace GacetaSjf.Controles
             }
 
 
+        }
+
+        private void BtnPrint_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            WordReports word = new WordReports(listaTesis);
+            word.ListadoDeTesisTabla();
         }
     }
 }
