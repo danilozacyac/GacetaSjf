@@ -97,27 +97,32 @@
 
 
                 </telerik:RadRibbonGroup>
-                <telerik:RadRibbonGroup Header="Indices">
+                <telerik:RadRibbonGroup Header="Índice Anual">
                     <telerik:RadRibbonButton x:Name="BtnIndiceTesis"
+                                             Click="BtnIndiceTesis_Click"
                                              Content="Tesis"
                                              LargeImage="Resources/tesis.png"
-                                             Size="Large" Click="BtnIndiceTesis_Click" />
+                                             Size="Large" />
                     <telerik:RadRibbonButton x:Name="BtnIndiceEjecutoria"
+                                             Click="BtnIndiceEjecutoria_Click"
                                              Content="Ejecutorias"
                                              LargeImage="Resources/ejecutoria.png"
-                                             Size="Large" Click="BtnIndiceEjecutoria_Click"  />
+                                             Size="Large" />
                     <telerik:RadRibbonButton x:Name="BtnIndiceScjn"
+                                             Click="BtnIndiceScjn_Click"
                                              Content="A. SCJN"
                                              LargeImage="Resources/acuerdo.png"
-                                             Size="Large" Click="BtnIndiceScjn_Click"   />
+                                             Size="Large" />
                     <telerik:RadRibbonButton x:Name="BtnIndiceCjf"
+                                             Click="BtnIndiceCjf_Click"
                                              Content="A. CJF"
                                              LargeImage="Resources/acuerdo.png"
-                                             Size="Large" Click="BtnIndiceCjf_Click"   />
+                                             Size="Large" />
                     <telerik:RadRibbonButton x:Name="BtnIndiceConjunto"
+                                             Click="BtnIndiceConjunto_Click"
                                              Content="A. Conjuntos"
                                              LargeImage="Resources/acuerdo.png"
-                                             Size="Large" Click="BtnIndiceConjunto_Click"   />
+                                             Size="Large" />
 
                 </telerik:RadRibbonGroup>
             </telerik:RadRibbonTab>

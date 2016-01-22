@@ -11,10 +11,10 @@
              d:DesignWidth="300"
              mc:Ignorable="d">
     <UserControl.Resources>
-        <Style x:Key="style1" TargetType="telerik:GridViewCell">
+        <!--<Style x:Key="style1" TargetType="telerik:GridViewCell">
             <Setter Property="Background" Value="{telerik:Windows8Resource ResourceKey=AccentBrush}" />
             <Setter Property="Foreground" Value="{telerik:Windows8Resource ResourceKey=MainBrush}" />
-        </Style>
+        </Style>-->
         <Converters:Instanciaconverter x:Key="instConverter" />
     </UserControl.Resources>
     <Grid>
@@ -31,7 +31,7 @@
                              ShowGroupPanel="False">
             <telerik:RadGridView.Columns>
                 <CustomColumn:MyColumnNumber Width="30"
-                                             CellStyle="{StaticResource style1}"
+                                             CellStyle="{StaticResource ColumnaNumerica}"
                                              Header="#" />
                 <telerik:GridViewDataColumn Width="*"
                                             DataMemberBinding="{Binding TextoListaIndice}"
