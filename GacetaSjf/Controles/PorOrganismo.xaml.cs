@@ -25,7 +25,7 @@ namespace GacetaSjf.Controles
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)
         {
-            TreeOrganismos.DataContext = new OrganismosModel().GetOrganismos();
+            TreeOrganismos.DataContext = new OrganismosModel().GetOrganismos(null);
         }
 
         private void TreeOrganismos_SelectionChanged(object sender, SelectionChangedEventArgs e)
