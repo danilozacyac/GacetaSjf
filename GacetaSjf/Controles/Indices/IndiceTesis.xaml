@@ -6,6 +6,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:telerik="http://schemas.telerik.com/2008/xaml/presentation"
+             Background="White"
+             Loaded="UserControl_Loaded"
              d:DesignHeight="300"
              d:DesignWidth="300"
              mc:Ignorable="d">
@@ -17,6 +19,35 @@
         <Converters:Instanciaconverter x:Key="instConverter" />
     </UserControl.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Image x:Name="BtnPrint"
+               Width="45"
+               Height="43"
+               Margin="0,10,15,0"
+               HorizontalAlignment="Right"
+               VerticalAlignment="Top"
+               Cursor="Hand"
+               MouseLeftButtonDown="BtnPrint_MouseLeftButtonDown"
+               Source="/GacetaSjf;component/Resources/printSave.png" />
+        <Label Margin="11,6,0,0"
+               HorizontalAlignment="Left"
+               VerticalAlignment="Top"
+               Content="Filtrar por materia:" />
+        <telerik:RadComboBox x:Name="CbxMaterias"
+                             Width="175"
+                             Margin="10,31,0,0"
+                             HorizontalAlignment="Left"
+                             VerticalAlignment="Top"
+                             DisplayMemberPath="Materia"
+                             ItemsSource="{Binding}"
+                             SelectedValuePath="IdMateria"
+                             SelectionChanged="CbxMaterias_SelectionChanged" />
+
+
         <telerik:RadGridView x:Name="GTesis"
                              Grid.Row="1"
                              HorizontalAlignment="Stretch"
@@ -27,7 +58,8 @@
                              ItemsSource="{Binding}"
                              Loaded="GTesis_Loaded"
                              RowIndicatorVisibility="Collapsed"
-                             ShowGroupPanel="False" SelectionChanged="GTesis_SelectionChanged">
+                             SelectionChanged="GTesis_SelectionChanged"
+                             ShowGroupPanel="False">
             <telerik:RadGridView.Columns>
                 <CustomColumn:MyColumnNumber Width="30"
                                              CellStyle="{StaticResource style1}"
@@ -69,5 +101,6 @@
                 </Style>
             </telerik:RadGridView.RowStyle>
         </telerik:RadGridView>
+
     </Grid>
 </UserControl>

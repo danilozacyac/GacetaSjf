@@ -40,7 +40,7 @@ namespace GacetaSjf.Model
                         tesis.Rubro = reader["Rubro"].ToString();
                         tesis.TaTj = Convert.ToInt32(reader["ta/tj"]);
                         tesis.Sala = Convert.ToInt32(reader["Sala"]);
-                        tesis.LocAbr = reader["LocAbr"].ToString();
+                        tesis.LocAbr = reader["LocAbr"].ToString().Replace("\r\n","");
                         tesis.VolumenInt = Convert.ToInt32(reader["Volumen"]);
 
                         listaTesis.Add(tesis);
@@ -67,7 +67,11 @@ namespace GacetaSjf.Model
             return listaTesis;
         }
 
-
+        /// <summary>
+        /// Obtiene todos los datos de una tesis
+        /// </summary>
+        /// <param name="ius">Número de la tesis de la cual se requieren su información</param>
+        /// <returns></returns>
         public TesisDto GetTesis(int ius)
         {
             TesisDto tesis = null;
@@ -99,7 +103,7 @@ namespace GacetaSjf.Model
                         tesis.EpocaInt = Convert.ToInt32(reader["Epoca"]);
                         tesis.TaTj = Convert.ToInt32(reader["ta/tj"]);
                         tesis.Sala = Convert.ToInt32(reader["Sala"]);
-                        tesis.LocAbr = reader["LocAbr"].ToString();
+                        tesis.LocAbr = reader["LocAbr"].ToString().Replace("\r\n", "");
                         tesis.VolumenInt = Convert.ToInt32(reader["Volumen"]);
                         tesis.Fuente = Convert.ToInt32(reader["Fuente"]);
                         tesis.Pagina = reader["Pagina"].ToString();
@@ -131,6 +135,11 @@ namespace GacetaSjf.Model
             return tesis;
         }
 
+        /// <summary>
+        /// Obtiene todas las tesis que estan relacionadas a un tema u ordenamiento legal
+        /// </summary>
+        /// <param name="tema">Tema u ordenamiento legal seleccionado</param>
+        /// <returns></returns>
         public ObservableCollection<TesisDto> GetTesis(Temas tema)
         {
             ObservableCollection<TesisDto> listaTesis = new ObservableCollection<TesisDto>();
@@ -140,7 +149,8 @@ namespace GacetaSjf.Model
             OleDbCommand cmd = null;
             OleDbDataReader reader = null;
 
-            String sqlCadena = "SELECT * FROM zzzzzTematicoIUS Where IdTema = @IdTema ORDER BY Rubro";
+            String sqlCadena = "SELECT Z.*, T.LocAbr " +
+                            " FROM Tesis T INNER JOIN zzzzzTematicoIUS Z ON T.IUS = Z.IUS Where IdTema = @IdTema ORDER BY Z.Rubro";
 
             try
             {
@@ -158,6 +168,7 @@ namespace GacetaSjf.Model
                         tesis.Ius = Convert.ToInt32(reader["Ius"]);
                         tesis.Tesis = reader["CveTesis"].ToString();
                         tesis.Rubro = reader["Rubro"].ToString();
+                        tesis.LocAbr = reader["LocAbr"].ToString().Replace("\r\n","");
 
                         listaTesis.Add(tesis);
                     }
@@ -183,6 +194,12 @@ namespace GacetaSjf.Model
             return listaTesis;
         }
 
+        /// <summary>
+        /// Obtiene el listado de tesis publicadas por el organismo seleccionado
+        /// </summary>
+        /// <param name="idSala"></param>
+        /// <param name="idInstancia"></param>
+        /// <returns></returns>
         public ObservableCollection<TesisDto> GetTesis(int idSala, int idInstancia)
         {
             ObservableCollection<TesisDto> listaTesis = new ObservableCollection<TesisDto>();
@@ -222,7 +239,7 @@ namespace GacetaSjf.Model
                         tesis.Rubro = reader["Rubro"].ToString();
                         tesis.TaTj = Convert.ToInt32(reader["ta/tj"]);
                         tesis.Sala = Convert.ToInt32(reader["Sala"]);
-                        tesis.LocAbr = reader["LocAbr"].ToString();
+                        tesis.LocAbr = reader["LocAbr"].ToString().Replace("\r\n", "");
                         tesis.VolumenInt = Convert.ToInt32(reader["Volumen"]);
 
                         listaTesis.Add(tesis);
@@ -279,6 +296,9 @@ namespace GacetaSjf.Model
                         tesis.Pagina = reader["Pag"].ToString();
                         //tesis.VolumenInt = Convert.ToInt32(reader["Volumen"]);
                         tesis.Volumen = DateTimeUtilities.ToMonthName( Convert.ToInt32(reader["xMes"]));
+                        tesis.Materia1 = Convert.ToInt16(reader["Mat1"]);
+                        tesis.Materia2 = Convert.ToInt16(reader["Mat2"]);
+                        tesis.Materia3 = Convert.ToInt16(reader["Mat3"]);
                         
                         listaTesis.Add(tesis);
                     }

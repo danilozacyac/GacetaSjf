@@ -158,6 +158,7 @@
     <Compile Include="Model\DatosCompartidosModel.cs" />
     <Compile Include="Model\EjecutoriaModel.cs" />
     <Compile Include="Model\LigasModel.cs" />
+    <Compile Include="Model\MateriasModel.cs" />
     <Compile Include="Model\TemasModel.cs" />
     <Compile Include="Model\VotosModel.cs" />
     <Compile Include="Properties\Resources.Designer.cs">

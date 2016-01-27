@@ -32,10 +32,9 @@ namespace GacetaSjf.Controles
         {
             selectedOrganismo = TreeOrganismos.SelectedItem as Organismos;
 
-            if (selectedOrganismo.CKey.StartsWith("S"))
+            if (selectedOrganismo.CKey != null && selectedOrganismo.CKey.StartsWith("S"))
             {
-                char[] letras = selectedOrganismo.CKey.ToCharArray();
-                char queTraigo = letras.Last();
+                int queTraigo = (selectedOrganismo.CKey.EndsWith("6")) ? 6 : (selectedOrganismo.CKey.EndsWith("1")) ? 1 : 2;
 
                 listaTesis = new TesisSjfModel().GetTesis(Convert.ToInt16(queTraigo), Convert.ToInt16(queTraigo));
             }else

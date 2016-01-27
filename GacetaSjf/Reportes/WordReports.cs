@@ -8,6 +8,7 @@ using ScjnUtilities;
 using System.IO;
 using System.Collections.Generic;
 using GacetaSjf.Singletons;
+using GacetaSjf.Converters;
 
 namespace GacetaSjf.Reportes
 {
@@ -137,6 +138,114 @@ namespace GacetaSjf.Reportes
             }
         }
 
+
+        public void ListadoDeTesisIndice()
+        {
+            oWord = new Microsoft.Office.Interop.Word.Application();
+            oDoc = oWord.Documents.Add(ref oMissing, ref oMissing, ref oMissing, ref oMissing);
+            oDoc.PageSetup.Orientation = WdOrientation.wdOrientLandscape;
+
+            string filePath = Path.GetTempFileName() + ".docx";
+
+            try
+            {
+                //Insert a paragraph at the beginning of the document.
+                Microsoft.Office.Interop.Word.Paragraph oPara1;
+                oPara1 = oDoc.Content.Paragraphs.Add(ref oMissing);
+                //oPara1.Range.ParagraphFormat.Space1;
+                oPara1.Range.Text = "SUPREMA CORTE DE JUSTICIA DE LA NACIÓN";
+
+                oPara1.Range.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                oPara1.Range.Font.Bold = 1;
+                oPara1.Range.Font.Size = 10;
+                oPara1.Range.Font.Name = "Arial";
+                oPara1.Format.SpaceAfter = 0;    //24 pt spacing after paragraph.
+                oPara1.Range.InsertParagraphAfter();
+                oPara1.Range.Text = "GACETA DEL SEMANARIO JUDICIAL DE LA FEDERACIÓN";
+                oPara1.Range.InsertParagraphAfter();
+                oPara1.Range.Text = "Indice Semestral ";
+                oPara1.Range.InsertParagraphAfter();
+                oPara1.Range.Text = "TOTAL:   " + listaTesis.Count() + " Tesis";
+                oPara1.Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphRight;
+                oPara1.Range.InsertParagraphAfter();
+                oPara1.Range.InsertParagraphAfter();
+
+
+                int fila = 1;
+                Range wrdRng = oDoc.Bookmarks.get_Item(ref oEndOfDoc).Range;
+
+                Table oTable = oDoc.Tables.Add(wrdRng, listaTesis.Count + 2, 6, ref oMissing, ref oMissing);
+                //oTable.Rows[1].HeadingFormat = 1;
+                oTable.Range.ParagraphFormat.SpaceAfter = 6;
+                oTable.Range.ParagraphFormat.Alignment = Microsoft.Office.Interop.Word.WdParagraphAlignment.wdAlignParagraphCenter;
+                oTable.Range.Font.Size = 9;
+                oTable.Range.Font.Name = "Arial";
+                oTable.Range.Font.Bold = 0;
+                oTable.Borders.Enable = 1;
+
+                oTable.Columns[1].SetWidth(40, WdRulerStyle.wdAdjustSameWidth);
+                oTable.Columns[2].SetWidth(320, WdRulerStyle.wdAdjustSameWidth);
+                oTable.Columns[3].SetWidth(80, WdRulerStyle.wdAdjustSameWidth);
+                oTable.Columns[4].SetWidth(60, WdRulerStyle.wdAdjustSameWidth);
+                oTable.Columns[5].SetWidth(60, WdRulerStyle.wdAdjustSameWidth);
+                oTable.Columns[6].SetWidth(70, WdRulerStyle.wdAdjustSameWidth);
+
+
+                oTable.Cell(fila, 1).Range.Text = "#";
+                oTable.Cell(fila, 2).Range.Text = "Rubro";
+                oTable.Cell(fila, 3).Range.Text = "Instancia";
+                oTable.Cell(fila, 4).Range.Text = "Mes";
+                oTable.Cell(fila, 5).Range.Text = "Página";
+                oTable.Cell(fila, 6).Range.Text = "Reg. Digital";
+
+                oTable.Cell(fila, 1).Range.Font.Bold = 1;
+                oTable.Cell(fila, 2).Range.Font.Bold = 1;
+                oTable.Cell(fila, 3).Range.Font.Bold = 1;
+                oTable.Cell(fila, 4).Range.Font.Bold = 1;
+                oTable.Cell(fila, 5).Range.Font.Bold = 1;
+                oTable.Cell(fila, 6).Range.Font.Bold = 1;
+
+
+                fila++;
+                int consecutivo = 1;
+
+                foreach (TesisDto print in listaTesis)
+                {
+                    oTable.Cell(fila, 1).Range.Text = consecutivo.ToString();
+                    oTable.Cell(fila, 2).Range.Text = print.Rubro;
+                    oTable.Cell(fila, 2).Range.ParagraphFormat.Alignment = WdParagraphAlignment.wdAlignParagraphJustify;
+                    oTable.Cell(fila, 3).Range.Text = new Instanciaconverter().Convert(print.Sala,null,null,null).ToString();
+                    oTable.Cell(fila, 4).Range.Text = print.Volumen;
+                    oTable.Cell(fila, 5).Range.Text = print.Pagina;
+                    oTable.Cell(fila, 6).Range.Text = print.Ius.ToString();
+
+                    fila++;
+                    consecutivo++;
+                }
+
+
+                foreach (Section wordSection in oDoc.Sections)
+                {
+                    object pagealign = WdPageNumberAlignment.wdAlignPageNumberRight;
+                    object firstpage = true;
+                    wordSection.Footers[WdHeaderFooterIndex.wdHeaderFooterPrimary].PageNumbers.Add(ref pagealign, ref firstpage);
+                }
+
+                oWord.ActiveDocument.SaveAs(filePath);
+                oWord.ActiveDocument.Saved = true;
+            }
+            catch (Exception ex)
+            {
+                string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,WordReports", "ListadoDeTesis");
+            }
+            finally
+            {
+                oWord.Visible = true;
+                //oDoc.Close();
+
+            }
+        }
 
 
         public void ListadoDeDocumentosTabla()
