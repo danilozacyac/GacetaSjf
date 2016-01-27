@@ -32,14 +32,15 @@ namespace GacetaSjf.Controles
         {
             selectedOrganismo = TreeOrganismos.SelectedItem as Organismos;
 
-            //if (selectedOrganismo.IdOrganismo < 7)
-            //{
-            //    listaTesis = new TesisSjfModel().GetTesis(selectedOrganismo.IdOrganismo, selectedOrganismo.IdOrganismo);
-            //}
-            //else
-            //{
+            if (selectedOrganismo.CKey.StartsWith("S"))
+            {
+                char[] letras = selectedOrganismo.CKey.ToCharArray();
+                char queTraigo = letras.Last();
+
+                listaTesis = new TesisSjfModel().GetTesis(Convert.ToInt16(queTraigo), Convert.ToInt16(queTraigo));
+            }else
                 listaTesis = new TesisSjfModel().GetTesis(selectedOrganismo.IdOrganismo, selectedOrganismo.IdOrganismo);
-            //}
+            
 
             GTesis.DataContext = listaTesis;
         }
