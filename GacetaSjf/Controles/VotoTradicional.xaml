@@ -1,6 +1,7 @@
 ﻿<UserControl x:Class="GacetaSjf.Controles.VotoTradicional"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:Converter="clr-namespace:GacetaSjf.Converters"
              xmlns:CustomColumn="clr-namespace:GacetaSjf.Controles"
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -14,6 +15,7 @@
         <Style x:Key="CustomCellStyle" TargetType="telerik:GridViewCell">
             <Setter Property="VerticalContentAlignment" Value="Top" />
         </Style>
+        <Converter:TipoVotoConverter x:Key="votosConv" />
     </UserControl.Resources>
     <Grid>
 
@@ -107,9 +109,18 @@
                                             CellStyle="{StaticResource CustomCellStyle}"
                                             DataMemberBinding="{Binding Emisor}"
                                             Header="Emisor"
-                                            IsFilterable="False"
+                                            IsFilterable="True"
                                             IsReadOnly="True"
                                             TextWrapping="Wrap" />
+                <telerik:GridViewDataColumn Width=".2*"
+                                            CellStyle="{StaticResource CustomCellStyle}"
+                                            DataMemberBinding="{Binding TipoVoto,
+                                                                        Converter={StaticResource votosConv}}"
+                                            Header="Tipo de Voto"
+                                            IsFilterable="True"
+                                            IsReadOnly="True"
+                                            TextWrapping="Wrap" />
+
             </telerik:RadGridView.Columns>
             <telerik:RadGridView.RowStyle>
                 <Style TargetType="telerik:GridViewRow">

@@ -57,9 +57,9 @@ namespace GacetaSjf.Controles.Indices
         {
             //ObservableCollection<TesisDto> queImprimir = GTesis.Items as ObservableCollection<TesisDto>;
 
-            IEnumerable<TesisDto> permissionList = GTesis.Items.Cast<TesisDto>();
+            IEnumerable<TesisDto> tesisImprimir = GTesis.Items.Cast<TesisDto>();
 
-            WordReports word = new WordReports(new ObservableCollection<TesisDto>(permissionList));
+            WordReports word = new WordReports(new ObservableCollection<TesisDto>(tesisImprimir));
             word.ListadoDeTesisIndice();
         }
 

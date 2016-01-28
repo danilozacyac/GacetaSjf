@@ -9,6 +9,7 @@ using GacetaSjf.Model;
 using GacetaSjf.Singletons;
 using MantesisVerIusCommonObjects.Dto;
 using GacetaSjf.Reportes;
+using System.Collections.Generic;
 
 namespace GacetaSjf.Controles
 {
@@ -97,10 +98,14 @@ namespace GacetaSjf.Controles
 
         private void GTesis_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
-            int posActual = listaTesis.IndexOf(selectedTesis);
 
-            UnaTesis showTesis = new UnaTesis(listaTesis, posActual);
+            ObservableCollection<TesisDto> listaFiltrada = new ObservableCollection<TesisDto>(GTesis.Items.Cast<TesisDto>());
+
+            int posActual = listaFiltrada.IndexOf(selectedTesis);
+
+            UnaTesis showTesis = new UnaTesis(listaFiltrada, posActual);
             showTesis.ShowDialog();
+           
         }
 
         private void CbxInstancia_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -125,7 +130,9 @@ namespace GacetaSjf.Controles
 
         private void BtnPrint_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            WordReports word = new WordReports(listaTesis);
+            IEnumerable<TesisDto> tesisImprimir = GTesis.Items.Cast<TesisDto>();
+
+            WordReports word = new WordReports(new ObservableCollection<TesisDto>(tesisImprimir));
             word.ListadoDeTesisTabla();
         }
     }

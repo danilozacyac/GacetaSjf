@@ -131,6 +131,7 @@
     <Compile Include="Converters\Instanciaconverter.cs" />
     <Compile Include="Converters\MateriaConverter.cs" />
     <Compile Include="Converters\PdfImageConverter.cs" />
+    <Compile Include="Converters\TipoVotoConverter.cs" />
     <Compile Include="Converters\VolumenConverter.cs" />
     <Compile Include="Dao\Anexos.cs" />
     <Compile Include="Dao\Articulos.cs" />

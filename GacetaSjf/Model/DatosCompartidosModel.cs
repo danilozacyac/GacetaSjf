@@ -111,6 +111,56 @@ namespace GacetaSjf.Model
         }
 
 
+        public List<DatosCompartidos> GetSubVolumenes()
+        {
+            List<DatosCompartidos> listaSubVolumenes = new List<DatosCompartidos>();
+
+            OleDbConnection connection = new OleDbConnection(connectionString);
+            OleDbCommand cmd = null;
+            OleDbDataReader reader = null;
+
+            String sqlCadena = "SELECT * FROM SubVolumen ";
+
+            try
+            {
+                connection.Open();
+
+                cmd = new OleDbCommand(sqlCadena, connection);
+                reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        DatosCompartidos datos = new DatosCompartidos();
+                        datos.IdElemento = Convert.ToInt32(reader["IdSubVolumen"]);
+                        datos.Descripcion = reader["txtVolumen"].ToString();
+
+                        listaSubVolumenes.Add(datos);
+                    }
+                }
+                cmd.Dispose();
+                reader.Close();
+            }
+            catch (OleDbException ex)
+            {
+                string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,DatosCompartidosModel", "Gaceta");
+            }
+            catch (Exception ex)
+            {
+                string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,DatosCompartidosModel", "Gaceta");
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return listaSubVolumenes;
+        }
+
+
         public List<DatosCompartidos> GetInstancias()
         {
             List<DatosCompartidos> listaInstancias = new List<DatosCompartidos>();
@@ -208,6 +258,56 @@ namespace GacetaSjf.Model
             }
 
             return listaFuentes;
+        }
+
+
+        public List<DatosCompartidos> GetTiposVotos()
+        {
+            List<DatosCompartidos> tiposVotos = new List<DatosCompartidos>();
+
+            OleDbConnection connection = new OleDbConnection(connectionString);
+            OleDbCommand cmd = null;
+            OleDbDataReader reader = null;
+
+            String sqlCadena = "SELECT * FROM Clasificacion WHERE Activo = 1 ORDER BY IdTipo";
+
+            try
+            {
+                connection.Open();
+
+                cmd = new OleDbCommand(sqlCadena, connection);
+                reader = cmd.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        DatosCompartidos datos = new DatosCompartidos();
+                        datos.IdElemento = Convert.ToInt32(reader["IdTipo"]);
+                        datos.Descripcion = reader["DescTipo"].ToString();
+
+                        tiposVotos.Add(datos);
+                    }
+                }
+                cmd.Dispose();
+                reader.Close();
+            }
+            catch (OleDbException ex)
+            {
+                string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,DatosCompartidosModel", "Gaceta");
+            }
+            catch (Exception ex)
+            {
+                string methodName = System.Reflection.MethodBase.GetCurrentMethod().Name;
+                ErrorUtilities.SetNewErrorMessage(ex, methodName + " Exception,DatosCompartidosModel", "Gaceta");
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return tiposVotos;
         }
 
     }

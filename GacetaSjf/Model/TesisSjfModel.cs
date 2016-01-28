@@ -111,7 +111,7 @@ namespace GacetaSjf.Model
                         tesis.Materia2 = Convert.ToInt32(reader["Materia2"]);
                         tesis.Materia3 = Convert.ToInt32(reader["Materia3"]);
                         tesis.ConsecIndx = Convert.ToInt32(reader["ConsecIndx"]);
-
+                        tesis.IdSubVolumen = Convert.ToInt32(reader["IdSubVolumen"]);
                     }
                 }
                 cmd.Dispose();

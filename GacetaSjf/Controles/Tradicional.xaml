@@ -101,9 +101,9 @@
             <Image x:Name="BtnPrint"
                    Width="45"
                    Height="43"
-                   Margin="627,52,0,0"
-                   HorizontalAlignment="Left"
-                   VerticalAlignment="Top"
+                   Margin="0,0,15,10"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Bottom"
                    Cursor="Hand"
                    MouseLeftButtonDown="BtnPrint_MouseLeftButtonDown"
                    Source="/GacetaSjf;component/Resources/printSave.png" />

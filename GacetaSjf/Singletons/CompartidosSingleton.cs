@@ -10,9 +10,11 @@ namespace GacetaSjf.Singletons
     {
         private static List<DatosCompartidos> epocas;
         private static List<DatosCompartidos> volumenes;
+        private static List<DatosCompartidos> subVolumenes;
         private static List<DatosCompartidos> instancias;
         private static List<DatosCompartidos> instanciasTesis;
         private static List<DatosCompartidos> fuentes;
+        private static List<DatosCompartidos> tipoVotos;
 
         private CompartidosSingleton()
         {
@@ -38,6 +40,17 @@ namespace GacetaSjf.Singletons
                     volumenes = new DatosCompartidosModel().GetVolumenes();
 
                 return volumenes;
+            }
+        }
+
+        public static List<DatosCompartidos> SubVolumenes
+        {
+            get
+            {
+                if (subVolumenes == null)
+                    subVolumenes = new DatosCompartidosModel().GetSubVolumenes();
+
+                return subVolumenes;
             }
         }
 
@@ -79,6 +92,17 @@ namespace GacetaSjf.Singletons
                     fuentes = new DatosCompartidosModel().GetFuentes();
 
                 return fuentes;
+            }
+        }
+
+        public static List<DatosCompartidos> TipoVotos
+        {
+            get
+            {
+                if (tipoVotos == null)
+                    tipoVotos = new DatosCompartidosModel().GetTiposVotos();
+
+                return tipoVotos;
             }
         }
     }

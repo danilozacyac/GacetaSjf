@@ -9,6 +9,7 @@ using MantesisVerIusCommonObjects.Dto;
 using System.Windows.Media;
 using System.Collections.Generic;
 using GacetaSjf.Ligas;
+using GacetaSjf.Singletons;
 
 namespace GacetaSjf.Controllers
 {
@@ -98,6 +99,8 @@ namespace GacetaSjf.Controllers
             //Agregamos Nota Publica
             this.LoadParteTesis(tesisMostrada.NotaPublica, ligasTesis, 1000);
 
+            unaTesis.TxtSemanario.Text = "Semanario Judicial de la Federación, " + this.GetTextoPublicaSemanario(tesisMostrada.Precedentes);
+            unaTesis.TxtGaceta.Text = this.GetTextoPublicaGaceta();
         }
 
         public void LoadNoBindingValues()
@@ -320,13 +323,13 @@ namespace GacetaSjf.Controllers
                 case 1: // Toda la tesis
                     Clipboard.SetText(
                                       unaTesis.TxtEpoca.Text + "\r\n" + "Registro: " + tesisMostrada.Ius + "\r\n" +
-                                      "Instancia: " + unaTesis.TxtInstancia.Text + "\r\n" +
+                                      "Instancia: " + tesisMostrada.Sala + "\r\n" +
                                       ((unaTesis.RbtJurisp.IsChecked == true) ? "Jurisprudencia" : "Tesis Aislada") + "\r\n" +
-                                      "Fuente: " + unaTesis.CbxFuente.Text + "\r\n" +
-                                      unaTesis.TxtVolumen.Text + "\r\n" +
+                                      "Fuente: " + tesisMostrada.Fuente + "\r\n" +
+                                      tesisMostrada.Volumen + "\r\n" +
                                       "Materia(s): " + unaTesis.TxtMat1.Text + ((!unaTesis.TxtMat2.Text.Equals("<sin materia>"))
                                                                                 ? (", " + unaTesis.TxtMat2.Text + ((!unaTesis.TxtMat3.Text.Equals("<sin materia>")) ? ", " + unaTesis.TxtMat3.Text : "")) : "") + "\r\n" +
-                                      "Tesis: " + unaTesis.TxtTesis.Text + "\r\n" + "Página: " + unaTesis.TxtPag.Text + "\r\n" +
+                                      "Tesis: " + unaTesis.TxtTesis.Text + "\r\n" + "Página: " + tesisMostrada.Pagina + "\r\n" +
                                       "\r\n" +
                                       ((!unaTesis.TxtGenealogia.Text.Equals(String.Empty)) ? "Genealogía: " + unaTesis.TxtGenealogia.Text + "\r\n" : String.Empty) +
                                       tesisMostrada.Rubro + "\r\n" + tesisMostrada.Texto + "\r\n" +
@@ -361,7 +364,35 @@ namespace GacetaSjf.Controllers
         }
 
 
+        private string GetTextoPublicaSemanario(string precedentes)
+        {
+            string [] cadenas =  precedentes.Replace("\n","").Split(new char[] { '\r' }, StringSplitOptions.RemoveEmptyEntries);
 
+            string publica = cadenas[cadenas.Count() - 1];
+
+            int posicion = publica.IndexOf("horas");
+
+            string textoSemanario = publica.Substring(24, posicion - 24) + " horas";
+
+            return textoSemanario;
+        }
+
+        private string GetTextoPublicaGaceta()
+        {
+            string fuente = (from n in CompartidosSingleton.Fuentes
+                             where n.IdElemento == tesisMostrada.Fuente
+                             select n.Descripcion).ToList()[0];
+
+            string volumen = (from n in CompartidosSingleton.Volumenes
+                              where n.IdElemento == tesisMostrada.VolumenInt
+                              select n.Descripcion).ToList()[0];
+
+            string subVolumen = (from n in CompartidosSingleton.SubVolumenes
+                                 where n.IdElemento == tesisMostrada.IdSubVolumen
+                                 select n.Descripcion).ToList()[0];
+
+            return fuente + ", " + volumen + ", " + subVolumen + ", Página " + tesisMostrada.Pagina;
+        }
 
         #endregion
 
