@@ -49,6 +49,13 @@
                 VerticalAlignment="Top"
                 Click="BtnSecuencial_Click"
                 Content="Lectura Secuencial" />
+        <Button x:Name="BtnBusqueda"
+                Width="180"
+                Margin="10,72,0,0"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                Click="BtnBusqueda_Click"
+                Content="Búsqueda por palabra" />
 
 
         <Grid Grid.Column="1">
@@ -96,7 +103,8 @@
                                       Margin="130,64,0,0"
                                       HorizontalAlignment="Left"
                                       VerticalAlignment="Top"
-                                      LabelText="Rubro, texto, precedentes o clave de tesis..." Search="SearchTextBox_Search" />
+                                      LabelText="Rubro, texto, precedentes o clave de tesis..."
+                                      Search="SearchTextBox_Search" />
             <Image x:Name="BtnPrint"
                    Width="45"
                    Height="43"
@@ -153,7 +161,6 @@
                 </telerik:RadGridView.RowStyle>
             </telerik:RadGridView>
         </Grid>
-        <Button x:Name="BtnBusqueda" Content="Búsqueda por palabra" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="180" Click="BtnBusqueda_Click"/>
 
 
     </Grid>

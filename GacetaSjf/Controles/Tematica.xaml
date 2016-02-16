@@ -32,7 +32,8 @@
         <UIControls:SearchTextBox Margin="10,5,30,0"
                                   HorizontalAlignment="Stretch"
                                   VerticalAlignment="Top"
-                                  LabelText="Buscar Tema..." Search="SearchTextBox_Search" />
+                                  LabelText="Buscar Tema..."
+                                  Search="SearchTextBox_Search" />
         <telerik:RadGridView x:Name="GTesis"
                              Grid.Column="1"
                              Margin="10,30,10,0"
@@ -79,6 +80,13 @@
                 </Style>
             </telerik:RadGridView.RowStyle>
         </telerik:RadGridView>
-        <UIControls:SearchTextBox x:Name="SearchTesis" Grid.Column="1" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top" LabelText="Buscar por rubro o clave de tesis..." Width="250" Search="SearchTesis_Search" />
+        <UIControls:SearchTextBox x:Name="SearchTesis"
+                                  Grid.Column="1"
+                                  Width="250"
+                                  Margin="10,5,0,0"
+                                  HorizontalAlignment="Left"
+                                  VerticalAlignment="Top"
+                                  LabelText="Buscar por rubro o clave de tesis..."
+                                  Search="SearchTesis_Search" />
     </Grid>
 </UserControl>

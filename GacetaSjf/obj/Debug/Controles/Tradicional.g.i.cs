@@ -88,7 +88,15 @@ namespace GacetaSjf.Controles {
         #line hidden
         
         
-        #line 59 "..\..\..\Controles\Tradicional.xaml"
+        #line 52 "..\..\..\Controles\Tradicional.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button BtnBusqueda;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 66 "..\..\..\Controles\Tradicional.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal Telerik.Windows.Controls.RadComboBox CbxVolumen;
         
@@ -96,7 +104,7 @@ namespace GacetaSjf.Controles {
         #line hidden
         
         
-        #line 81 "..\..\..\Controles\Tradicional.xaml"
+        #line 88 "..\..\..\Controles\Tradicional.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal Telerik.Windows.Controls.RadComboBox CbxInstancia;
         
@@ -104,7 +112,7 @@ namespace GacetaSjf.Controles {
         #line hidden
         
         
-        #line 100 "..\..\..\Controles\Tradicional.xaml"
+        #line 108 "..\..\..\Controles\Tradicional.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.Image BtnPrint;
         
@@ -112,17 +120,9 @@ namespace GacetaSjf.Controles {
         #line hidden
         
         
-        #line 110 "..\..\..\Controles\Tradicional.xaml"
+        #line 118 "..\..\..\Controles\Tradicional.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal Telerik.Windows.Controls.RadGridView GTesis;
-        
-        #line default
-        #line hidden
-        
-        
-        #line 156 "..\..\..\Controles\Tradicional.xaml"
-        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
-        internal System.Windows.Controls.Button BtnBusqueda;
         
         #line default
         #line hidden
@@ -194,54 +194,54 @@ namespace GacetaSjf.Controles {
             #line hidden
             return;
             case 5:
-            this.CbxVolumen = ((Telerik.Windows.Controls.RadComboBox)(target));
+            this.BtnBusqueda = ((System.Windows.Controls.Button)(target));
             
-            #line 67 "..\..\..\Controles\Tradicional.xaml"
-            this.CbxVolumen.SelectionChanged += new System.Windows.Controls.SelectionChangedEventHandler(this.CbxVolumen_SelectionChanged);
+            #line 57 "..\..\..\Controles\Tradicional.xaml"
+            this.BtnBusqueda.Click += new System.Windows.RoutedEventHandler(this.BtnBusqueda_Click);
             
             #line default
             #line hidden
             return;
             case 6:
-            this.CbxInstancia = ((Telerik.Windows.Controls.RadComboBox)(target));
+            this.CbxVolumen = ((Telerik.Windows.Controls.RadComboBox)(target));
             
-            #line 89 "..\..\..\Controles\Tradicional.xaml"
-            this.CbxInstancia.SelectionChanged += new System.Windows.Controls.SelectionChangedEventHandler(this.CbxInstancia_SelectionChanged);
+            #line 74 "..\..\..\Controles\Tradicional.xaml"
+            this.CbxVolumen.SelectionChanged += new System.Windows.Controls.SelectionChangedEventHandler(this.CbxVolumen_SelectionChanged);
             
             #line default
             #line hidden
             return;
             case 7:
+            this.CbxInstancia = ((Telerik.Windows.Controls.RadComboBox)(target));
             
-            #line 99 "..\..\..\Controles\Tradicional.xaml"
-            ((UIControls.SearchTextBox)(target)).Search += new System.Windows.RoutedEventHandler(this.SearchTextBox_Search);
+            #line 96 "..\..\..\Controles\Tradicional.xaml"
+            this.CbxInstancia.SelectionChanged += new System.Windows.Controls.SelectionChangedEventHandler(this.CbxInstancia_SelectionChanged);
             
             #line default
             #line hidden
             return;
             case 8:
-            this.BtnPrint = ((System.Windows.Controls.Image)(target));
             
             #line 107 "..\..\..\Controles\Tradicional.xaml"
-            this.BtnPrint.MouseLeftButtonDown += new System.Windows.Input.MouseButtonEventHandler(this.BtnPrint_MouseLeftButtonDown);
+            ((UIControls.SearchTextBox)(target)).Search += new System.Windows.RoutedEventHandler(this.SearchTextBox_Search);
             
             #line default
             #line hidden
             return;
             case 9:
-            this.GTesis = ((Telerik.Windows.Controls.RadGridView)(target));
+            this.BtnPrint = ((System.Windows.Controls.Image)(target));
             
-            #line 119 "..\..\..\Controles\Tradicional.xaml"
-            this.GTesis.SelectionChanged += new System.EventHandler<Telerik.Windows.Controls.SelectionChangeEventArgs>(this.GTesis_SelectionChanged);
+            #line 115 "..\..\..\Controles\Tradicional.xaml"
+            this.BtnPrint.MouseLeftButtonDown += new System.Windows.Input.MouseButtonEventHandler(this.BtnPrint_MouseLeftButtonDown);
             
             #line default
             #line hidden
             return;
-            case 11:
-            this.BtnBusqueda = ((System.Windows.Controls.Button)(target));
+            case 10:
+            this.GTesis = ((Telerik.Windows.Controls.RadGridView)(target));
             
-            #line 156 "..\..\..\Controles\Tradicional.xaml"
-            this.BtnBusqueda.Click += new System.Windows.RoutedEventHandler(this.BtnBusqueda_Click);
+            #line 127 "..\..\..\Controles\Tradicional.xaml"
+            this.GTesis.SelectionChanged += new System.EventHandler<Telerik.Windows.Controls.SelectionChangeEventArgs>(this.GTesis_SelectionChanged);
             
             #line default
             #line hidden
@@ -260,11 +260,11 @@ namespace GacetaSjf.Controles {
             System.Windows.EventSetter eventSetter;
             switch (connectionId)
             {
-            case 10:
+            case 11:
             eventSetter = new System.Windows.EventSetter();
             eventSetter.Event = System.Windows.Controls.Control.MouseDoubleClickEvent;
             
-            #line 151 "..\..\..\Controles\Tradicional.xaml"
+            #line 159 "..\..\..\Controles\Tradicional.xaml"
             eventSetter.Handler = new System.Windows.Input.MouseButtonEventHandler(this.GTesis_MouseDoubleClick);
             
             #line default

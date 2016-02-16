@@ -72,7 +72,7 @@ namespace GacetaSjf.Controles {
         #line hidden
         
         
-        #line 43 "..\..\..\Controles\PorOrganismo.xaml"
+        #line 50 "..\..\..\Controles\PorOrganismo.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal Telerik.Windows.Controls.RadGridView GTesis;
         
@@ -134,24 +134,24 @@ namespace GacetaSjf.Controles {
             #line hidden
             return;
             case 3:
-            this.GTesis = ((Telerik.Windows.Controls.RadGridView)(target));
             
-            #line 51 "..\..\..\Controles\PorOrganismo.xaml"
-            this.GTesis.MouseDoubleClick += new System.Windows.Input.MouseButtonEventHandler(this.GTesis_MouseDoubleClick);
-            
-            #line default
-            #line hidden
-            
-            #line 53 "..\..\..\Controles\PorOrganismo.xaml"
-            this.GTesis.SelectionChanged += new System.EventHandler<Telerik.Windows.Controls.SelectionChangeEventArgs>(this.GTesis_SelectionChanged);
+            #line 48 "..\..\..\Controles\PorOrganismo.xaml"
+            ((UIControls.SearchTextBox)(target)).Search += new System.Windows.RoutedEventHandler(this.SearchTextBox_Search);
             
             #line default
             #line hidden
             return;
             case 4:
+            this.GTesis = ((Telerik.Windows.Controls.RadGridView)(target));
             
-            #line 85 "..\..\..\Controles\PorOrganismo.xaml"
-            ((UIControls.SearchTextBox)(target)).Search += new System.Windows.RoutedEventHandler(this.SearchTextBox_Search);
+            #line 58 "..\..\..\Controles\PorOrganismo.xaml"
+            this.GTesis.MouseDoubleClick += new System.Windows.Input.MouseButtonEventHandler(this.GTesis_MouseDoubleClick);
+            
+            #line default
+            #line hidden
+            
+            #line 60 "..\..\..\Controles\PorOrganismo.xaml"
+            this.GTesis.SelectionChanged += new System.EventHandler<Telerik.Windows.Controls.SelectionChangeEventArgs>(this.GTesis_SelectionChanged);
             
             #line default
             #line hidden

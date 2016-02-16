@@ -189,7 +189,7 @@ namespace GacetaSjf.Controles {
             return;
             case 8:
             
-            #line 129 "..\..\..\Controles\AcuerdoTradicional.xaml"
+            #line 135 "..\..\..\Controles\AcuerdoTradicional.xaml"
             ((UIControls.SearchTextBox)(target)).Search += new System.Windows.RoutedEventHandler(this.SearchTextBox_Search);
             
             #line default
