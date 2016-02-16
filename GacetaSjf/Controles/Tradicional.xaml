@@ -17,7 +17,7 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <telerik:GroupBox Height="140"
-                          Margin="10,90,10,0"
+                          Margin="10,129,10,0"
                           HorizontalAlignment="Stretch"
                           VerticalAlignment="Top"
                           Header="Búsqueda por registro">
@@ -96,8 +96,7 @@
                                       Margin="130,64,0,0"
                                       HorizontalAlignment="Left"
                                       VerticalAlignment="Top"
-                                      LabelText="Rubro, texto, precedentes y registro digital"
-                                      TextWrapping="Wrap" />
+                                      LabelText="Rubro, texto, precedentes o clave de tesis..." Search="SearchTextBox_Search" />
             <Image x:Name="BtnPrint"
                    Width="45"
                    Height="43"
@@ -154,6 +153,7 @@
                 </telerik:RadGridView.RowStyle>
             </telerik:RadGridView>
         </Grid>
+        <Button x:Name="BtnBusqueda" Content="Búsqueda por palabra" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" Width="180" Click="BtnBusqueda_Click"/>
 
 
     </Grid>

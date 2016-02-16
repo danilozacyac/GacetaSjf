@@ -92,6 +92,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Busqueda.xaml.cs">
+      <DependentUpon>Busqueda.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controles\AcuerdoTradicional.xaml.cs">
       <DependentUpon>AcuerdoTradicional.xaml</DependentUpon>
     </Compile>
@@ -174,6 +177,10 @@
     <Compile Include="UnaTesis.xaml.cs">
       <DependentUpon>UnaTesis.xaml</DependentUpon>
     </Compile>
+    <Page Include="Busqueda.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controles\AcuerdoTradicional.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

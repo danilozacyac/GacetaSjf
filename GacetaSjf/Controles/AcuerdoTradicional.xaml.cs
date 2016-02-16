@@ -86,6 +86,22 @@ namespace GacetaSjf.Controles
             WordReports word = new WordReports(listaAcuerdos);
             word.ListadoDeDocumentosTabla();
         }
-        
+
+        private void SearchTextBox_Search(object sender, RoutedEventArgs e)
+        {
+            String tempString = ((TextBox)sender).Text.ToUpper().Trim();
+
+            if (!String.IsNullOrEmpty(tempString))
+            {
+                var temporal = (from n in listaAcuerdos
+                                where n.Rubro.ToUpper().Contains(tempString) || n.Asunto.ToUpper().Contains(tempString)
+                                select n).ToList();
+                GAcuerdos.DataContext = temporal;
+            }
+            else
+            {
+                GAcuerdos.DataContext = listaAcuerdos;
+            }
+        }
     }
 }

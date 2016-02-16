@@ -176,3 +176,5 @@ C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debu
 C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Ligas\ListaRelacionados.g.cs
 C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\Indices\IndiceDocumentos.baml
 C:\Users\Luis\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Controles\Indices\IndiceTesis.baml
+C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Busqueda.baml
+C:\Users\lavega\Documents\Visual Studio 2013\Projects\GacetaSjf\GacetaSjf\obj\Debug\Busqueda.g.cs

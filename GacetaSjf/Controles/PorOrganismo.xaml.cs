@@ -56,5 +56,22 @@ namespace GacetaSjf.Controles
             UnaTesis showTesis = new UnaTesis(listaTesis, posActual);
             showTesis.ShowDialog();
         }
+
+        private void SearchTextBox_Search(object sender, RoutedEventArgs e)
+        {
+            String tempString = ((TextBox)sender).Text.ToUpper().Trim();
+
+            if (!String.IsNullOrEmpty(tempString))
+            {
+                var temporal = (from n in listaTesis
+                                where n.Rubro.ToUpper().Contains(tempString) || n.Tesis.ToUpper().Contains(tempString)
+                                select n).ToList();
+                GTesis.DataContext = temporal;
+            }
+            else
+            {
+                GTesis.DataContext = listaTesis;
+            }
+        }
     }
 }

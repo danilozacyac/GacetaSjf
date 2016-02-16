@@ -135,5 +135,28 @@ namespace GacetaSjf.Controles
             WordReports word = new WordReports(new ObservableCollection<TesisDto>(tesisImprimir));
             word.ListadoDeTesisTabla();
         }
+
+        private void SearchTextBox_Search(object sender, RoutedEventArgs e)
+        {
+            String tempString = ((TextBox)sender).Text.ToUpper().Trim();
+
+            if (!String.IsNullOrEmpty(tempString))
+            {
+                var temporal = (from n in listaTesis
+                                where n.Rubro.ToUpper().Contains(tempString) || n.Tesis.ToUpper().Contains(tempString) || n.Texto.ToUpper().Contains(tempString) || n.Precedentes.ToUpper().Contains(tempString)
+                                select n).ToList();
+                GTesis.DataContext = temporal;
+            }
+            else
+            {
+                GTesis.DataContext = listaTesis;
+            }
+        }
+
+        private void BtnBusqueda_Click(object sender, RoutedEventArgs e)
+        {
+            Busqueda buscar = new Busqueda();
+            buscar.ShowDialog();
+        }
     }
 }

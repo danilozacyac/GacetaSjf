@@ -38,6 +38,8 @@ namespace GacetaSjf.Model
                         tesis.Ius = Convert.ToInt32(reader["Ius"]);
                         tesis.Tesis = reader["Tesis"].ToString();
                         tesis.Rubro = reader["Rubro"].ToString();
+                        tesis.Texto = reader["Texto"].ToString();
+                        tesis.Precedentes = reader["Precedentes"].ToString();
                         tesis.TaTj = Convert.ToInt32(reader["ta/tj"]);
                         tesis.Sala = Convert.ToInt32(reader["Sala"]);
                         tesis.LocAbr = reader["LocAbr"].ToString().Replace("\r\n","");
